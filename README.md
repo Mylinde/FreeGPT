@@ -26,7 +26,7 @@ Experience the power of ChatGPT with a user-friendly interface and completely fr
 **Important!** Don't be afraid to ask a question or write about any problem in the "issue".  
 We will solve a question or a problem together! 🌍
 
-## Features in this fork 📢
+## Features 📢
 - Client runs also as PWA
 - Reader mode by double tap in PWA
 - Updated g4f
@@ -37,7 +37,7 @@ We will solve a question or a problem together! 🌍
 - flask-compress
 - orjson instead json
 
-## Known bugs in this fork 🚧
+## Known bugs 🚧
 - 
 
 ## Table of Contents  
