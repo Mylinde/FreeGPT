@@ -60,7 +60,7 @@ git clone https://github.com/Mylinde/freegpt.git
 ### Install Dependencies :wrench: 
 Navigate to the project directory:
 ```
-cd freegpt-webui-v2
+cd freegpt
 ```
 
 Install the dependencies:
