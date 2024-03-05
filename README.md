@@ -2,16 +2,24 @@
 
 Experience the power of ChatGPT with a user-friendly interface.
 
-This projekt is based on [freegpt-webui-v2] (https://github.com/VadimBoev/freegpt-webui-v2) 
+This projekt is based on [freegpt-webui-v2](https://github.com/VadimBoev/freegpt-webui-v2) 
 and features a WebUI utilizing the [G4F API](https://github.com/xtekky/gpt4free).
+
+
+## GPT 3.5/4, LLaMA, Mistral
+
+<strong>NO API KEY REQUIERED</strong> ❌🔑 
+
   
-Desktop UI
+## UI
+
+Desktop
 
 <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/desktop-ui.png" width="1000" />
 
 <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/desktop-ui-light.png" width="1000" />
   
-Mobile Device PWA UI
+Mobile Device PWA
 
 <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/mobile-ui.png" width="30%" />  <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/mobile-ui-light.png" width="30%" />
 
@@ -19,9 +27,7 @@ Reader mode in PWA
 
 <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/reader.png" width="30%" />  <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/reader-light.png" width="30%" />
 
-## GPT 3.5/4, LLaMA, Mistral
 
-<strong>NOT REQUIRE ANY API KEY</strong> ❌🔑 
 
 ## Features 📢
 - Client runs also as PWA
