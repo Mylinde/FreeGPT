@@ -4,17 +4,17 @@
   
 Desktop
 
-<img src="https://github.com/Mylinde/freegpt-webui-v2/blob/main/client/img/desktop-ui.png" width="1000" />
+<img src="https://github.com/Mylinde/freegpt/blob/main/client/img/desktop-ui.png" width="1000" />
 
-<img src="https://github.com/Mylinde/freegpt-webui-v2/blob/main/client/img/desktop-ui-light.png" width="1000" />
+<img src="https://github.com/Mylinde/freegpt/blob/main/client/img/desktop-ui-light.png" width="1000" />
   
 Mobile Device PWA
 
-<img src="https://github.com/Mylinde/freegpt-webui-v2/blob/main/client/img/mobile-ui.png" width="30%" />  <img src="https://github.com/Mylinde/freegpt-webui-v2/blob/main/client/img/mobile-ui-light.png" width="30%" />
+<img src="https://github.com/Mylinde/freegpt/blob/main/client/img/mobile-ui.png" width="30%" />  <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/mobile-ui-light.png" width="30%" />
 
 Reader mode in PWA
 
-<img src="https://github.com/Mylinde/freegpt-webui-v2/blob/main/client/img/reader.png" width="30%" />  <img src="https://github.com/Mylinde/freegpt-webui-v2/blob/main/client/img/reader-light.png" width="30%" />
+<img src="https://github.com/Mylinde/freegpt/blob/main/client/img/reader.png" width="30%" />  <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/reader-light.png" width="30%" />
 
 ## GPT 3.5/4, LLaMA, Mistral
 
@@ -57,7 +57,7 @@ To get started with this project, you'll need to clone the repository and have [
 ### Cloning the Repository :inbox_tray:
 Run the following command to clone the repository:
 ```
-git clone https://github.com/Mylinde/freegpt-webui-v2.git
+git clone https://github.com/Mylinde/freegpt.git
 ```
 
 ### Install Dependencies :wrench: 
@@ -93,17 +93,17 @@ Before you start, make sure you have installed [Docker](https://www.docker.com/g
 Dockerfile for creating a Docker image yourself  
 Then we can create an image using the following commands:
 ```
-git clone https://github.com/VadimBoev/freegpt-webui-v2.git cd freegpt-webui-v2
+git clone https://github.com/Mylinde/freegpt.git cd freegpt
 ```
 
 Build image:
 ```
-docker build -f Dockerfile -t freegpt-webui-v2 .
+docker build -f Dockerfile -t freegpt .
 ```
 
 Run the application using Docker:
 ```
-docker run -p 1338:1338 freegpt-webui-v2:latest
+docker run -p 1338:1338 freegpt:latest
 ```
 
 Access the application in your browser using the URL:
