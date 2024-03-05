@@ -2,13 +2,13 @@
 
 
   
-Desktop
+Desktop UI
 
 <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/desktop-ui.png" width="1000" />
 
 <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/desktop-ui-light.png" width="1000" />
   
-Mobile Device PWA
+Mobile Device PWA UI
 
 <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/mobile-ui.png" width="30%" />  <img src="https://github.com/Mylinde/freegpt/blob/main/client/img/mobile-ui-light.png" width="30%" />
 
@@ -21,10 +21,7 @@ Reader mode in PWA
 <strong>NOT REQUIRE ANY API KEY</strong> ❌🔑 
 
 This project features a WebUI utilizing the [G4F API](https://github.com/xtekky/gpt4free). <br>
-Experience the power of ChatGPT with a user-friendly interface and completely free.  
-
-**Important!** Don't be afraid to ask a question or write about any problem in the "issue".  
-We will solve a question or a problem together! 🌍
+Experience the power of ChatGPT with a user-friendly interface.
 
 ## Features 📢
 - Client runs also as PWA
