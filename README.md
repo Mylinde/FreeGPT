@@ -1,6 +1,9 @@
 # FreeGPT
 
+Experience the power of ChatGPT with a user-friendly interface.
 
+This projekt is based on [freegpt-webui-v2] (https://github.com/VadimBoev/freegpt-webui-v2) 
+and features a WebUI utilizing the [G4F API](https://github.com/xtekky/gpt4free).
   
 Desktop UI
 
@@ -19,9 +22,6 @@ Reader mode in PWA
 ## GPT 3.5/4, LLaMA, Mistral
 
 <strong>NOT REQUIRE ANY API KEY</strong> ❌🔑 
-
-This project features a WebUI utilizing the [G4F API](https://github.com/xtekky/gpt4free). <br>
-Experience the power of ChatGPT with a user-friendly interface.
 
 ## Features 📢
 - Client runs also as PWA
