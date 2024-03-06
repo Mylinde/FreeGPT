@@ -6,7 +6,7 @@ This project is based on [freegpt-webui-v2](https://github.com/VadimBoev/freegpt
 
 ## GPT 3.5/4, LLaMA, Mistral
 
-<strong>NO API KEY REQUIERED</strong> ❌🔑 
+<strong>NO API KEY REQUIERED</strong>
 
   
 ## UI
