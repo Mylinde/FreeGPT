@@ -12,8 +12,7 @@ models = {
     "gemini-pro": "google-gemini-pro"
 }
 urls = [
-    "https://free.chatgpt.org.uk",
-    "https://ai.chatgpt.org.uk"
+    "https://free.chatgpt.org.uk"
 ]
 
 class FreeChatgpt(AsyncGeneratorProvider):
