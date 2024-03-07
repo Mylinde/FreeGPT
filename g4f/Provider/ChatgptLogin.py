@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 import time
-import json
+import orjson
 from aiohttp import ClientSession
 
 from ..typing import AsyncResult, Messages
@@ -70,7 +70,7 @@ class ChatgptLogin(AsyncGeneratorProvider):
                 async for line in response.content:
                     if line.startswith(b"data: "):
                         
-                        content = json.loads(line[6:])["choices"][0]["delta"].get("content")
+                        content = orjson.loads(line[6:])["choices"][0]["delta"].get("content")
                         if content:
                             yield content
                         
