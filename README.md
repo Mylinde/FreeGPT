@@ -2,13 +2,11 @@
 
 Experience the power of ChatGPT with a user-friendly interface.
 
-This projekt is based on [freegpt-webui-v2](https://github.com/VadimBoev/freegpt-webui-v2) 
-and features a WebUI utilizing the [G4F API](https://github.com/xtekky/gpt4free).
-
+This project is based on [freegpt-webui-v2](https://github.com/VadimBoev/freegpt-webui-v2).
 
 ## GPT 3.5/4, LLaMA, Mistral
 
-<strong>NO API KEY REQUIERED</strong> ❌🔑 
+<strong>NO API KEY REQUIERED</strong>
 
   
 ## UI
