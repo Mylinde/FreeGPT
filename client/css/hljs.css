@@ -34,8 +34,11 @@
 } 
 
 .hljs-copy-button:hover {
-	cursor: pointer;
-	
+	cursor: pointer;	
+}
+
+.hljs-copy-button[data-copied="true"] {
+	transition-delay: 0.5s;
 }
 
 @media (prefers-reduced-motion) {
