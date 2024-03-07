@@ -38,7 +38,7 @@
 }
 
 .hljs-copy-button[data-copied="true"] {
-	transition-delay: 0.5s;
+	transition-delay: 1s;
 }
 
 @media (prefers-reduced-motion) {
