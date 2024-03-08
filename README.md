@@ -35,7 +35,7 @@ Reader mode in PWA
 - light/dark theme follows the system
 - 3rd party sources stored local
 - flask-compress
-- orjson instead json
+- orjson
 
 ## Known bugs 🚧
 - Mixtral interrupts long answers. By typing "continue" it continues.
