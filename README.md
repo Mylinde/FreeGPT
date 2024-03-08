@@ -30,16 +30,15 @@ Reader mode in PWA
 ## Features 📢
 - Client runs also as PWA
 - Reader mode by double tap in PWA
-- Updated g4f
 - Some code clean up
 - Awesomefont replaced with material icons
 - light/dark theme follows the system
 - 3rd party sources stored local
 - flask-compress
-- orjson instead json
+- orjson
 
 ## Known bugs 🚧
-- 
+- Mixtral interrupts long answers. By typing "continue" it continues.
 
 ## Table of Contents  
 - [Getting Started](#getting-started-white_check_mark)  
