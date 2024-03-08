@@ -9,11 +9,8 @@ from urllib import parse
 from aiohttp import ClientSession, ClientTimeout, BaseConnector
 
 from ..typing import AsyncResult, Messages, ImageType
-from ..image import ImageResponse, ImageRequest
 from .base_provider import AsyncGeneratorProvider
 from .helper import get_connector
-from .bing.upload_image import upload_image
-from .bing.create_images import create_images
 from .bing.conversation import Conversation, create_conversation, delete_conversation
 
 class Tones:
@@ -173,7 +170,6 @@ def create_message(
     prompt: str,
     tone: str,
     context: str = None,
-    image_request: ImageRequest = None,
     web_search: bool = False,
     gpt4_turbo: bool = False
 ) -> str:
@@ -238,12 +234,6 @@ def create_message(
         'type': 4
     }
 
-    if image_request and image_request.get('imageUrl') and image_request.get('originalImageUrl'):
-        struct['arguments'][0]['message']['originalImageUrl'] = image_request.get('originalImageUrl')
-        struct['arguments'][0]['message']['imageUrl'] = image_request.get('imageUrl')
-        struct['arguments'][0]['experienceType'] = None
-        struct['arguments'][0]['attachedFileInfo'] = {"fileName": None, "fileType": None}
-
     if context:
         struct['arguments'][0]['previousMessages'] = [{
             "author": "user",
@@ -287,8 +277,7 @@ async def stream_generate(
         timeout=ClientTimeout(total=timeout), headers=headers, connector=connector
     ) as session:
         conversation = await create_conversation(session)
-        image_request = await upload_image(session, image, tone) if image else None
-
+        
         try:
             async with session.ws_connect(
                 'wss://sydney.bing.com/sydney/ChatHub',
@@ -297,7 +286,7 @@ async def stream_generate(
             ) as wss:
                 await wss.send_str(format_message({'protocol': 'json', 'version': 1}))
                 await wss.receive(timeout=timeout)
-                await wss.send_str(create_message(conversation, prompt, tone, context, image_request, web_search, gpt4_turbo))
+                await wss.send_str(create_message(conversation, prompt, tone, context, web_search, gpt4_turbo))
 
                 response_txt = ''
                 returned_text = ''
@@ -322,13 +311,7 @@ async def stream_generate(
                                     if message.get('messageType'):
                                         inline_txt = card['inlines'][0].get('text')
                                         response_txt += inline_txt + '\n'
-                                elif message.get('contentType') == "IMAGE":
-                                    prompt = message.get('text')
-                                    try:
-                                        image_response = ImageResponse(await create_images(session, prompt), prompt, {"preview": "{image}?w=200&h=200"})
-                                    except:
-                                        response_txt += f"\nhttps://www.bing.com/images/create?q={parse.quote(prompt)}"
-                                    final = True
+                                
                             if response_txt.startswith(returned_text):
                                 new = response_txt[len(returned_text):]
                                 if new != "\n":

@@ -14,7 +14,6 @@ from .Provider   import (
     ChatBase,
     Liaobots,
     Llama2,
-    Gemini,
     GptGo,
     Gpt6,
     Bing,
@@ -162,11 +161,6 @@ openchat_35 = Model(
 )
 
 # Bard
-gemini = bard = palm = Model(
-    name          = 'gemini',
-    base_provider = 'google',
-    best_provider = Gemini
-)
 
 claude_v2 = Model(
     name          = 'claude-v2',
@@ -259,7 +253,6 @@ class ModelUtils:
         'airoboros-70b': airoboros_70b,
         'airoboros-l2-70b': airoboros_l2_70b,
         'openchat_3.5': openchat_35,
-        'gemini': gemini,
         'gemini-pro': gemini_pro,
         'claude-v2': claude_v2,
         'pi': pi

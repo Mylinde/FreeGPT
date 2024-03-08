@@ -6,7 +6,6 @@ from aiohttp import ClientSession, BaseConnector
 
 from ..typing import AsyncResult, Messages, ImageType
 from .base_provider import AsyncGeneratorProvider, ProviderModelMixin
-from ..image import to_bytes, is_accepted_format
 from ..errors import MissingAuthError
 from .helper import get_connector
 
@@ -57,14 +56,7 @@ class GeminiPro(AsyncGeneratorProvider, ProviderModelMixin):
                 }
                 for message in messages
             ]
-            if image:
-                image = to_bytes(image)
-                contents[-1]["parts"].append({
-                    "inline_data": {
-                        "mime_type": is_accepted_format(image),
-                        "data": base64.b64encode(image).decode()
-                    }
-                })
+           
             data = {
                 "contents": contents,
                 "generationConfig": {
