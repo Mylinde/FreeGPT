@@ -1,3 +1,7 @@
+import re
+from datetime import datetime
+import asyncio
+
 import sys
 sys.path.insert(0, '../g4f')
 
@@ -6,6 +10,9 @@ from g4f.Provider import __providers__
 
 from flask import request, Response, stream_with_context
 from requests import get
+import orjson
+import subprocess
+import platform
 
 def find_provider(name):
     new_variable = None
