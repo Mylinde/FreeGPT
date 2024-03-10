@@ -53,36 +53,28 @@ pdfButton.addEventListener("click", () => {
   try {
     // Get all the elements with the class content
     const contentElements = document.querySelectorAll(".content");
-
     // Initialize an empty string to store the text content
     let text = "";
-
     // Loop through the content elements and append their text content to the string
     for (let element of contentElements) {
       text += element.textContent + "\n";
     }
-
     // Create a new jsPDF instance
     const pdf = jspdf.jsPDF();
-
     // Set the font size to 12
     pdf.setFontSize(12);
-
     // Split the text into lines that fit the page width
     const lines = pdf.splitTextToSize(text, pdf.internal.pageSize.width - 20);
-
-    // Add the lines to the PDF document, one page at a time
+    // Loop through the lines and add them to the PDF document
     let currentPage = 0;
     for (let line of lines) {
-      if (currentPage === 0) {
-        pdf.text(line, 10, 10);
-      } else {
-        pdf.addPage();
-        pdf.text(line, 10, 10);
-      }
+      pdf.text(line, 10, 10 + (currentPage * 10));
       currentPage++;
+      if (currentPage * 10 >= pdf.internal.pageSize.height) {
+        pdf.addPage();
+        currentPage = 0;
+      }
     }
-
     // Save the PDF document with the title as the file name
     pdf.save("FreeGPT.pdf");
   } catch (error) {
@@ -90,6 +82,7 @@ pdfButton.addEventListener("click", () => {
     console.error("Error printing content", error);
   }
 });
+
 } else {
   // Hide the button if the Web Share API is not supported
   shareButton.style.display = "none";
