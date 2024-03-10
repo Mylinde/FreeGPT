@@ -113,8 +113,13 @@
 	height: 15px;
 }
 
+#cancelButton {
+	user-select: none;
+}
+
 #share-button {
 	display: none;
+	user-select: none;
 }
 
 .conversation.enlarged #share-button {
