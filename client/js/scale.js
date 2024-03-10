@@ -20,6 +20,7 @@ if (window.navigator.standalone === true || window.matchMedia('(display-mode: st
 
 // Get the button element
 const shareButton = document.getElementById("share-button");
+const pdfButton = document.getElementById("pdf-button");
 
 // Check if the Web Share API is available
 if (navigator.share) {
@@ -46,38 +47,41 @@ if (navigator.share) {
       console.error("Error sharing content", error);
     }
   });
+
+  // Add a click event listener to the print button
+  pdfButton.addEventListener("click", () => {
+    try {
+      // Get all the elements with the class content
+      const contentElements = document.querySelectorAll(".content");
+      // Initialize an empty string to store the text content
+      let text = "";
+      // Loop through the content elements and append their text content to the string
+      for (let element of contentElements) {
+        text += element.textContent + "\n";
+      }
+      // Create a new jsPDF instance
+      const pdf = jspdf.jsPDF();
+      // Set the font size to 12
+      pdf.setFontSize(12);
+      // Split the text into lines that fit the page width
+      const lines = pdf.splitTextToSize(text, pdf.internal.pageSize.width - 20);
+      // Add the lines to the PDF document
+      pdf.text(lines, 10, 10);
+      // Save the PDF document with the title as the file name
+      pdf.save("FreeGPT.pdf");
+    } catch (error) {
+      // Handle error
+      console.error("Error printing content", error);
+    }
+  });
 } else {
   // Hide the button if the Web Share API is not supported
   shareButton.style.display = "none";
+  pdfButton.style.display = "none";
 }
 
-// Get the print button element
-const printButton = document.getElementById("print-button");
 
-// Add a click event listener to the print button
-printButton.addEventListener("click", () => {
-  try {
-    // Get all the elements with the class content
-    const contentElements = document.querySelectorAll(".content");
-    // Initialize an empty string to store the text content
-    let text = "";
-    // Loop through the content elements and append their text content to the string
-    for (let element of contentElements) {
-      text += element.textContent + "\n";
-    }
-    // Create a new jsPDF instance
-    const pdf = new jsPDF();
-    // Set the font size to 12
-    pdf.setFontSize(12);
-    // Split the text into lines that fit the page width
-    const lines = pdf.splitTextToSize(text, pdf.internal.pageSize.width - 20);
-    // Add the lines to the PDF document
-    pdf.text(lines, 10, 10);
-    // Save the PDF document with the title as the file name
-    pdf.save("FreeGPT.pdf");
-  } catch (error) {
-    // Handle error
-    console.error("Error printing content", error);
-  }
-});
+
+
+
 
