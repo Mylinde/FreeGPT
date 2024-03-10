@@ -121,11 +121,12 @@
 
 #pdf-button {	
 	right: 60px;
+	top: -6px;
 }
 
 #share-button {
 	right: 30px;
-	top: -24px;
+	top: -26px;
 	margin-bottom: -18px;
 }
 
