@@ -118,7 +118,7 @@
 	user-select: none;
 }
 
-.conversation.enlarged #share-button, #pdf-button {
+.conversation.enlarged #share-button, .conversation.enlarged #pdf-button {
 	display: flex;
     position: relative;
 	align-self: flex-end;
