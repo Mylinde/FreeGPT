@@ -118,7 +118,13 @@
 	user-select: none;
 }
 
-.conversation.enlarged #share-button, .conversation.enlarged #pdf-button {
+#pdf-button {	
+	right: 30px;
+	top: 12px;
+	
+}
+
+#share-button, #pdf-button {
 	display: flex;
     position: relative;
 	align-self: flex-end;
