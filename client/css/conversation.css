@@ -121,10 +121,9 @@
 #pdf-button {	
 	right: 30px;
 	top: 12px;
-	
 }
 
-#share-button, #pdf-button {
+.conversation.enlarged #share-button, .conversation.enlarged #pdf-button {
 	display: flex;
     position: relative;
 	align-self: flex-end;
