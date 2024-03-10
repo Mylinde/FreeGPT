@@ -44,7 +44,7 @@ if (navigator.share) {
 const pdfButton = document.getElementById("pdf-button");
 
 if (navigator.share) {
-  shareButton.addEventListener("click", async () => {
+  pdfButton.addEventListener("click", async () => {
     try {
       const contentElements = document.querySelectorAll(".content");
       let pdf = new PDFDocument();
