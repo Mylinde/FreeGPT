@@ -115,6 +115,7 @@
 
 #share-button {
 	display: none;
+	font-size: 1.3rem;
 }
 
 .conversation.enlarged #share-button {
