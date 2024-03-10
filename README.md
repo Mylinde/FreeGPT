@@ -1,6 +1,6 @@
 # FreeGPT
 
-Experience the power of ChatGPT with a user-friendly interface.
+Experience the power of **G**enerative **P**retrained **T**ransformers with a user-friendly interface.
 
 This project is based on [freegpt-webui-v2](https://github.com/VadimBoev/freegpt-webui-v2).
 
@@ -30,7 +30,7 @@ Reader mode in PWA
 ## Features 📢
 - Client runs also as PWA
 - Reader mode by double tap in PWA
-- Some code clean up
+- code clean up
 - Awesomefont replaced with material icons
 - light/dark theme follows the system
 - 3rd party sources stored local
@@ -39,6 +39,7 @@ Reader mode in PWA
 
 ## Known bugs 🚧
 - Mixtral interrupts long answers. By typing "continue" it continues.
+https://github.com/xtekky/gpt4free/issues/1666
 
 ## Table of Contents  
 - [Getting Started](#getting-started-white_check_mark)  
@@ -51,8 +52,7 @@ Reader mode in PWA
 - [Legal Notice](#legal-notice) 
 
 ## Getting Started :white_check_mark:  
-To get started with this project, you'll need to clone the repository and have [Python](https://www.python.org/downloads/) installed on your system.  
-(Version 3.10+ is recommended. It also works for me on 3.9.2 in debian 11).
+To get started with this project, you'll need to clone the repository and have [Python](https://www.python.org/downloads/) installed on your system. (Version 3.10+ is recommend)
   
 ### Cloning the Repository :inbox_tray:
 Run the following command to clone the repository:
@@ -121,7 +121,6 @@ docker stop <container-id>
 ```
 
 ## Incorporated Projects :busts_in_silhouette:
-I highly recommend visiting and supporting both projects.
 
 ### WebUI
 The application interface was incorporated from the [chatgpt-clone](https://github.com/xtekky/chatgpt-clone) repository.
