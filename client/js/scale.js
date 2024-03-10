@@ -20,6 +20,29 @@ if (window.navigator.standalone === true || window.matchMedia('(display-mode: st
 
 const shareButton = document.getElementById("share-button");
 
+if (navigator.share) {  
+  shareButton.addEventListener("click", async () => {
+    try {      
+      const contentElements = document.querySelectorAll(".content");      
+      let text = "";     
+      for (let element of contentElements) {
+        text += element.textContent + "\n";
+      }      
+      await navigator.clipboard.writeText(text);
+      await navigator.share({
+        title: "FreeGPT",
+        text: text,
+      });
+    } catch (error) {
+        console.error("Error sharing content", error);
+    }
+  });
+} else {
+  shareButton.style.display = "none";
+}
+
+const pdfButton = document.getElementById("pdf-button");
+
 if (navigator.share) {
   shareButton.addEventListener("click", async () => {
     try {
@@ -52,20 +75,6 @@ if (navigator.share) {
       console.error("Error sharing content as PDF", error);
     }
   });
+} else {
+  pdfButton.style.display = "none";
 }
-
-if (navigator.clipboard) {
-  shareButton.addEventListener("click", async () => {
-    try {
-      const contentElements = document.querySelectorAll(".content");
-      let text = "";
-      for (let element of contentElements) {
-        text += element.textContent + "\n";
-      }
-      await navigator.clipboard.writeText(text);
-    } catch (error) {
-      console.error("Error copying content to clipboard", error);
-    }
-  });
-}
-
