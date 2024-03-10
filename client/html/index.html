@@ -93,6 +93,7 @@
 				</div>
 			</div>
 			<div class="conversation">
+				<span id="print-button" class="material-icons-round">print</span>
 				<span id="share-button" class="material-icons-round">share</span>
 				<div class="stop-generating stop-generating-hidden">
 					<button class="button" id="cancelButton">
@@ -127,6 +128,7 @@
 		<script src="{{ url_for('bp.static', filename='js/highlight.min.js') }}"></script>
 		<script src="{{ url_for('bp.static', filename='js/highlightjs-copy.min.js') }}"></script>
 		<script src="{{ url_for('bp.static', filename='js/scale.min.js') }}"></script>
+		<script src="{{ url_for('bp.static', filename='js/jspdf.umd.min.js') }}"></script>
 		<script rel="preload" src="{{ url_for('bp.static', filename='js/chat.min.js') }}" defer></script>		
 		<script src="{{ url_for('bp.static', filename='js/sidebar-toggler.min.js') }}"></script>
 		<script src="{{ url_for('bp.static', filename='js/change-language.min.js') }}"></script>					
