@@ -73,11 +73,3 @@
 	background-color: var(--blur-bg);
 	}	
 }
-
-.conversation.enlarged .message .avatar-container, .conversation.enlarged + .menu-button, .conversation.enlarged .user-input {
-	display: none !important;
-}
-
-.conversation.enlarged .user, .conversation.enlarged pre:not(.hljs-copy-wrapper) {
-	font-style: oblique;
-}
