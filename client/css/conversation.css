@@ -116,20 +116,23 @@
 #share-button, #pdf-button {
 	display: none;
 	user-select: none;
-	margin-bottom: 4px;
+	height: 20px;
 }
 
 #pdf-button {	
+	right: 60px;
+}
+
+#share-button {
 	right: 30px;
-	top: 12px;
+	top: -20px;
+	margin-bottom: -18px;
 }
 
 .conversation.enlarged #share-button, .conversation.enlarged #pdf-button {
 	display: flex;
     position: relative;
-	align-self: flex-end;
-	margin-right: 20px;
-	margin-top: -8px;
+	align-self: flex-end;	
 	font-size: 1.3rem;
 }
 
