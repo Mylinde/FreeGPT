@@ -113,17 +113,12 @@
 	height: 15px;
 }
 
-#share-button, #pdf-button {
+#share-button {
 	display: none;
 	user-select: none;
 }
 
-#pdf-button {	
-	right: 30px;
-	top: 8px;
-}
-
-.conversation.enlarged #share-button, .conversation.enlarged #pdf-button {
+.conversation.enlarged #share-button {
 	display: flex;
     position: relative;
 	align-self: flex-end;
