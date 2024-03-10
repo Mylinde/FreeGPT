@@ -66,7 +66,7 @@ if (navigator.share) {
       // Split the text into lines that fit the page width
       const lines = pdf.splitTextToSize(text, pdf.internal.pageSize.width - 20);
       // Add the lines to the PDF document
-      pdf.text(lines, 100, 100);
+      pdf.text(lines, 10, 10);
       // Save the PDF document with the title as the file name
       pdf.save("FreeGPT.pdf");
     } catch (error) {
