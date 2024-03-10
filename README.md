@@ -30,7 +30,7 @@ Reader mode in PWA
 ## Features 📢
 - Client runs also as PWA
 - Reader mode by double tap in PWA
-- Some code clean up
+- code clean up
 - Awesomefont replaced with material icons
 - light/dark theme follows the system
 - 3rd party sources stored local
@@ -52,7 +52,7 @@ Reader mode in PWA
 
 ## Getting Started :white_check_mark:  
 To get started with this project, you'll need to clone the repository and have [Python](https://www.python.org/downloads/) installed on your system.  
-(Version 3.10+ is recommended. It also works for me on 3.9.2 in debian 11).
+(Version 3.10+ is recommend)
   
 ### Cloning the Repository :inbox_tray:
 Run the following command to clone the repository:
