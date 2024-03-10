@@ -116,6 +116,7 @@
 #share-button, #pdf-button {
 	display: none;
 	user-select: none;
+	margin-bottom: 4px;
 }
 
 #pdf-button {	
