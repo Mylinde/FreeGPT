@@ -127,7 +127,7 @@
 	font-size: 1.3rem;
 }
 
-.conversation.enlarged .message .avatar-container, .conversation.enlarged + .menu-button, .conversation.enlarged .user-input, .conversation.enlarged #cancelButton {
+.conversation.enlarged .message .avatar-container, .conversation.enlarged + .menu-button, .conversation.enlarged .user-input {
 	display: none !important;
 }
 
