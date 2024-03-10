@@ -113,6 +113,16 @@
 	height: 15px;
 }
 
+#share-button {
+	display: none;
+}
+
+.conversation.enlarged #share-button {
+	display: flex;
+    justify-content: flex-end;
+	margin-right: 20px;
+}
+
 @keyframes blink {
 	0% {
 		background: #ffffff00;

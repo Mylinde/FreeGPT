@@ -38,12 +38,10 @@ if (navigator.share) {
       await navigator.clipboard.writeText(text);
       // Share the text with the Web Share API
       await navigator.share({
-        title: "Web Share API Demo",
+        title: "FreeGPT",
         text: text,
         url: window.location.href
       });
-      // Handle success
-      console.log("Content shared successfully");
     } catch (error) {
       // Handle error
       console.error("Error sharing content", error);
