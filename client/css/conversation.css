@@ -120,7 +120,8 @@
 
 .conversation.enlarged #share-button {
 	display: flex;
-    justify-content: flex-end;
+    position: relative;
+	align-self: flex-end;
 	margin-right: 20px;
 }
 
