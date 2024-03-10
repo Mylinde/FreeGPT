@@ -39,8 +39,7 @@ if (navigator.share) {
       // Share the text with the Web Share API
       await navigator.share({
         title: "FreeGPT",
-        text: text,
-        url: window.location.href
+        text: text
       });
     } catch (error) {
       // Handle error
