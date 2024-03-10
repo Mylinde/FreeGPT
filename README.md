@@ -1,6 +1,6 @@
 # FreeGPT
 
-Experience the power of ChatGPT with a user-friendly interface.
+Experience the power of **G**enerative **P**retrained **T**ransformer with a user-friendly interface.
 
 This project is based on [freegpt-webui-v2](https://github.com/VadimBoev/freegpt-webui-v2).
 
