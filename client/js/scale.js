@@ -32,7 +32,6 @@ if (navigator.share) {
       await navigator.share({
         title: "FreeGPT",
         text: text,
-        files: pdf,
       });
     } catch (error) {
         console.error("Error sharing content", error);
