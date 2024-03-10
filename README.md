@@ -52,8 +52,7 @@ https://github.com/xtekky/gpt4free/issues/1666
 - [Legal Notice](#legal-notice) 
 
 ## Getting Started :white_check_mark:  
-To get started with this project, you'll need to clone the repository and have [Python](https://www.python.org/downloads/) installed on your system.  
-(Version 3.10+ is recommend)
+To get started with this project, you'll need to clone the repository and have [Python](https://www.python.org/downloads/) installed on your system. (Version 3.10+ is recommend)
   
 ### Cloning the Repository :inbox_tray:
 Run the following command to clone the repository:
