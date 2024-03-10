@@ -39,6 +39,7 @@ Reader mode in PWA
 
 ## Known bugs 🚧
 - Mixtral interrupts long answers. By typing "continue" it continues.
+https://github.com/xtekky/gpt4free/issues/1666
 
 ## Table of Contents  
 - [Getting Started](#getting-started-white_check_mark)  
