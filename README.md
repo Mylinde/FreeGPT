@@ -122,7 +122,6 @@ docker stop <container-id>
 ```
 
 ## Incorporated Projects :busts_in_silhouette:
-I highly recommend visiting and supporting both projects.
 
 ### WebUI
 The application interface was incorporated from the [chatgpt-clone](https://github.com/xtekky/chatgpt-clone) repository.
