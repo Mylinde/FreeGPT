@@ -26,8 +26,8 @@ if (navigator.share) {
   // Add a click event listener to the button
   shareButton.addEventListener("click", async () => {
     try {
-      // Get all the elements with the class conversation and the tag name p or pre
-      const contentElements = document.querySelectorAll(".conversation p, .conversation pre");
+      // Get all the elements with the class content
+      const contentElements = document.querySelectorAll(".content");
       // Initialize an empty string to store the text content
       let text = "";
       // Loop through the content elements and append their text content to the string
