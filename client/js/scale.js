@@ -52,7 +52,7 @@ if (navigator.share) {
 pdfButton.addEventListener("click", () => {
   try {
     // Get all the elements with the class content
-    const contentElements = document.querySelectorAll("p","pre");
+    const contentElements = document.querySelectorAll(['.content', '.hljs-copy-wrapper']);
     // Initialize an empty string to store the text content
     let text = "";
     // Loop through the content elements and append their text content to the string
