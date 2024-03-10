@@ -40,3 +40,36 @@ if (navigator.share) {
 } else {
   shareButton.style.display = "none";
 }
+
+const pdfButton = document.getElementById("pdf-button");
+
+pdfButton.addEventListener("click", () => {
+  try {
+      const contentElements = document.querySelectorAll(".content");
+      let text = "";
+      for (let element of contentElements) {
+        text += element.textContent + "\n";
+      }
+      const pdf = new jspdf.jsPDF();
+      pdf.license = null;
+      pdf.setFontSize(12);
+      pdf.getText = () => "";
+      const lines = pdf.splitTextToSize(text, pdf.internal.pageSize.width - 20);
+      let currentPage = 0;
+      for (let line of lines) {
+        pdf.text(line, 10, 10 + (currentPage * 10));
+        currentPage++;
+        if (currentPage * 10 >= pdf.internal.pageSize.height) {
+          pdf.addPage();
+          currentPage = 0;
+        }
+      }
+      pdf.save("FreeGPT.pdf");
+  } catch (error) {
+    console.error("Error printing content", error);
+  }
+});
+
+
+
+
