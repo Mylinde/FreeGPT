@@ -44,8 +44,7 @@ pdfButton.addEventListener("click", () => {
       const contentElements = document.querySelectorAll(".content");
       let text = "";
       for (let element of contentElements) {
-        // Entferne Tab-Zeichen, den spezifischen Ausdruck "content_copycontent_copy", und Einrückungen am Anfang von Zeilen
-        let cleanText = element.textContent.replace(/content_copycontent_copy/g, '').replace(/content_copy/g, '').replace(/^\s+/gm, '');
+       let cleanText = element.textContent.replace(/\t/g, '').replace(/content_copycontent_copy/g, '').replace(/content_copy/g, '').replace(/^\s+/gm, '');
         text += cleanText + "\n";
       }
       const pdf = new jspdf.jsPDF();
@@ -65,7 +64,6 @@ pdfButton.addEventListener("click", () => {
     console.error("Error printing content", error);
   }
 });
-
 } else {
   shareButton.style.display = "none";
   pdfButton.style.display = "none";
