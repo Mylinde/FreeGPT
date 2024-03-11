@@ -68,4 +68,5 @@ pdfButton.addEventListener("click", () => {
 
 } else {
   shareButton.style.display = "none";
+  pdfButton.style.display = "none";
 }
