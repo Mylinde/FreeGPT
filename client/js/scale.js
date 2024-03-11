@@ -60,7 +60,8 @@ pdfButton.addEventListener("click", () => {
           currentPage = 0;
         }
       }
-      pdf.save("FreeGPT.pdf");
+      //pdf.save("FreeGPT.pdf");
+      pdf.save(`${conversation.title}.pdf`);
   } catch (error) {
     console.error("Error printing content", error);
   }
@@ -68,5 +69,5 @@ pdfButton.addEventListener("click", () => {
 
 } else {
   shareButton.style.display = "none";
-  pdfButton.style.display = "none";
+  //pdfButton.style.display = "none";
 }
