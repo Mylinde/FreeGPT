@@ -30,10 +30,12 @@ Reader mode in PWA
 ## Features 📢
 - Client runs also as PWA
 - Reader mode by double tap in PWA
-- code clean up
+- Save conversation as pdf from reader mode
+- Share conversation from reader mode
 - Awesomefont replaced with material icons
 - light/dark theme follows the system
 - 3rd party sources stored local
+- code clean up
 - flask-compress
 - orjson
 

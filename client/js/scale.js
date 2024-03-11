@@ -19,6 +19,7 @@ if (window.navigator.standalone === true || window.matchMedia('(display-mode: st
 }
 
 const shareButton = document.getElementById("share-button");
+const pdfButton = document.getElementById("pdf-button");
 
 if (navigator.share) {  
   shareButton.addEventListener("click", async () => {
@@ -37,11 +38,6 @@ if (navigator.share) {
         console.error("Error sharing content", error);
     }
   });
-} else {
-  shareButton.style.display = "none";
-}
-
-const pdfButton = document.getElementById("pdf-button");
 
 pdfButton.addEventListener("click", () => {
   try {
@@ -70,9 +66,6 @@ pdfButton.addEventListener("click", () => {
   }
 });
 
-
-
-
-
-
-
+} else {
+  shareButton.style.display = "none";
+}
