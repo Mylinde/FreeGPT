@@ -2,8 +2,6 @@
 
 Experience the power of **G**enerative **P**retrained **T**ransformers with a user-friendly interface.
 
-This project is based on [freegpt-webui-v2](https://github.com/VadimBoev/freegpt-webui-v2).
-
 ## GPT 3.5/4, LLaMA, Mixtral
 
 <strong>NO API KEY REQUIERED</strong>
@@ -31,7 +29,7 @@ Reader mode in PWA
 - Client runs also as PWA
 - Reader mode by double tap in PWA
 - Save conversation as pdf from reader mode
-- Share conversation from reader mode
+- Share conversation as text from reader mode
 - Awesomefont replaced with material icons
 - light/dark theme follows the system
 - 3rd party sources stored local
