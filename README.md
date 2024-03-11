@@ -2,8 +2,6 @@
 
 Experience the power of **G**enerative **P**retrained **T**ransformers with a user-friendly interface.
 
-This project is based on [freegpt-webui-v2](https://github.com/VadimBoev/freegpt-webui-v2).
-
 ## GPT 3.5/4, LLaMA, Mixtral
 
 <strong>NO API KEY REQUIERED</strong>
