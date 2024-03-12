@@ -206,7 +206,7 @@ const add_user_message_box = (message) => {
 };
 
 const decodeUnicode = (str) => {
-	return str.replace(/\\u([a-fA-F0-9]{4})/g, function (match, grp) {
+	return str.replace(/\\u([a-fA-F0-9]{4})/g, function (_match, grp) {
 		return String.fromCharCode(parseInt(grp, 16));
 	});
 };
@@ -357,7 +357,7 @@ const add_message = async (conversation_id, role, content) => {
 	localStorage.setItem(`conversation:${conversation_id}`, JSON.stringify(before_adding)); // update conversation
 };
 
-const load_conversations = async (limit, offset, loader) => {
+const load_conversations = async (_limit, _offset, _loader) => {
 
 	let conversations = [];
 	for (let i = 0; i < localStorage.length; i++) {
