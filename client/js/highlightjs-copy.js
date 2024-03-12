@@ -30,23 +30,30 @@ class CopyButtonPlugin{
         }
     }
 
-    copyToClipboard(text) {
-        return new Promise((resolve, reject) => {
-            let textarea = document.createElement('textarea');
+    async copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (error) {
+            console.error('Copy to Clipboard using navigator.clipboard.writeText() failed:', error);
+          }
+        } else {
+          return new Promise((resolve, reject) => {
+            const textarea = document.createElement('textarea');
             textarea.textContent = text;
             document.body.appendChild(textarea);
-
             textarea.select();
             try {
-                document.execCommand('copy');
-                resolve();
+              document.execCommand('copy');
+              resolve();
             } catch (ex) {
-                reject(ex);
+              reject(ex);
             } finally {
-                document.body.removeChild(textarea);
+              document.body.removeChild(textarea);
             }
-        });
-    }
+          });
+        }
+      }      
 }
 
 

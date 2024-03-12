@@ -49,6 +49,7 @@ pdfButton.addEventListener("click", () => {
       }
       const pdf = new jspdf.jsPDF();
       pdf.setFontSize(12);
+      pdf.setLineHeightFactor(1);
       const lines = pdf.splitTextToSize(text, pdf.internal.pageSize.width - 20);
       let currentPage = 0;
       for (let line of lines) {
