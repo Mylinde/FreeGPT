@@ -1,7 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Union, List, Dict, Type
-from typing import Messages, CreateResult
+from .typing import Messages, CreateResult
 
 class BaseProvider(ABC):
     """
