@@ -27,6 +27,7 @@ undetected-chromedriver
 py-arkose-generator
 asyncstdlib
 async-property
+nest_asyncio
 pybabel
 Brotli
 bs4
