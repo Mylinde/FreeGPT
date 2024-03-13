@@ -1,14 +1,3 @@
-import orjson from 'orjson';
-
-const parseJson = (json) => {
-	try {
-	  return orjson.loads(json);
-	} catch (e) {
-	  console.error("Failed to parse JSON: ", e);
-	  return null;
-	}
-  };
-
 const query = (obj) =>
 	Object.keys(obj)
 		.map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
@@ -37,6 +26,11 @@ message_input.addEventListener("blur", () => {
 message_input.addEventListener("focus", () => {
 	document.documentElement.scrollTop = document.documentElement.scrollHeight;
 });
+
+const delete_conversations = async () => {
+	localStorage.clear();
+	await new_conversation();
+};
 
 const handle_ask = async () => {
 	message_input.style.height = `80px`;
@@ -102,13 +96,12 @@ const ask_gpt = async (message) => {
 
 		const response = await fetch(`${url_prefix}/backend-api/v2/conversation`, {
 			method: `POST`,
-			max_tokens: 100,
 			signal: window.controller.signal,
 			headers: {
 				"content-type": `application/json`,
 				accept: `text/event-stream`,
 			},
-			body: orjson.stringify({
+			body: JSON.stringify({
 				conversation_id: window.conversation_id,
 				action: `_ask`,
 				model: model.options[model.selectedIndex].value,
@@ -213,15 +206,10 @@ const add_user_message_box = (message) => {
 };
 
 const decodeUnicode = (str) => {
-	try {
-	  return orjson.loads(str.replace(/\\u([a-fA-F0-9]{4})/g, function (_, grp) {
+	return str.replace(/\\u([a-fA-F0-9]{4})/g, function (_match, grp) {
 		return String.fromCharCode(parseInt(grp, 16));
-	  }));
-	} catch (e) {
-	  console.error("Failed to decode unicode: ", e);
-	  return null;
-	}
-  }; 
+	});
+};
 
 const clear_conversations = async () => {
 	const elements = box_conversations.childNodes;
@@ -273,7 +261,8 @@ const new_conversation = async () => {
 };
 
 const load_conversation = async (conversation_id) => {
-	let conversation = await orjson.loads(localStorage.getItem(`conversation:${conversation_id}`));
+	let conversation = await JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
+	console.log(conversation, conversation_id);
 
 	model = document.getElementById("model");
 	provider = document.getElementById("provider");
@@ -297,23 +286,25 @@ const load_conversation = async (conversation_id) => {
 	message_box.scrollTo({ top: message_box.scrollHeight, behavior: "smooth" });
 
 	setTimeout(() => {
-		message_box.scrollTo({ top: message_box.scrollHeight, behavior: "smooth" });
+		message_box.scrollTop = message_box.scrollHeight;
 	}, 500);
 };
 
 const load_user_message_box = (content) => {
 	const messageDiv = createElement("div", { classNames: ["message"] });
 	const avatarContainer = createElement("div", {
-	  classNames: ["avatar-container"],
-	  innerHTML: user_image,
+		classNames: ["avatar-container"],
+		innerHTML: user_image,
 	});
-	const contentDiv = createElement("div", { classNames: ["content", "user"] });
+	const contentDiv = createElement("div", { classNames: ["content"] });
 	const preElement = document.createElement("pre");
 	preElement.textContent = content;
 	contentDiv.appendChild(preElement);
+
 	messageDiv.append(avatarContainer, contentDiv);
-	return messageDiv;
-  };
+
+	return messageDiv.outerHTML;
+};
 
 const load_gpt_message_box = (content) => {
 	return `
@@ -333,7 +324,7 @@ const is_assistant = (role) => {
 };
 
 const get_conversation = async (conversation_id) => {
-	let conversation = await parseJson(localStorage.getItem(`conversation:${conversation_id}`));
+	let conversation = await JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
 	return conversation.items;
 };
 
@@ -343,7 +334,7 @@ const add_conversation = async (conversation_id, title) => {
 		provider = document.getElementById("provider");
 		localStorage.setItem(
 			`conversation:${conversation_id}`,
-			orjson.stringify({
+			JSON.stringify({
 				id: conversation_id,
 				title: title,
 				items: [],
@@ -356,14 +347,14 @@ const add_conversation = async (conversation_id, title) => {
 };
 
 const add_message = async (conversation_id, role, content) => {
-	let before_adding = parseJson(localStorage.getItem(`conversation:${conversation_id}`));
+	let before_adding = JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
 
 	before_adding.items.push({
 		role: role,
 		content: content,
 	});
 
-	localStorage.setItem(`conversation:${conversation_id}`, orjson.stringify(before_adding)); // update conversation
+	localStorage.setItem(`conversation:${conversation_id}`, JSON.stringify(before_adding)); // update conversation
 };
 
 const load_conversations = async (_limit, _offset, _loader) => {
@@ -372,7 +363,7 @@ const load_conversations = async (_limit, _offset, _loader) => {
 	for (let i = 0; i < localStorage.length; i++) {
 		if (localStorage.key(i).startsWith("conversation:")) {
 			let conversation = localStorage.getItem(localStorage.key(i));
-			conversations.push(parseJson(conversation));
+			conversations.push(JSON.parse(conversation));
 		}
 	}
 
@@ -402,6 +393,17 @@ document.getElementById(`cancelButton`).addEventListener(`click`, async () => {
 	console.log(`aborted ${window.conversation_id}`);
 });
 
+function h2a(str1) {
+	var hex = str1.toString();
+	var str = "";
+
+	for (var n = 0; n < hex.length; n += 2) {
+		str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+	}
+
+	return str;
+}
+
 const uuid = () => {
 	return `xxxxxxxx-xxxx-4xxx-yxxx-${Date.now().toString(16)}`.replace(/[xy]/g, function (c) {
 		var r = (Math.random() * 16) | 0,
@@ -429,7 +431,7 @@ window.onload = async () => {
 
 	if (conversations == 0) localStorage.clear();
 
-	setTimeout(() => {
+	await setTimeout(() => {
 		load_conversations(20, 0);
 	}, 1);
 
@@ -495,6 +497,14 @@ const load_settings_localstorage = async () => {
 		}
 	});
 };
+
+function clearTextarea(textarea) {
+	textarea.style.removeProperty("height");
+	textarea.style.height = `${textarea.scrollHeight + 4}px`;
+	if (textarea.value.trim() === "" && textarea.value.includes("\n")) {
+		textarea.value = "";
+	}
+}
 
 function createElement(tag, { classNames, id, innerHTML, textContent } = {}) {
 	const el = document.createElement(tag);
