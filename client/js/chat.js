@@ -1,14 +1,3 @@
-import orjson from 'orjson';
-
-const parseJson = (json) => {
-  try {
-    return orjson.loads(json);
-  } catch (e) {
-    console.error("Failed to parse JSON: ", e);
-    return null;
-  }
-};
-
 const query = (obj) =>
 	Object.keys(obj)
 		.map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
@@ -217,15 +206,10 @@ const add_user_message_box = (message) => {
 };
 
 const decodeUnicode = (str) => {
-	try {
-	  return orjson.loads(str.replace(/\\u([a-fA-F0-9]{4})/g, function (_, grp) {
+	return str.replace(/\\u([a-fA-F0-9]{4})/g, function (_match, grp) {
 		return String.fromCharCode(parseInt(grp, 16));
-	  }));
-	} catch (e) {
-	  console.error("Failed to decode unicode: ", e);
-	  return null;
-	}
-  };
+	});
+};
 
 const clear_conversations = async () => {
 	const elements = box_conversations.childNodes;
@@ -277,7 +261,7 @@ const new_conversation = async () => {
 };
 
 const load_conversation = async (conversation_id) => {
-	let conversation = await parseJson(localStorage.getItem(`conversation:${conversation_id}`));
+	let conversation = await JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
 	console.log(conversation, conversation_id);
 
 	model = document.getElementById("model");
@@ -340,7 +324,7 @@ const is_assistant = (role) => {
 };
 
 const get_conversation = async (conversation_id) => {
-	let conversation = await parseJson(localStorage.getItem(`conversation:${conversation_id}`));
+	let conversation = await JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
 	return conversation.items;
 };
 
@@ -363,7 +347,7 @@ const add_conversation = async (conversation_id, title) => {
 };
 
 const add_message = async (conversation_id, role, content) => {
-	let before_adding = parseJson(localStorage.getItem(`conversation:${conversation_id}`));
+	let before_adding = JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
 
 	before_adding.items.push({
 		role: role,
@@ -379,7 +363,7 @@ const load_conversations = async (_limit, _offset, _loader) => {
 	for (let i = 0; i < localStorage.length; i++) {
 		if (localStorage.key(i).startsWith("conversation:")) {
 			let conversation = localStorage.getItem(localStorage.key(i));
-			conversations.push(parseJson(conversation));
+			conversations.push(JSON.parse(conversation));
 		}
 	}
 
