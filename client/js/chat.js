@@ -277,7 +277,7 @@ const new_conversation = async () => {
 };
 
 const load_conversation = async (conversation_id) => {
-	let conversation = await JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
+	let conversation = await parseJson(localStorage.getItem(`conversation:${conversation_id}`));
 	console.log(conversation, conversation_id);
 
 	model = document.getElementById("model");
@@ -340,7 +340,7 @@ const is_assistant = (role) => {
 };
 
 const get_conversation = async (conversation_id) => {
-	let conversation = await JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
+	let conversation = await parseJson(localStorage.getItem(`conversation:${conversation_id}`));
 	return conversation.items;
 };
 
@@ -363,7 +363,7 @@ const add_conversation = async (conversation_id, title) => {
 };
 
 const add_message = async (conversation_id, role, content) => {
-	let before_adding = JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
+	let before_adding = parseJson(localStorage.getItem(`conversation:${conversation_id}`));
 
 	before_adding.items.push({
 		role: role,
@@ -379,7 +379,7 @@ const load_conversations = async (_limit, _offset, _loader) => {
 	for (let i = 0; i < localStorage.length; i++) {
 		if (localStorage.key(i).startsWith("conversation:")) {
 			let conversation = localStorage.getItem(localStorage.key(i));
-			conversations.push(JSON.parse(conversation));
+			conversations.push(parseJson(conversation));
 		}
 	}
 
