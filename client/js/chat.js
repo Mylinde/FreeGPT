@@ -1,13 +1,13 @@
 import orjson from 'orjson';
 
 const parseJson = (json) => {
-	try {
-	  return orjson.loads(json);
-	} catch (e) {
-	  console.error("Failed to parse JSON: ", e);
-	  return null;
-	}
-  };
+  try {
+    return orjson.loads(json);
+  } catch (e) {
+    console.error("Failed to parse JSON: ", e);
+    return null;
+  }
+};
 
 const query = (obj) =>
 	Object.keys(obj)
@@ -112,7 +112,7 @@ const ask_gpt = async (message) => {
 				"content-type": `application/json`,
 				accept: `text/event-stream`,
 			},
-			body: orjson.stringify({
+			body: JSON.stringify({
 				conversation_id: window.conversation_id,
 				action: `_ask`,
 				model: model.options[model.selectedIndex].value,
@@ -277,7 +277,7 @@ const new_conversation = async () => {
 };
 
 const load_conversation = async (conversation_id) => {
-	let conversation = await parseJson(localStorage.getItem(`conversation:${conversation_id}`));
+	let conversation = await JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
 	console.log(conversation, conversation_id);
 
 	model = document.getElementById("model");
@@ -340,7 +340,7 @@ const is_assistant = (role) => {
 };
 
 const get_conversation = async (conversation_id) => {
-	let conversation = await parseJson(localStorage.getItem(`conversation:${conversation_id}`));
+	let conversation = await JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
 	return conversation.items;
 };
 
@@ -350,7 +350,7 @@ const add_conversation = async (conversation_id, title) => {
 		provider = document.getElementById("provider");
 		localStorage.setItem(
 			`conversation:${conversation_id}`,
-			orjson.stringify({
+			JSON.stringify({
 				id: conversation_id,
 				title: title,
 				items: [],
@@ -363,14 +363,14 @@ const add_conversation = async (conversation_id, title) => {
 };
 
 const add_message = async (conversation_id, role, content) => {
-	let before_adding = parseJson(localStorage.getItem(`conversation:${conversation_id}`));
+	let before_adding = JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
 
 	before_adding.items.push({
 		role: role,
 		content: content,
 	});
 
-	localStorage.setItem(`conversation:${conversation_id}`, orjson.stringify(before_adding)); // update conversation
+	localStorage.setItem(`conversation:${conversation_id}`, JSON.stringify(before_adding)); // update conversation
 };
 
 const load_conversations = async (_limit, _offset, _loader) => {
@@ -379,7 +379,7 @@ const load_conversations = async (_limit, _offset, _loader) => {
 	for (let i = 0; i < localStorage.length; i++) {
 		if (localStorage.key(i).startsWith("conversation:")) {
 			let conversation = localStorage.getItem(localStorage.key(i));
-			conversations.push(parseJson(conversation));
+			conversations.push(JSON.parse(conversation));
 		}
 	}
 
