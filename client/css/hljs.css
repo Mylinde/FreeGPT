@@ -30,7 +30,7 @@
 	color: var(--colour-3);
 	border: none;
 	background-color: var(--blur-bg);	
-	transition: background-color 200ms ease, transform 400ms ease-out;
+	transition: background-color 200ms ease, transform 200ms ease-out;
 } 
 
 .hljs-copy-button:hover {

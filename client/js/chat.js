@@ -96,6 +96,7 @@ const ask_gpt = async (message) => {
 
 		const response = await fetch(`${url_prefix}/backend-api/v2/conversation`, {
 			method: `POST`,
+			max_tokens: 100,
 			signal: window.controller.signal,
 			headers: {
 				"content-type": `application/json`,
@@ -431,7 +432,7 @@ window.onload = async () => {
 
 	if (conversations == 0) localStorage.clear();
 
-	await setTimeout(() => {
+	setTimeout(() => {
 		load_conversations(20, 0);
 	}, 1);
 
