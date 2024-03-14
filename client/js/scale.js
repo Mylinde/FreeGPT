@@ -48,7 +48,10 @@ pdfButton.addEventListener("click", () => {
         text += cleanText + "\n";
       }
       const pdf = new jspdf.jsPDF();
-      pdf.setFontSize(12);
+        pdf.getFont();
+        pdf.setFontSize(12);
+        pdf.setFont('Courier', 'normal');
+        pdf.setLineHeightFactor(0.5);
       const lines = pdf.splitTextToSize(text, pdf.internal.pageSize.width - 20);
       let currentPage = 0;
       for (let line of lines) {
@@ -67,4 +70,4 @@ pdfButton.addEventListener("click", () => {
 } else {
   shareButton.style.display = "none";
   pdfButton.style.display = "none";
-}
+};
