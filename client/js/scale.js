@@ -50,8 +50,8 @@ pdfButton.addEventListener("click", () => {
       const pdf = new jspdf.jsPDF();
         pdf.getFont();
         pdf.setFontSize(12);
-        pdf.setFont('Courier', 'normal');
-        pdf.setLineHeightFactor(0.5);
+        pdf.setFont('Helvetia', 'normal');
+        pdf.setLineHeightFactor(1);
       const lines = pdf.splitTextToSize(text, pdf.internal.pageSize.width - 20);
       let currentPage = 0;
       for (let line of lines) {
