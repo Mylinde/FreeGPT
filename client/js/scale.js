@@ -64,7 +64,7 @@ if (navigator.share) {
         }
         let lines = pdf.splitTextToSize(cleanText, pdf.internal.pageSize.width - 20);
         lines.forEach(line => {
-          if (currentPage * 10 + 10 >= pdf.internal.pageSize.height) {
+          if (currentPage * 10 + 10 >= pdf.internal.pageSize.height - 10) {
             pdf.addPage();
             currentPage = 0;
           }
@@ -73,10 +73,16 @@ if (navigator.share) {
         });
       });
   
-      pdf.save("FreeGPT.pdf");
+      const firstMessageText = sortedElements[0].textContent.trim();
+        let endIndex = firstMessageText.lastIndexOf(' ', 20);
+            endIndex = endIndex === -1 || endIndex > 20 ? 20 : endIndex;
+        let pdfName = firstMessageText.substring(0, endIndex).trim();
+            pdfName = pdfName.replace(/\s+/g, '_') + ".pdf";
+      pdf.save(pdfName);
+      
     } catch (error) {
-      console.error("Error printing content", error);
-    }
+      console.error("Error creating PDF", error);
+      }
   });
 } else {
   shareButton.style.display = "none";
