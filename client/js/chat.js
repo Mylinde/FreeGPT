@@ -196,7 +196,7 @@ const add_user_message_box = (message) => {
 		innerHTML: user_image,
 	});
 	const contentDiv = createElement("div", {
-		classNames: ["content", "user"],
+		classNames: ["content"],
 		id: `user_${token}`,
 		textContent: message,
 	});
@@ -291,7 +291,7 @@ const load_conversation = async (conversation_id) => {
 };
 
 const load_user_message_box = (content) => {
-	const messageDiv = createElement("div", { classNames: ["message"] });
+	const messageDiv = createElement("div", { classNames: ["message", "user"] });
 	const avatarContainer = createElement("div", {
 		classNames: ["avatar-container"],
 		innerHTML: user_image,
@@ -308,7 +308,7 @@ const load_user_message_box = (content) => {
 
 const load_gpt_message_box = (content) => {
 	return `
-            <div class="message">
+            <div class="message assistant">
                 <div class="avatar-container">
                     ${gpt_image}
                 </div>

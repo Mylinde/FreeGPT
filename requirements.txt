@@ -5,6 +5,7 @@ pypasser
 names
 curl-cffi
 aiohttp
+aiohttp_socks
 flask
 flask-babel
 flask-cors
@@ -15,7 +16,6 @@ fake-useragent
 twocaptcha
 pydantic
 retrying
-pycryptodome
 random-password-generator
 numpy>=1.22.2 # pinned to avoid a vulnerability
 tornado>=6.3.2 # pinned to avoid a vulnerability

@@ -3,7 +3,6 @@ from __future__ import annotations
 from ..base_provider  import BaseProvider, ProviderType
 from .retry_provider  import RetryProvider
 from .base_provider   import AsyncProvider, AsyncGeneratorProvider
-from .selenium        import *
 
 
 from .AiChatOnline    import AiChatOnline

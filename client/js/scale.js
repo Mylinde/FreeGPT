@@ -39,34 +39,45 @@ if (navigator.share) {
     }
   });
 
-pdfButton.addEventListener("click", () => {
-  try {
-      const contentElements = document.querySelectorAll(".content");
-      let text = "";
-      for (let element of contentElements) {
-       let cleanText = element.textContent.replace(/\t/g, '').replace(/content_copycontent_copy/g, '').replace(/content_copy/g, '').replace(/^\s+/gm, '');
-        text += cleanText + "\n";
-      }
-      const pdf = new jspdf.jsPDF();
-        pdf.getFont();
-        pdf.setFontSize(12);
-        pdf.setFont('Helvetia', 'normal');
-        pdf.setLineHeightFactor(1);
-      const lines = pdf.splitTextToSize(text, pdf.internal.pageSize.width - 20);
+  pdfButton.addEventListener("click", () => {
+    try {
       let currentPage = 0;
-      for (let line of lines) {
-        pdf.text(line, 10, 10 + (currentPage * 10));
-        currentPage++;
-        if (currentPage * 10 >= pdf.internal.pageSize.height) {
-          pdf.addPage();
-          currentPage = 0;
+      const pdf = new jspdf.jsPDF();
+      const messageElements = document.querySelectorAll('.message.user, .message.assistant');
+      const sortedElements = Array.from(messageElements).sort((a, b) => {
+        return a.compareDocumentPosition(b) & 2 ? 1 : -1;
+      });
+  
+      sortedElements.forEach(element => {
+        let cleanText = "\n" + element.textContent.replace(/^[\t\s]+/, '').replace(/[\t\s]+$/, '').replace(/content_copycontent_copy/g, '').replace(/content_copy/g, '');
+        
+        if (element.classList.contains('user')) {
+          pdf.getFont();
+          pdf.setFont('Helvetica', 'italic');
+          pdf.setFontSize(12);
+          pdf.setLineHeightFactor(0.5);
+        } else {
+          pdf.getFont();
+          pdf.setFont('Helvetica', 'normal');
+          pdf.setFontSize(12);
+          pdf.setLineHeightFactor(0.5);
         }
-      }
+        let lines = pdf.splitTextToSize(cleanText, pdf.internal.pageSize.width - 20);
+        lines.forEach(line => {
+          if (currentPage * 10 + 10 >= pdf.internal.pageSize.height) {
+            pdf.addPage();
+            currentPage = 0;
+          }
+          pdf.text(line, 10, 10 + (currentPage * 10));
+          currentPage++;
+        });
+      });
+  
       pdf.save("FreeGPT.pdf");
-  } catch (error) {
-    console.error("Error printing content", error);
-  }
-});
+    } catch (error) {
+      console.error("Error printing content", error);
+    }
+  });
 } else {
   shareButton.style.display = "none";
   pdfButton.style.display = "none";
