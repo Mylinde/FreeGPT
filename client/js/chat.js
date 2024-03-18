@@ -435,7 +435,7 @@ window.onload = async () => {
 
 	if (conversations == 0) localStorage.clear();
 
-	await setTimeout(() => {
+	setTimeout(() => {
 		load_conversations(20, 0);
 	}, 1);
 
