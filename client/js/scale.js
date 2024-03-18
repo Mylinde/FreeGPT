@@ -74,8 +74,8 @@ if (navigator.share) {
       });
   
       const firstMessageText = sortedElements[0].textContent.trim();
-        let endIndex = firstMessageText.lastIndexOf(' ', 20);
-            endIndex = endIndex === -1 || endIndex > 20 ? 20 : endIndex;
+        let endIndex = firstMessageText.lastIndexOf(' ', 40);
+            endIndex = endIndex === -1 || endIndex > 40 ? 40 : endIndex;
         let pdfName = firstMessageText.substring(0, endIndex).trim();
             pdfName = pdfName.replace(/\s+/g, '_') + ".pdf";
       pdf.save(pdfName);
