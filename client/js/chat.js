@@ -102,6 +102,10 @@ const ask_gpt = async (message) => {
 				accept: `text/event-stream`,
 			},
 			body: JSON.stringify({
+				temperature: 0.7,
+				top_k: 5,
+				frequency_WPF_penalty: 0.5,
+				max_tokens: 2048,
 				conversation_id: window.conversation_id,
 				action: `_ask`,
 				model: model.options[model.selectedIndex].value,
