@@ -39,7 +39,7 @@ if (navigator.share) {
     }
   });
 
-  pdfButton.addEventListener("click", () => {
+pdfButton.addEventListener("click", () => {
     try {
       let currentPage = 0;
       const pdf = new jspdf.jsPDF();
@@ -53,14 +53,16 @@ if (navigator.share) {
         
         if (element.classList.contains('user')) {
           pdf.getFont();
-          pdf.setFont('Helvetica', 'italic');
+          pdf.setFont('assistant.kursiv');
           pdf.setFontSize(13);
-          pdf.setLineHeightFactor(0.5);
+          pdf.setLineHeightFactor(1);
+          pdf.setCharSpace(0.1);
         } else {
           pdf.getFont();
-          pdf.setFont('Helvetica', 'normal');
+          pdf.setFont('assistant.regular');
           pdf.setFontSize(13);
-          pdf.setLineHeightFactor(0.5);
+          pdf.setLineHeightFactor(1);
+          pdf.setCharSpace(0);
         }
         let lines = pdf.splitTextToSize(cleanText, pdf.internal.pageSize.width - 20);
         lines.forEach(line => {
@@ -88,51 +90,3 @@ if (navigator.share) {
   shareButton.style.display = "none";
   pdfButton.style.display = "none";
 };
-
-pdfButton.addEventListener("click", () => {
-  try {
-    let currentPage = 0;
-    const pdf = new jspdf.jsPDF();
-    const messageElements = document.querySelectorAll('.message.user, .message.assistant');
-    const sortedElements = Array.from(messageElements).sort((a, b) => {
-      return a.compareDocumentPosition(b) & 2 ? 1 : -1;
-    });
-
-    sortedElements.forEach(element => {
-      let cleanText = "\n" + element.textContent.replace(/^[\t\s]+/, '').replace(/[\t\s]+$/, '').replace(/content_copycontent_copy/g, '').replace(/content_copy/g, '');
-      
-      if (element.classList.contains('user')) {
-        pdf.getFont();
-        pdf.setFont('assistant.kursiv');
-        pdf.setFontSize(13);
-        pdf.setLineHeightFactor(1);
-        pdf.setCharSpace(0.1);
-      } else {
-        pdf.getFont();
-        pdf.setFont('assistant.regular');
-        pdf.setFontSize(13);
-        pdf.setLineHeightFactor(1);
-        pdf.setCharSpace(0);
-      }
-      let lines = pdf.splitTextToSize(cleanText, pdf.internal.pageSize.width - 20);
-      lines.forEach(line => {
-        if (currentPage * 10 + 10 >= pdf.internal.pageSize.height - 10) {
-          pdf.addPage();
-          currentPage = 0;
-        }
-        pdf.text(line, 10, 10 + (currentPage * 10));
-        currentPage++;
-      });
-    });
-
-    const firstMessageText = sortedElements[0].textContent.trim();
-      let endIndex = firstMessageText.lastIndexOf(' ', 40);
-          endIndex = endIndex === -1 || endIndex > 40 ? 40 : endIndex;
-      let pdfName = firstMessageText.substring(0, endIndex).trim();
-          pdfName = pdfName.replace(/\s+/g, '_') + ".pdf";
-    pdf.save(pdfName);
-    
-  } catch (error) {
-    console.error("Error creating PDF", error);
-    }
-});
