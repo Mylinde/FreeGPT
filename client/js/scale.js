@@ -61,7 +61,6 @@ pdfButton.addEventListener("click", () => {
           pdf.setFont('assistant.regular', 'normal');
           pdf.setFontSize(13);
           pdf.setLineHeightFactor(1);
-          pdf.setCharSpace(0);
         }
         let lines = pdf.splitTextToSize(cleanText, pdf.internal.pageSize.width - 20);
         lines.forEach(line => {
