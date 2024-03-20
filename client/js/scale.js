@@ -53,13 +53,13 @@ pdfButton.addEventListener("click", () => {
         
         if (element.classList.contains('user')) {
           pdf.getFont();
-          pdf.setFont('assistant.kursiv');
+          pdf.setFont('assistant.kursiv', 'normal');
           pdf.setFontSize(13);
           pdf.setLineHeightFactor(1);
           pdf.setCharSpace(0.1);
         } else {
           pdf.getFont();
-          pdf.setFont('assistant.regular');
+          pdf.setFont('assistant.regular', 'normal');
           pdf.setFontSize(13);
           pdf.setLineHeightFactor(1);
           pdf.setCharSpace(0);
