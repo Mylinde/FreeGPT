@@ -106,7 +106,7 @@ const ask_gpt = async (message) => {
 				top_k: 10,
 				typical_p: 0.8,
 				no_repeat_n: 2,
-				early_stopping: 0.5,
+				early_stopping: true,
 				frequency_WPF_penalty: 2.0,
 				max_tokens: 512,
 				conversation_id: window.conversation_id,
