@@ -49,6 +49,15 @@ if __name__ == "__main__":
     parser.add_argument("-b", "--host", default="0.0.0.0",
                         help="Host address (default: %(default)s)")
     arguments = parser.parse_args()
+
+    if __name__ == "__main__":
+        parser = argparse.ArgumentParser(description="Start the server")
+        parser.add_argument("-p", "--port", type=int, default=site_config["port"],
+                            help="Port number (default: %(default)d)")
+        parser.add_argument("-b", "--host", default="0.0.0.0",
+                            help="Host address (default: %(default)s)")
+
+        arguments = parser.parse_args()
     
         if "GUNICORN_ARGV" in dict(os.environ):
             run_with_gunicorn = True
