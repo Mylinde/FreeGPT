@@ -6,10 +6,12 @@ names
 curl-cffi
 aiohttp
 aiohttp_socks
+argparse
 flask
 flask-babel
 flask-cors
 flask-compress
+gunicorn
 streamlit
 selenium
 fake-useragent
