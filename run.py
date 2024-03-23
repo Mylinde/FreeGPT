@@ -80,4 +80,4 @@ if __name__ == "__main__":
 
             WSGIApplication(app).run(**options)
         else:
-            app.run(**arguments.__dict__)  # type: ignore
+            app.run(**arguments.__dict__)
