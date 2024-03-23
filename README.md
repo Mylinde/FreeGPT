@@ -75,7 +75,7 @@ To run the application, run the following command:
 ```
 gunicorn --config gunicorn_config.py run:app
 ```
-or
+or for running with werkzeug:
 ```
 python run.py
 ```
