@@ -75,7 +75,10 @@ To run the application, run the following command:
 ```
 gunicorn --config gunicorn_config.py run:app
 ```
-
+or
+```
+python run.py
+```
 Access the application in your browser using the URL:
 ```
 http://127.0.0.1:1338
