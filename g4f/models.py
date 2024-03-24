@@ -1,13 +1,15 @@
 from __future__  import annotations
+
 from dataclasses import dataclass
-from .Provider   import RetryProvider, ProviderType
+
+from .Provider import RetryProvider, ProviderType
 from .Provider   import (
+    
     PerplexityLabs,
     GeminiProChat,
     ChatgptNext,
     HuggingChat,
     ChatgptDemo,
-    FreeChatgpt,
     GptForLove,
     ChatgptAi,
     DeepInfra,
@@ -46,7 +48,7 @@ default = Model(
     best_provider = RetryProvider([
         Bing,
         ChatgptAi, GptGo,
-        You
+        You,
     ])
 )
 
@@ -88,45 +90,45 @@ gpt_4_turbo = Model(
 
 llama2_7b = Model(
     name          = "meta-llama/Llama-2-7b-chat-hf",
-    base_provider = 'huggingface',
+    base_provider = 'meta',
     best_provider = RetryProvider([Llama2, DeepInfra])
 )
 
 llama2_13b = Model(
     name          = "meta-llama/Llama-2-13b-chat-hf",
-    base_provider = 'huggingface',
+    base_provider = 'meta',
     best_provider = RetryProvider([Llama2, DeepInfra])
 )
 
 llama2_70b = Model(
     name          = "meta-llama/Llama-2-70b-chat-hf",
-    base_provider = "huggingface",
-    best_provider = RetryProvider([Llama2, DeepInfra, HuggingChat, PerplexityLabs])
+    base_provider = "meta",
+    best_provider = RetryProvider([Llama2, DeepInfra, HuggingChat])
 )
 
 codellama_34b_instruct = Model(
     name          = "codellama/CodeLlama-34b-Instruct-hf",
-    base_provider = "huggingface",
-    best_provider = RetryProvider([HuggingChat, PerplexityLabs, DeepInfra])
+    base_provider = "meta",
+    best_provider = RetryProvider([HuggingChat, DeepInfra])
 )
 
 codellama_70b_instruct = Model(
     name          = "codellama/CodeLlama-70b-Instruct-hf",
-    base_provider = "huggingface",
-    best_provider = DeepInfra
+    base_provider = "meta",
+    best_provider = RetryProvider([DeepInfra, PerplexityLabs])
 )
 
 # Mistral
 mixtral_8x7b = Model(
     name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
-    base_provider = "PerplexityLabs",
-    best_provider = RetryProvider([DeepInfra, HuggingChat])
+    base_provider = "huggingface",
+    best_provider = RetryProvider([DeepInfra, HuggingChat, PerplexityLabs])
 )
 
 mistral_7b = Model(
     name          = "mistralai/Mistral-7B-Instruct-v0.1",
-    base_provider = "PerplexityLabs",
-    best_provider = RetryProvider([DeepInfra, HuggingChat])
+    base_provider = "huggingface",
+    best_provider = RetryProvider([DeepInfra, HuggingChat, PerplexityLabs])
 )
 
 # Misc models
@@ -161,11 +163,22 @@ openchat_35 = Model(
 )
 
 # Bard
-
 claude_v2 = Model(
     name          = 'claude-v2',
     base_provider = 'anthropic',
-    best_provider = RetryProvider([FreeChatgpt])
+    best_provider = RetryProvider([])
+)
+
+claude_3_opus = Model(
+    name          = 'claude-3-opus',
+    base_provider = 'anthropic',
+    best_provider = You
+)
+
+claude_3_sonnet = Model(
+    name          = 'claude-3-sonnet',
+    base_provider = 'anthropic',
+    best_provider = You
 )
 
 gpt_35_turbo_16k = Model(
@@ -207,7 +220,7 @@ gpt_4_32k_0613 = Model(
 gemini_pro = Model(
     name          = 'gemini-pro',
     base_provider = 'google',
-    best_provider = RetryProvider([FreeChatgpt, GeminiProChat])
+    best_provider = RetryProvider([GeminiProChat, You])
 )
 
 pi = Model(
@@ -228,8 +241,7 @@ class ModelUtils:
         'gpt-3.5-turbo'          : gpt_35_turbo,
         'gpt-3.5-turbo-0613'     : gpt_35_turbo_0613,
         'gpt-3.5-turbo-16k'      : gpt_35_turbo_16k,
-        'gpt-3.5-turbo-16k-0613' : gpt_35_turbo_16k_0613,
-        
+        'gpt-3.5-turbo-16k-0613' : gpt_35_turbo_16k_0613,        
         'gpt-3.5-long': gpt_35_long,
         
         # gpt-4
@@ -245,7 +257,6 @@ class ModelUtils:
         'llama2-70b': llama2_70b,
         'codellama-34b-instruct': codellama_34b_instruct,
         'codellama-70b-instruct': codellama_70b_instruct,
-        
         'mixtral-8x7b': mixtral_8x7b,
         'mistral-7b': mistral_7b,
         'dolphin-mixtral-8x7b': dolphin_mixtral_8x7b,
@@ -255,6 +266,8 @@ class ModelUtils:
         'openchat_3.5': openchat_35,
         'gemini-pro': gemini_pro,
         'claude-v2': claude_v2,
+        'claude-3-opus': claude_3_opus,
+        'claude-3-sonnet': claude_3_sonnet,
         'pi': pi
     }
 
