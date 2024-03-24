@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import json, uuid
+import orjson, uuid
 
 from aiohttp import ClientSession, BaseConnector
 
@@ -63,7 +63,7 @@ class HuggingChat(AsyncGeneratorProvider, ProviderModelMixin):
             async with session.post(f"{cls.url}/conversation/{conversation_id}", json=send, proxy=proxy) as response:
                 first_token = True
                 async for line in response.content:
-                    line = json.loads(line[:-1])
+                    line = orjson.loads(line[:-1])
                     if "type" not in line:
                         raise RuntimeError(f"Response: {line}")
                     elif line["type"] == "stream":
