@@ -15,7 +15,7 @@ from .ChatgptDemo     import ChatgptDemo
 from .ChatgptLogin    import ChatgptLogin
 from .ChatgptNext     import ChatgptNext
 from .Chatxyz         import Chatxyz
-#from .DeepInfra       import DeepInfra
+from .DeepInfra       import DeepInfra
 from .FreeChatgpt     import FreeChatgpt
 from .GeminiPro       import GeminiPro
 from .GeminiProChat   import GeminiProChat
@@ -25,7 +25,7 @@ from .GptChatly       import GptChatly
 from .GptForLove      import GptForLove
 from .GptGo           import GptGo
 from .GptTalkRu       import GptTalkRu
-#from .HuggingChat     import HuggingChat
+from .HuggingChat     import HuggingChat
 from .Koala           import Koala
 from .Liaobots        import Liaobots
 from .Llama2          import Llama2
