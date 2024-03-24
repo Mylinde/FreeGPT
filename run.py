@@ -75,7 +75,7 @@ if __name__ == "__main__":
             from gunicorn.app.wsgiapp import WSGIApplication
             options = {
                 'bind': f'{host}:{port}',
-                'workers': 1,
+                'workers': 2,
                 'reload': False,
             }
 
