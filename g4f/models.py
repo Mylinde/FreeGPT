@@ -18,6 +18,7 @@ from .Provider   import (
     FreeGpt,
     Llama2,
     Vercel,
+    Gemini,
     GptGo,
     Gpt6,
     Bing,
@@ -65,7 +66,7 @@ gpt_35_long = Model(
         ChatgptDemoAi,
         ChatgptNext,
         ChatgptDemo,
-        Gpt6
+        Gpt6,
     ])
 )
 
@@ -73,18 +74,19 @@ gpt_35_long = Model(
 gpt_35_turbo = Model(
     name          = 'gpt-3.5-turbo',
     base_provider = 'openai',
-    best_provider = RetryProvider([GptGo,
-        You,
-        GptForLove,
-        ChatBase,
-        Chatgpt4Online
+    best_provider = RetryProvider([ 
+        GptGo, You,
+        GptForLove, ChatBase,
+        Chatgpt4Online,
     ])
 )
 
 gpt_4 = Model(
     name          = 'gpt-4',
     base_provider = 'openai',
-    best_provider = RetryProvider([Bing, Liaobots])
+    best_provider = RetryProvider([
+        Bing, Liaobots, 
+    ])
 )
 
 gpt_4_turbo = Model(
@@ -127,7 +129,7 @@ codellama_70b_instruct = Model(
 mixtral_8x7b = Model(
     name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
     base_provider = "PerplexityLabs",
-    best_provider = PerplexityLabs
+    best_provider = RetryProvider([DeepInfra, HuggingChat])
 )
 
 mistral_7b = Model(
@@ -168,6 +170,11 @@ openchat_35 = Model(
 )
 
 # Bard
+gemini = bard = palm = Model(
+    name          = 'gemini',
+    base_provider = 'google',
+    best_provider = Gemini
+)
 
 claude_v2 = Model(
     name          = 'claude-v2',
@@ -260,6 +267,7 @@ class ModelUtils:
         'airoboros-70b': airoboros_70b,
         'airoboros-l2-70b': airoboros_l2_70b,
         'openchat_3.5': openchat_35,
+        'gemini': gemini,
         'gemini-pro': gemini_pro,
         'claude-v2': claude_v2,
         'pi': pi

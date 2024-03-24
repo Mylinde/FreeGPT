@@ -39,7 +39,7 @@ def get_args_from_browser(url: str, webdriver: WebDriver = None, proxy: str = No
             'Authority': parse.netloc,
             'Origin': f'{parse.scheme}://{parse.netloc}',
             'Referer': url,
-            'User-Agent': user_agent
+            'User-Agent': user_agent,
         },
     }
 

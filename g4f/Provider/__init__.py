@@ -3,6 +3,11 @@ from __future__ import annotations
 from ..base_provider  import BaseProvider, ProviderType
 from .retry_provider  import RetryProvider
 from .base_provider   import AsyncProvider, AsyncGeneratorProvider
+from .create_images   import CreateImagesProvider
+from .deprecated      import *
+from .selenium        import *
+from .needs_auth      import *
+from .unfinished      import *
 
 from .AiAsk           import AiAsk
 from .AiChatOnline    import AiChatOnline
@@ -49,7 +54,7 @@ from .Vercel          import Vercel
 from .Ylokh           import Ylokh
 from .You             import You
 
-
+from .CreateImagesBing import CreateImagesBing
 
 import sys
 
