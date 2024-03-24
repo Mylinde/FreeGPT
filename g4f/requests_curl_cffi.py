@@ -2,7 +2,7 @@ from __future__ import annotations
 from curl_cffi.requests import AsyncSession, Response
 from typing import AsyncGenerator, Any
 from functools import partialmethod
-import json
+import orjson
 
 class StreamResponse:
     """
@@ -26,7 +26,7 @@ class StreamResponse:
 
     async def json(self, **kwargs) -> Any:
         """Asynchronously parse the JSON response content."""
-        return json.loads(await self.inner.acontent(), **kwargs)
+        return orjson.loads(await self.inner.acontent(), **kwargs)
 
     async def iter_lines(self) -> AsyncGenerator[bytes, None]:
         """Asynchronously iterate over the lines of the response."""
