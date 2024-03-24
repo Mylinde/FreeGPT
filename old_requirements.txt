@@ -1,0 +1,36 @@
+websocket-client
+requests
+tls-client
+pypasser
+names
+curl-cffi
+aiohttp
+aiohttp_socks
+argparse
+flask
+flask-babel
+flask-cors
+flask-compress
+gunicorn
+streamlit
+selenium
+fake-useragent
+twocaptcha
+pydantic
+retrying
+random-password-generator
+numpy>=1.22.2 # pinned to avoid a vulnerability
+tornado>=6.3.2 # pinned to avoid a vulnerability
+PyExecJS
+browser-cookie3
+js2py
+platformdirs
+undetected-chromedriver
+py-arkose-generator
+asyncstdlib
+async-property
+nest_asyncio
+pybabel
+Brotli
+bs4
+orjson
