@@ -10,7 +10,7 @@ from g4f.Provider import __providers__
 
 from flask import request, Response, stream_with_context
 from requests import get
-import json
+import orjson
 import subprocess
 import platform
 

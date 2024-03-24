@@ -4,7 +4,7 @@ import base64
 import json
 from aiohttp import ClientSession, BaseConnector
 
-from ..typing import AsyncResult, Messages
+from ..typing import AsyncResult, Messages, ImageType
 from .base_provider import AsyncGeneratorProvider, ProviderModelMixin
 from ..errors import MissingAuthError
 from .helper import get_connector
@@ -27,10 +27,11 @@ class GeminiPro(AsyncGeneratorProvider, ProviderModelMixin):
         api_key: str = None,
         api_base: str = None,
         use_auth_header: bool = True,
+        image: ImageType = None,
         connector: BaseConnector = None,
         **kwargs
     ) -> AsyncResult:
-        model = "gemini-pro-vision" if not model else model
+        model = "gemini-pro-vision" if not model and image else model
         model = cls.get_model(model)
 
         if not api_key:
@@ -55,7 +56,7 @@ class GeminiPro(AsyncGeneratorProvider, ProviderModelMixin):
                 }
                 for message in messages
             ]
-           
+            
             data = {
                 "contents": contents,
                 "generationConfig": {

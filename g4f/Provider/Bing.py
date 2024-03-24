@@ -8,9 +8,11 @@ import time
 from urllib import parse
 from aiohttp import ClientSession, ClientTimeout, BaseConnector
 
-from ..typing import AsyncResult, Messages
+from ..typing import AsyncResult, Messages, ImageType
+
 from .base_provider import AsyncGeneratorProvider
 from .helper import get_connector
+
 from .bing.conversation import Conversation, create_conversation, delete_conversation
 
 class Tones:
@@ -39,6 +41,7 @@ class Bing(AsyncGeneratorProvider):
         cookies: dict = None,
         connector: BaseConnector = None,
         tone: str = Tones.balanced,
+        image: ImageType = None,
         web_search: bool = False,
         **kwargs
     ) -> AsyncResult:
@@ -66,7 +69,7 @@ class Bing(AsyncGeneratorProvider):
 
         gpt4_turbo = True if model.startswith("gpt-4-turbo") else False
 
-        return stream_generate(prompt, tone, context, cookies, get_connector(connector, proxy), web_search, gpt4_turbo, timeout)
+        return stream_generate(prompt, tone, image, context, cookies, get_connector(connector, proxy), web_search, gpt4_turbo, timeout)
 
 def create_context(messages: Messages) -> str:
     """
@@ -232,7 +235,7 @@ def create_message(
         'target': 'chat',
         'type': 4
     }
-
+   
     if context:
         struct['arguments'][0]['previousMessages'] = [{
             "author": "user",
@@ -247,6 +250,7 @@ def create_message(
 async def stream_generate(
     prompt: str,
     tone: str,
+    image: ImageType = None,
     context: str = None,
     cookies: dict = None,
     connector: BaseConnector = None,
@@ -275,7 +279,7 @@ async def stream_generate(
         timeout=ClientTimeout(total=timeout), headers=headers, connector=connector
     ) as session:
         conversation = await create_conversation(session)
-        
+
         try:
             async with session.ws_connect(
                 'wss://sydney.bing.com/sydney/ChatHub',
@@ -309,14 +313,13 @@ async def stream_generate(
                                     if message.get('messageType'):
                                         inline_txt = card['inlines'][0].get('text')
                                         response_txt += inline_txt + '\n'
-                                
+                                    final = True
                             if response_txt.startswith(returned_text):
                                 new = response_txt[len(returned_text):]
                                 if new != "\n":
                                     yield new
                                     returned_text = response_txt
-                            if image_response:
-                                yield image_response
+                            
                         elif response.get('type') == 2:
                             result = response['item']['result']
                             if result.get('error'):
