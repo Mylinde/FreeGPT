@@ -65,7 +65,7 @@ gpt_35_long = Model(
         ChatgptDemoAi,
         ChatgptNext,
         ChatgptDemo,
-        Gpt6,
+        Gpt6
     ])
 )
 
@@ -73,19 +73,18 @@ gpt_35_long = Model(
 gpt_35_turbo = Model(
     name          = 'gpt-3.5-turbo',
     base_provider = 'openai',
-    best_provider = RetryProvider([ 
-        GptGo, You,
-        GptForLove, ChatBase,
-        Chatgpt4Online,
+    best_provider = RetryProvider([GptGo,
+        You,
+        GptForLove,
+        ChatBase,
+        Chatgpt4Online
     ])
 )
 
 gpt_4 = Model(
     name          = 'gpt-4',
     base_provider = 'openai',
-    best_provider = RetryProvider([
-        Bing, Liaobots, 
-    ])
+    best_provider = RetryProvider([Bing, Liaobots])
 )
 
 gpt_4_turbo = Model(
