@@ -1,5 +1,5 @@
 import argparse
-import json
+import orjson
 import secrets
 import os
 import flask
@@ -10,7 +10,7 @@ from server.backend import Backend_Api
 from server.babel import create_babel
 from flask_compress import Compress
 
-config = json.load(open('config.json', 'r').read())
+config = orjson.loads(open('config.json', 'r').read())
 site_config = config['site_config']
 url_prefix = config.pop('url_prefix')
 
