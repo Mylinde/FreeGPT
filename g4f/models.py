@@ -115,20 +115,20 @@ codellama_34b_instruct = Model(
 codellama_70b_instruct = Model(
     name          = "codellama/CodeLlama-70b-Instruct-hf",
     base_provider = "meta",
-    best_provider = RetryProvider([DeepInfra, PerplexityLabs])
+    best_provider = PerplexityLabs
 )
 
 # Mistral
 mixtral_8x7b = Model(
     name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
     base_provider = "PerplexityLabs",
-    best_provider = RetryProvider([DeepInfra, HuggingChat, PerplexityLabs])
+    best_provider = PerplexityLabs
 )
 
 mistral_7b = Model(
     name          = "mistralai/Mistral-7B-Instruct-v0.1",
     base_provider = "PerplexityLabs",
-    best_provider = RetryProvider([DeepInfra, HuggingChat, PerplexityLabs])
+    best_provider = PerplexityLabs
 )
 
 # Misc models
