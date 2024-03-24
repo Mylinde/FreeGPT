@@ -1,7 +1,9 @@
 aiohttp
 aiohttp_socks
+async_property
 beautifulsoup4
 browser_cookie3
+cairosvg
 curl_cffi
 duckduckgo_search
 Flask
@@ -9,9 +11,10 @@ flask_babel
 Flask_Compress
 gunicorn
 orjson
+Pillow
 platformdirs
+py_arkose_generator
 PyExecJS
-pyvirtualdisplay
+PyVirtualDisplay
 typing_extensions
-selenium
 undetected_chromedriver
