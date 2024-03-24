@@ -1,9 +1,7 @@
 aiohttp
 aiohttp_socks
-async_property
 beautifulsoup4
 browser_cookie3
-cairosvg
 curl_cffi
 duckduckgo_search
 Flask
@@ -13,7 +11,6 @@ gunicorn
 orjson
 Pillow
 platformdirs
-py_arkose_generator
 PyExecJS
 PyVirtualDisplay
 typing_extensions

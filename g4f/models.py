@@ -2,12 +2,9 @@ from __future__  import annotations
 from dataclasses import dataclass
 from .Provider   import RetryProvider, ProviderType
 from .Provider   import (
-    Chatgpt4Online,
     PerplexityLabs,
-    ChatgptDemoAi,
     GeminiProChat,
     ChatgptNext,
-    HuggingChat,
     ChatgptDemo,
     FreeChatgpt,
     GptForLove,
@@ -15,10 +12,7 @@ from .Provider   import (
     DeepInfra,
     ChatBase,
     Liaobots,
-    FreeGpt,
     Llama2,
-    Vercel,
-    Gemini,
     GptGo,
     Gpt6,
     Bing,
@@ -52,7 +46,6 @@ default = Model(
         Bing,
         ChatgptAi, GptGo,
         You,
-        Chatgpt4Online
     ])
 )
 
@@ -61,9 +54,7 @@ gpt_35_long = Model(
     name          = 'gpt-3.5-turbo',
     base_provider = 'openai',
     best_provider = RetryProvider([
-        FreeGpt, You,
-        Chatgpt4Online,
-        ChatgptDemoAi,
+        You,
         ChatgptNext,
         ChatgptDemo,
         Gpt6,
@@ -77,7 +68,6 @@ gpt_35_turbo = Model(
     best_provider = RetryProvider([ 
         GptGo, You,
         GptForLove, ChatBase,
-        Chatgpt4Online,
     ])
 )
 
@@ -110,13 +100,13 @@ llama2_13b = Model(
 llama2_70b = Model(
     name          = "meta-llama/Llama-2-70b-chat-hf",
     base_provider = "huggingface",
-    best_provider = RetryProvider([Llama2, DeepInfra, HuggingChat, PerplexityLabs])
+    best_provider = RetryProvider([Llama2, DeepInfra, PerplexityLabs])
 )
 
 codellama_34b_instruct = Model(
     name          = "codellama/CodeLlama-34b-Instruct-hf",
     base_provider = "huggingface",
-    best_provider = RetryProvider([HuggingChat, PerplexityLabs, DeepInfra])
+    best_provider = RetryProvider([PerplexityLabs, DeepInfra])
 )
 
 codellama_70b_instruct = Model(
@@ -129,13 +119,13 @@ codellama_70b_instruct = Model(
 mixtral_8x7b = Model(
     name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
     base_provider = "PerplexityLabs",
-    best_provider = RetryProvider([DeepInfra, HuggingChat])
+    best_provider = DeepInfra
 )
 
 mistral_7b = Model(
     name          = "mistralai/Mistral-7B-Instruct-v0.1",
     base_provider = "PerplexityLabs",
-    best_provider = RetryProvider([DeepInfra, HuggingChat])
+    best_provider = DeepInfra
 )
 
 # Misc models
@@ -166,20 +156,14 @@ airoboros_l2_70b = Model(
 openchat_35 = Model(
     name          = "openchat/openchat_3.5",
     base_provider = "huggingface",
-    best_provider = RetryProvider([DeepInfra, HuggingChat])
+    best_provider = DeepInfra
 )
 
 # Bard
-gemini = bard = palm = Model(
-    name          = 'gemini',
-    base_provider = 'google',
-    best_provider = Gemini
-)
-
 claude_v2 = Model(
     name          = 'claude-v2',
     base_provider = 'anthropic',
-    best_provider = RetryProvider([FreeChatgpt, Vercel])
+    best_provider = FreeChatgpt
 )
 
 gpt_35_turbo_16k = Model(
@@ -267,7 +251,6 @@ class ModelUtils:
         'airoboros-70b': airoboros_70b,
         'airoboros-l2-70b': airoboros_l2_70b,
         'openchat_3.5': openchat_35,
-        'gemini': gemini,
         'gemini-pro': gemini_pro,
         'claude-v2': claude_v2,
         'pi': pi
