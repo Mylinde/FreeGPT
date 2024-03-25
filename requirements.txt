@@ -6,6 +6,7 @@ curl_cffi
 duckduckgo_search
 Flask
 flask_babel
+flask_caching
 Flask_Compress
 gunicorn
 orjson
@@ -13,5 +14,6 @@ Pillow
 platformdirs
 PyExecJS
 PyVirtualDisplay
+redis
 typing_extensions
 undetected_chromedriver

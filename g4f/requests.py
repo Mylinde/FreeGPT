@@ -3,7 +3,6 @@ from urllib.parse import urlparse
 
 try:
     from curl_cffi.requests import Session
-    from .requests_curl_cffi import StreamResponse, StreamSession
     has_curl_cffi = True
 except ImportError:
     from typing import Type as Session
