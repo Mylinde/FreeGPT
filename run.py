@@ -2,6 +2,7 @@ import orjson
 import secrets
 import os
 import flask
+import subprocess
 
 from flask_caching import Cache
 from flask_compress import Compress
@@ -39,19 +40,27 @@ for route in backend_api.routes:
 
 app.register_blueprint(bp, url_prefix=url_prefix)
 
-if __name__ == "__main__":
+def start_redis():
+        try:
+            subprocess.run(["redis-server"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except FileNotFoundError: raise Exception("Redis server package not found. Please install Redis server before running this application.")
+
+        if __name__ == "__main__":
+            try: # Check if Redis is running 
+                subprocess.run(["redis-cli", "ping"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except subprocess.CalledProcessError: start_redis()
   
-    if "GUNICORN_ARGV" in dict(os.environ):
-        run_with_gunicorn = True
-    else:
-        run_with_gunicorn = False
+        if "GUNICORN_ARGV" in dict(os.environ):
+            run_with_gunicorn = True
+        else:
+            run_with_gunicorn = False
 
-    if run_with_gunicorn:
+        if run_with_gunicorn:
         
-        from gunicorn.app.base import Application
-        Application(app).run()
+            from gunicorn.app.base import Application
+            Application(app).run()
 
-    else:
-        print(f"Running on {site_config['port']}{url_prefix}")
-        app.run(**site_config)
-        print(f"Closing port {site_config['port']}")
+        else:
+            print(f"Running on {site_config['port']}{url_prefix}")
+            app.run(**site_config)
+            print(f"Closing port {site_config['port']}")
