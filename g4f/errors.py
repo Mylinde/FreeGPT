@@ -33,3 +33,9 @@ class MissingRequirementsError(Exception):
 
 class MissingAuthError(Exception):
     pass
+
+class RateLimitError(Exception):
+    pass
+
+class ResponseStatusError(Exception):
+    pass
