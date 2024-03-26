@@ -36,6 +36,9 @@ Reader mode in PWA
 - code clean up
 - flask-compress
 - orjson
+- gunicorn
+- flask-caching
+- redis for caching (installed redis-server neccesary)
 
 ## Known bugs 🚧
 - Mixtral interrupts long answers. By typing "continue" it continues.
