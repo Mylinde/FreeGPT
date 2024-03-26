@@ -42,7 +42,7 @@ app.register_blueprint(bp, url_prefix=url_prefix)
 
 def start_redis():
         try:
-            subprocess.run(["redis-server", "--cluster-enabled", "1"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            subprocess.run(["redis-server"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         except FileNotFoundError: raise Exception("Redis server package not found. Please install Redis server before running this application.")
 
         if __name__ == "__main__":
