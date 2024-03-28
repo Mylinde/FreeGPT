@@ -75,7 +75,7 @@ pip install -r requirements.txt
 ## Running the Application :rocket:
 To run the application, run the following command:
 
-I suggest to use the python -B flag to not generate the bytecode cache. It ensures that any changes made to the source code will be reflected in the next run, without having to manually delete the bytecode cache. 
+I suggest to use the python -B flag to not generate the bytecode cache. It ensures that any changes made to the code will be reflected in the next run, without having to manually delete the bytecode cache. 
 
 ```
 python -m gunicorn --config gunicorn_config.py run:app
