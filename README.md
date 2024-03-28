@@ -38,7 +38,7 @@ Reader mode in PWA
 - orjson
 - gunicorn
 - flask-caching
-- redis for caching (installed redis-server neccesary)
+- redis for caching (local running redis-server neccesary)
 
 ## Known bugs 🚧
 - Mixtral interrupts long answers. By typing "continue" it continues.
