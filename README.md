@@ -37,7 +37,6 @@ Reader mode in PWA
 - flask-compress
 - orjson
 - gunicorn
-- flask-caching
 - redis for caching (local running redis-server neccesary)
 
 ## Known bugs 🚧
