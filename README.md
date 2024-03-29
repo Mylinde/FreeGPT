@@ -37,8 +37,7 @@ Reader mode in PWA
 - flask-compress
 - orjson
 - gunicorn
-- flask-caching
-- redis for caching (installed redis-server neccesary)
+- redis for caching (local running redis-server required)
 
 ## Known bugs 🚧
 - Mixtral interrupts long answers. By typing "continue" it continues.
@@ -75,13 +74,17 @@ pip install -r requirements.txt
 ```
 ## Running the Application :rocket:
 To run the application, run the following command:
+
+I suggest to use the python -B flag to not generate the bytecode cache. It ensures that any changes made to the code will be reflected in the next run, without having to manually delete the bytecode cache. 
+
 ```
-gunicorn --config gunicorn_config.py run:app
+python -m gunicorn --config gunicorn_config.py run:app
 ```
 or for running with werkzeug:
 ```
 python run.py
 ```
+
 Access the application in your browser using the URL:
 ```
 http://127.0.0.1:1338
