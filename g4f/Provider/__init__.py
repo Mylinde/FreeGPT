@@ -5,10 +5,8 @@ from .retry_provider  import RetryProvider
 from .base_provider   import AsyncProvider, AsyncGeneratorProvider
 from .selenium        import *
 
-
 from .Aura            import Aura
 from .Bing            import Bing
-from .ChatForAi       import ChatForAi
 from .ChatgptAi       import ChatgptAi
 from .ChatgptNext     import ChatgptNext
 from .Chatxyz         import Chatxyz
@@ -22,7 +20,6 @@ from .GptTalkRu       import GptTalkRu
 from .Koala           import Koala
 from .Liaobots        import Liaobots
 from .Llama2          import Llama2
-from .OnlineGpt       import OnlineGpt
 from .PerplexityLabs  import PerplexityLabs
 from .You             import You
 

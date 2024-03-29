@@ -34,4 +34,3 @@ function hideOptions(optionsToHide) {
     optionElement.style.display = "none";
   })
 }
-  

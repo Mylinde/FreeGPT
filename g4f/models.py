@@ -12,6 +12,7 @@ from .Provider   import (
     Llama2,
     GptGo,
     Bing,
+    Aura,
     You
 )
 
@@ -37,38 +38,27 @@ class Model:
 default = Model(
     name          = "",
     base_provider = "",
-    best_provider = RetryProvider([
-        Bing,
-        ChatgptAi, GptGo,
-        You,
-    ])
+    best_provider = RetryProvider([Bing, ChatgptAi, GptGo, You])
 )
 
 # GPT-3.5 too, but all providers supports long requests and responses
 gpt_35_long = Model(
     name          = 'gpt-3.5-turbo',
     base_provider = 'openai',
-    best_provider = RetryProvider([
-        You,
-        ChatgptNext
-    ])
+    best_provider = RetryProvider([You, ChatgptNext])
 )
 
 # GPT-3.5 / GPT-4
 gpt_35_turbo = Model(
     name          = 'gpt-3.5-turbo',
     base_provider = 'openai',
-    best_provider = RetryProvider([ 
-        Liaobots, GptGo, You
-    ])
+    best_provider = RetryProvider([ChatgptNext, Liaobots, GptGo, You])
 )
 
 gpt_4 = Model(
     name          = 'gpt-4',
     base_provider = 'openai',
-    best_provider = RetryProvider([
-        Liaobots, Bing  
-    ])
+    best_provider = RetryProvider([Liaobots, Bing])
 )
 
 gpt_4_turbo = Model(
@@ -92,7 +82,7 @@ llama2_13b = Model(
 llama2_70b = Model(
     name          = "meta-llama/Llama-2-70b-chat-hf",
     base_provider = "huggingface",
-    best_provider = RetryProvider([Llama2, PerplexityLabs])
+    best_provider = RetryProvider([PerplexityLabs, DeepInfra, Llama2])
 )
 
 codellama_34b_instruct = Model(
@@ -111,7 +101,7 @@ codellama_70b_instruct = Model(
 mixtral_8x7b = Model(
     name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
     base_provider = "PerplexityLabs",
-    best_provider = PerplexityLabs
+    best_provider = RetryProvider([PerplexityLabs, DeepInfra])
 )
 
 mistral_7b = Model(
