@@ -12,8 +12,7 @@ from .Provider   import (
     Llama2,
     GptGo,
     Bing,
-    You,
-    Pi,
+    You
 )
 
 @dataclass(unsafe_hash=True)
