@@ -57,7 +57,7 @@
 								<div class="field">
 									<span>{{_('Model')}}</span>
 									<select class="dropdown" name="model" id="model">
-										<option value="gpt-3.5-turbo" selected="">GPT-3.5</option>
+										<option value="gpt-3.5-turbo">GPT-3.5</option>
 										<option value="gpt-4">GPT-4</option>	
 										<option value="llama2-70b">LLaMA2</option>
 										<option value="mixtral-8x7b">Mixtral 8x7b</option>
@@ -66,9 +66,10 @@
 								<div class="field">
 									<span>{{_('Provider')}}</span>
 										<select class="dropdown" name="provider" id="provider">
-											<option value="g4f.Provider.Auto" selected>Auto</option>
+											<option value="g4f.Provider.Auto">Auto</option>
 											<option value="g4f.Provider.ChatgptLogin">ChatGPT</option>
 											<option value="g4f.Provider.Bing">Bing</option>
+											<option value="g4f.Provider.Phind">Phind</option>
 											<option value="g4f.Provider.Llama2">Llama2</option>
 											<option value="g4f.Provider.Liaobots">Liaobots</option>
 											<option value="g4f.Provider.PerplexityLab">Perplexity Labs</option>																				
@@ -117,8 +118,7 @@
 		</div>
 		<div class="menu-button">
 			<span class="material-icons-round">menu</span>
-		</div>
-		
+		</div>		
 		<!-- scripts -->
 		<script>window.conversation_id = "{{ chat_id }}";</script>
 		<script src="{{ url_for('bp.static', filename='js/theme-toggler.min.js') }}"></script>
@@ -133,6 +133,7 @@
 		<script type="module" src="{{ url_for('bp.static', filename='js/assistant.kursiv-normal.min.js') }}"></script>
 		<script rel="preload" src="{{ url_for('bp.static', filename='js/chat.min.js') }}" defer></script>		
 		<script src="{{ url_for('bp.static', filename='js/sidebar-toggler.min.js') }}"></script>
-		<script src="{{ url_for('bp.static', filename='js/change-language.min.js') }}"></script>					
+		<script src="{{ url_for('bp.static', filename='js/change-language.min.js') }}"></script>
+		<script src="{{ url_for('bp.static', filename='js/provider-sort.min.js') }}"></script>					
 	</body>
 </html>
