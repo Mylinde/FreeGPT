@@ -5,16 +5,12 @@ from .Provider   import (
     PerplexityLabs,
     GeminiProChat,
     ChatgptNext,
-    ChatgptDemo,
     FreeChatgpt,
-    GptForLove,
     ChatgptAi,
     DeepInfra,
-    ChatBase,
     Liaobots,
     Llama2,
     GptGo,
-    Gpt6,
     Bing,
     You,
     Pi,
@@ -55,9 +51,7 @@ gpt_35_long = Model(
     base_provider = 'openai',
     best_provider = RetryProvider([
         You,
-        ChatgptNext,
-        ChatgptDemo,
-        Gpt6,
+        ChatgptNext
     ])
 )
 
@@ -66,8 +60,7 @@ gpt_35_turbo = Model(
     name          = 'gpt-3.5-turbo',
     base_provider = 'openai',
     best_provider = RetryProvider([ 
-        GptGo, You,
-        GptForLove, ChatBase,
+        Liaobots, GptGo, You
     ])
 )
 
@@ -75,7 +68,7 @@ gpt_4 = Model(
     name          = 'gpt-4',
     base_provider = 'openai',
     best_provider = RetryProvider([
-        Bing, Liaobots, 
+        Liaobots, Bing  
     ])
 )
 
@@ -88,7 +81,7 @@ gpt_4_turbo = Model(
 llama2_7b = Model(
     name          = "meta-llama/Llama-2-7b-chat-hf",
     base_provider = 'huggingface',
-    best_provider = RetryProvider([Llama2, DeepInfra])
+    best_provider = RetryProvider([Llama2, PerplexityLabs])
 )
 
 llama2_13b = Model(
@@ -100,7 +93,7 @@ llama2_13b = Model(
 llama2_70b = Model(
     name          = "meta-llama/Llama-2-70b-chat-hf",
     base_provider = "huggingface",
-    best_provider = RetryProvider([Llama2, DeepInfra, PerplexityLabs])
+    best_provider = RetryProvider([Llama2, PerplexityLabs])
 )
 
 codellama_34b_instruct = Model(
@@ -119,13 +112,13 @@ codellama_70b_instruct = Model(
 mixtral_8x7b = Model(
     name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
     base_provider = "PerplexityLabs",
-    best_provider = DeepInfra
+    best_provider = PerplexityLabs
 )
 
 mistral_7b = Model(
     name          = "mistralai/Mistral-7B-Instruct-v0.1",
     base_provider = "PerplexityLabs",
-    best_provider = DeepInfra
+    best_provider = PerplexityLabs
 )
 
 # Misc models
@@ -208,12 +201,6 @@ gemini_pro = Model(
     best_provider = RetryProvider([FreeChatgpt, GeminiProChat])
 )
 
-pi = Model(
-    name = 'pi',
-    base_provider = 'inflection',
-    best_provider = Pi
-)
-
 class ModelUtils:
     """
     Utility class for mapping string identifiers to Model instances.
@@ -252,8 +239,7 @@ class ModelUtils:
         'airoboros-l2-70b': airoboros_l2_70b,
         'openchat_3.5': openchat_35,
         'gemini-pro': gemini_pro,
-        'claude-v2': claude_v2,
-        'pi': pi
+        'claude-v2': claude_v2
     }
 
 _all_models = list(ModelUtils.convert.keys())
