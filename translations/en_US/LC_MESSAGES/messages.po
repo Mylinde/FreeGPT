@@ -33,10 +33,6 @@ msgid "Ok"
 msgstr "Ok"
 
 #:
-msgid "Dark Mode"
-msgstr "Dark Mod"
-
-#:
 msgid "Language"
 msgstr "Language"
 
@@ -47,23 +43,6 @@ msgstr "Stop Generating"
 #:
 msgid "Ask a question"
 msgstr "Ask a question"
-
-#:
-msgid "IMAGE"
-msgstr "IMAGE"
-
-#:
-msgid "Default"
-msgstr "Default"
-
-#:
-msgid "DAN"
-msgstr "DAN"
-
-#:
-msgid "Evil"
-msgstr "Evil"
-
 #:
 msgid "Web Access"
 msgstr "Web Access"
@@ -80,7 +59,19 @@ msgid "Provider"
 msgstr "Provider"
 
 #:
-msgid "Jailbreak"
-msgstr "Jailbreak"
+msgid "gpt"
+msgstr "Suitable for complex language understanding and generation tasks, such as understanding and writing natural language, text creation, identifying language nuances, and context-based natural language responses."
+
+#:
+msgid "gpt4"
+msgstr "Designed to handle advanced natural language processing and generation tasks, including complex text processing, precise semantic interpretation, context-aware dialog systems, and creative text generation."
+
+#:
+msgid "llama2"
+msgstr "Specifically designed for multilingual processing and generation, suitable for tasks such as translation, understanding and generating content in different languages, and data-driven language applications."
+
+#:
+msgid "mixtral"
+msgstr "Optimized for versatile textual applications, including context-aware language processing, generative tasks, machine translation, and text comprehension across various domains and languages."
 
 

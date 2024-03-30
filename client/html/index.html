@@ -55,11 +55,15 @@
 				<div class="sidebar-footer">
 						<div class="settings-container">
 								<div class="field">
-									<span>{{_('Model')}}</span>
+									<span>{{_('Model')}}
+									<info class="tooltip">{{_('gpt')}}</info>
+									<tooltip class="tooltip">{{_('gpt4')}}</tooltip>
+									<tooltip class="tooltip">{{_('llama2')}}</tooltip>
+									<tooltip class="tooltip">{{_('mixtral')}}</tooltip></span>
 									<select class="dropdown" name="model" id="model">
-										<option value="gpt-3.5-turbo">GPT-3.5</option>										
+										<option value="gpt-3.5-turbo">GPT-3.5</option>									
 										<option value="gpt-4">GPT-4</option>	
-										<option value="llama2-70b">LLaMA2</option>
+										<option value="llama2-70b">LLaMA2</option>										
 										<option value="mixtral-8x7b">Mixtral 8x7b</option>
 									</select>
 								</div>
@@ -74,13 +78,13 @@
 											<option value="g4f.Provider.PerplexityLab">Perplexity Labs</option>																				
 									</select>
 								</div>
-								<div class="field">
+								<!-- <div class="field">
 									<span>{{_('Language')}}</span>
 									<select
 									class="dropdown"
 									id="language"
 									onchange="changeLanguage(this.value)"></select>
-								</div>
+								</div> -->
 								<div class="field checkbox">
 									<span>{{_('Web Access')}}</span>									
 									<input type="checkbox" id="switch" />

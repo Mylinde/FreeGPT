@@ -34,10 +34,6 @@ msgid "Ok"
 msgstr "Okay"
 
 #:
-msgid "Dark Mode"
-msgstr "Dunkler Modus"
-
-#:
 msgid "Language"
 msgstr "Sprache"
 
@@ -48,22 +44,6 @@ msgstr "Generierung stoppen"
 #:
 msgid "Ask a question"
 msgstr "Stelle eine Frage"
-
-#:
-msgid "IMAGE"
-msgstr "BILD"
-
-#:
-msgid "Default"
-msgstr "Standard"
-
-#:
-msgid "DAN"
-msgstr "DAN"
-
-#:
-msgid "Evil"
-msgstr "Böse"
 
 #:
 msgid "Web Access"
@@ -82,13 +62,17 @@ msgid "Provider"
 msgstr "Anbieter"
 
 #:
-msgid "Jailbreak"
-msgstr "Jailbreak"
+msgid "gpt"
+msgstr "Geeignet für komplexe Sprachverständnis- und Generierungsaufgaben, wie etwa Verstehen und Schreiben von natürlicher Sprache, Erstellung von Texten, Erkennung von Sprachnuancen und kontextbezogene Antworten in natürlicher Sprache."
 
 #:
-msgid "Fullscreen Mode"
-msgstr "Vollbild Modus"
+msgid "gpt4"
+msgstr "Entwickelt, um fortgeschrittene natürliche Sprachverarbeitung und Generierungsaufgaben zu bewältigen, einschließlich komplexer Textverarbeitung, präziser semantischer Interpretation sowie kontextbezogener Dialogsysteme und kreativer Textgenerierung."
 
 #:
-msgid "Image Generator"
-msgstr "Bildgenerator"
+msgid "llama2"
+msgstr "Speziell für mehrsprachige Verarbeitung und Generierung konzipiert, geeignet für Aufgaben wie Übersetzung, Verstehen und Erzeugen von Inhalten in verschiedenen Sprachen sowie für datengetriebene sprachliche Anwendungen."
+
+#:
+msgid "mixtral"
+msgstr "Optimiert für vielseitige textuelle Anwendungen, einschließlich kontextbezogener Sprachverarbeitung, generative Aufgaben, maschinelles Übersetzen und Textverständnis in verschiedensten Domänen und Sprachen."
