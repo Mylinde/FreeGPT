@@ -9,9 +9,7 @@ async function fetchLanguages() {
   
         const languages = await languagesResponse.json();  
         const currentLanguage = await currentLanguageResponse.text();  
-   
-        const savedLanguage = localStorage.getItem("language") || currentLanguage;  
-        setLanguageOnPageLoad(savedLanguage);  
+    
     } catch (error) {  
         console.error("Failed to fetch languages or current language");  
     }  
