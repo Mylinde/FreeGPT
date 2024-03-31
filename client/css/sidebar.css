@@ -79,6 +79,12 @@
 	background: transparent;
 }
 
+#gpt, #gpt4, #llama2, #mixtral {
+	display: none;
+	height: max(10px);
+	padding: 20px;
+}
+
 .sidebar.shown {
 	position: fixed;
 	top: 6px;
