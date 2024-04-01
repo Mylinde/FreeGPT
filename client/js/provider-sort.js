@@ -81,7 +81,7 @@ const hiddenOptions = ['g4f.Provider.Llama2', 'g4f.Provider.PerplexityLab', 'g4f
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  updateModelOptions(); // Aufruf beim Laden der Seite
+  updateModelOptions();
 });
 
 function hideOptions(optionsToHide) {
