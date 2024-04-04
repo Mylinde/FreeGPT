@@ -1,6 +1,5 @@
 const providerSelect = document.getElementById('provider');
 const modelSelect = document.getElementById('model');
-
 const modelDisplayNameMapping = {
   'gpt-4': 'GPT-4',
   'gpt-3.5-turbo': 'GPT-3.5 Turbo',
@@ -8,7 +7,13 @@ const modelDisplayNameMapping = {
   'mixtral-8x7b': 'Mixtral'
 };
 
+document.addEventListener('DOMContentLoaded', (event) => {
+  updateModelOptions();
+  updateProviderOptions();
+});
+
 providerSelect.addEventListener('change', updateModelOptions);
+modelSelect.addEventListener('change', updateProviderOptions);
 
 function updateModelOptions() {
   
@@ -41,8 +46,6 @@ if (selectedProvider === 'g4f.Provider.Auto') {
 
 };
 
-updateModelOptions();
-
 function removeAllChildNodes(parent) {
   while (parent.options.length > 0) {
       parent.remove(0);
@@ -54,38 +57,32 @@ function showAllOptions() {
   Array.from(providerSelect.options).forEach(option => {
     option.style.display = "block";
   });
-}
+};
 
-modelSelect.addEventListener('change', () => {
+function updateProviderOptions() {
 
 const selectedModel = modelSelect.value;
 const hiddenOptions = ['g4f.Provider.Llama2', 'g4f.Provider.PerplexityLab', 'g4f.Provider.Bing', 'g4f.Provider.Liaobots', 'g4f.Provider.You'];
   
   if (selectedModel === 'gpt-3.5-turbo') {
     showAllOptions();
-    providerSelect.value = 'g4f.Provider.Auto';
     hideOptions(hiddenOptions.filter(option => ['g4f.Provider.You', 'g4f.Provider.Liaobots',].indexOf(option) === -1));
   } else if (selectedModel === 'gpt-4') {
     showAllOptions();
-    providerSelect.value = 'g4f.Provider.Auto';
     hideOptions(hiddenOptions.filter(option => ['g4f.Provider.Bing', 'g4f.Provider.Liaobots'].indexOf(option) === -1));
   } else if (selectedModel === 'llama2-70b') {
     showAllOptions();
-    providerSelect.value = 'g4f.Provider.Auto';
     hideOptions(hiddenOptions.filter(option => ['g4f.Provider.Llama2', 'g4f.Provider.PerplexityLab'].indexOf(option) === -1));
   } else if (selectedModel === 'mixtral-8x7b') {
     showAllOptions();
-    providerSelect.value = 'g4f.Provider.Auto';
     hideOptions(hiddenOptions.filter(option => ['g4f.Provider.PerplexityLab'].indexOf(option) === -1));
   }
-});
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  updateModelOptions();
-});
+};
 
 function hideOptions(optionsToHide) {
   optionsToHide.forEach(option => {
     const optionElement = providerSelect.querySelector(`option[value="${option}"]`);
     optionElement.style.display = "none";
-  })};
+  }
+)};
+  

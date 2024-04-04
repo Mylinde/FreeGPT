@@ -409,7 +409,7 @@ function h2a(str1) {
 	}
 
 	return str;
-}
+};
 
 const uuid = () => {
 	return `xxxxxxxx-xxxx-4xxx-yxxx-${Date.now().toString(16)}`.replace(/[xy]/g, function (c) {
@@ -511,7 +511,7 @@ function clearTextarea(textarea) {
 	if (textarea.value.trim() === "" && textarea.value.includes("\n")) {
 		textarea.value = "";
 	}
-}
+};
 
 function createElement(tag, { classNames, id, innerHTML, textContent } = {}) {
 	const el = document.createElement(tag);
@@ -530,4 +530,4 @@ function createElement(tag, { classNames, id, innerHTML, textContent } = {}) {
 		el.appendChild(preElement);
 	}
 	return el;
-}
+};
