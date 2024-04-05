@@ -98,8 +98,7 @@
 	position: absolute;
 	z-index: 1000;
 	bottom: 1em;
-	left: 8em;
-	margin-left: -80px;
+	left: 0.5em;
 	white-space: pre-wrap;
 	hyphens: auto;
   }
