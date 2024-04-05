@@ -89,12 +89,11 @@
 	visibility: hidden;
 	width: max(60vw);
 	background-color: var(--blur-bg);
-	color: var(--conversations);
 	text-align: left;
 	border: var(--blur-border);
 	box-shadow: var(--blur-box-shadow);
 	border-radius: var(--border-radius-1);
-	padding: 8px;
+	padding: var(--section-gap);
 	position: absolute;
 	z-index: 1000;
 	bottom: 1em;
