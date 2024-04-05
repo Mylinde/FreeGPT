@@ -70,7 +70,7 @@ msgid "gpt"
 msgstr "Doğal dilin anlaşılması ve üretilmesi gibi karmaşık dil anlama ve üretme görevleri için uygun, metin yaratma, dilin inceliklerini tanıma ve bağlamsal doğal dil cevapları gibi görevler için ideal."
 
 #:
-msgid "gpt4
+msgid "gpt4"
 msgstr "Karmaşık metin işleme, kesin anlamsal yorumlama, bağlam bilincine sahip diyalog sistemleri ve yaratıcı metin üretimini içeren gelişmiş doğal dil işleme ve üretme görevleri için tasarlanmıştır."
 
 #:
