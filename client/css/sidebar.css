@@ -89,7 +89,7 @@
 	visibility: hidden;
 	width: max(60vw);
 	background-color: var(--blur-bg);
-	color: var(--colour-4);
+	color: var(--conversations);
 	text-align: left;
 	border: var(--blur-border);
 	box-shadow: var(--blur-box-shadow);
