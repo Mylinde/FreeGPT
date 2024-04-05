@@ -34,10 +34,6 @@ msgid "Ok"
 msgstr "Tamam"
 
 #:
-msgid "Dark Mode"
-msgstr "Karanlık Mod"
-
-#:
 msgid "Language"
 msgstr "Dil"
 
@@ -50,20 +46,8 @@ msgid "Ask a question"
 msgstr "Bir soru sor"
 
 #:
-msgid "IMAGE"
-msgstr "GÖRÜNTÜ"
-
-#:
 msgid "Default"
 msgstr "Varsayılan"
-
-#:
-msgid "DAN"
-msgstr "DAN"
-
-#:
-msgid "Evil"
-msgstr "Kötü"
 
 #:
 msgid "Web Access"
@@ -82,13 +66,17 @@ msgid "Provider"
 msgstr "Sağlayıcı"
 
 #:
-msgid "Jailbreak"
-msgstr "Jailbreak"
+msgid "gpt"
+msgstr "Doğal dilin anlaşılması ve üretilmesi gibi karmaşık dil anlama ve üretme görevleri için uygun, metin yaratma, dilin inceliklerini tanıma ve bağlamsal doğal dil cevapları gibi görevler için ideal."
 
 #:
-msgid "Fullscreen Mode"
-msgstr ""
+msgid "gpt4
+msgstr "Karmaşık metin işleme, kesin anlamsal yorumlama, bağlam bilincine sahip diyalog sistemleri ve yaratıcı metin üretimini içeren gelişmiş doğal dil işleme ve üretme görevleri için tasarlanmıştır."
 
 #:
-msgid "Image Generator"
-msgstr ""
+msgid "llama2"
+msgstr "Özellikle çok dilli işleme ve üretme için tasarlanmış, çeviri, farklı dillerde içerik anlama ve üretme gibi görevler için uygun ve veri odaklı dil uygulamaları için ideal."
+
+#:
+msgid "mixtral"
+msgstr "Bağlam bilincine sahip dil işleme, üretme görevleri, makine çevirisi ve çeşitli alanlarda ve dillerde metin anlama konularını içeren çok yönlü metin uygulamaları için optimize edilmiştir."

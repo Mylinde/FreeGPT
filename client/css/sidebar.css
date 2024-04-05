@@ -87,7 +87,7 @@
     
   .popup .popuptext {
 	visibility: hidden;
-	width: max(90%);
+	width: max(50vw);
 	background-color: var(--blur-bg);
 	color: var(--colour-4);
 	text-align: left;
@@ -101,12 +101,13 @@
 	left: 8em;
 	margin-left: -80px;
 	white-space: pre-wrap;
+	hyphens: auto;
   }
   
   .popup .show {
 	visibility: visible;
 	-webkit-animation: fadeIn 1s;
-	animation: fadeIn 1s
+	animation: fadeIn 1s;
   }
   
   @-webkit-keyframes fadeIn {

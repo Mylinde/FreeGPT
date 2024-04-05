@@ -86,9 +86,6 @@ function hideOptions(optionsToHide) {
   }
 )};
 
-
-//modelSelect.addEventListener('change', showModelInfo);
-
 function showModelInfo() {
 
 const selectedModel = modelSelect.value;
@@ -119,4 +116,3 @@ if (selectedModel === 'gpt-3.5-turbo') {
   mixtral.classList.toggle("show");  
 }
 };
-
