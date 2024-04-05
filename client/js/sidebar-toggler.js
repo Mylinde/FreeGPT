@@ -25,7 +25,7 @@ function hideSidebar(target) {
 menuButton.addEventListener("click", toggleSidebar);
 
 document.body.addEventListener('click', function(event) { 
-   if (!event.target.closest('.sidebar') && !event.target.closest('.menu-button') && !event.target.closest('.conversation-sidebar')) {
+   if (!event.target.closest('.sidebar') && !event.target.closest('.menu-button') && !event.target.closest('.conversation-sidebar') && !event.target.closest('.popup .popuptext')) {
         hideSidebar(event.target);
 }
    if (event.target.matches(['.conversation-title','.chat','#sidebar-button','#sidebar-button > span','#sidebar-button > .material-icons-round'])) {
