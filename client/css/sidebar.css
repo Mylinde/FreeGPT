@@ -87,7 +87,7 @@
     
   .popup .popuptext {
 	visibility: hidden;
-	width: max(50vw);
+	width: max(60vw);
 	background-color: var(--blur-bg);
 	color: var(--colour-4);
 	text-align: left;
