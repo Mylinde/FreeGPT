@@ -63,7 +63,7 @@ function updateProviderOptions() {
 
 const selectedModel = modelSelect.value;
 const hiddenOptions = ['g4f.Provider.Llama2', 'g4f.Provider.PerplexityLab', 'g4f.Provider.Bing', 'g4f.Provider.Liaobots', 'g4f.Provider.You'];
-  
+
   if (selectedModel === 'gpt-3.5-turbo') {
     showAllOptions();
     hideOptions(hiddenOptions.filter(option => ['g4f.Provider.You', 'g4f.Provider.Liaobots',].indexOf(option) === -1));
@@ -85,4 +85,38 @@ function hideOptions(optionsToHide) {
     optionElement.style.display = "none";
   }
 )};
-  
+
+
+//modelSelect.addEventListener('change', showModelInfo);
+
+function showModelInfo() {
+
+const selectedModel = modelSelect.value;
+const gpt3 = document.getElementById("gpt3");
+const gpt4 = document.getElementById("gpt4");
+const llama2 = document.getElementById("llama2");
+const mixtral = document.getElementById("mixtral");
+
+if (selectedModel === 'gpt-3.5-turbo') {  
+  gpt4.classList.remove("show");
+  llama2.classList.remove("show"); 
+  mixtral.classList.remove("show");
+  gpt3.classList.toggle("show");  
+} if (selectedModel === 'gpt-4') {  
+  gpt3.classList.remove("show");  
+  llama2.classList.remove("show"); 
+  mixtral.classList.remove("show");
+  gpt4.classList.toggle("show");
+} if (selectedModel === 'llama2-70b') {  
+  gpt3.classList.remove("show");
+  gpt4.classList.remove("show");
+  mixtral.classList.remove("show");
+  llama2.classList.toggle("show");   
+} if (selectedModel === 'mixtral-8x7b') {  
+  gpt3.classList.remove("show");
+  gpt4.classList.remove("show");
+  llama2.classList.remove("show");
+  mixtral.classList.toggle("show");  
+}
+};
+

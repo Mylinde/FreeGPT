@@ -79,11 +79,45 @@
 	background: transparent;
 }
 
-#gpt, #gpt4, #llama2, #mixtral {
-	display: none;
-	height: max(10px);
-	padding: 20px;
-}
+.popup {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+  }
+    
+  .popup .popuptext {
+	visibility: hidden;
+	width: max(90%);
+	background-color: var(--blur-bg);
+	color: var(--colour-4);
+	text-align: left;
+	border: var(--blur-border);
+	box-shadow: var(--blur-box-shadow);
+	border-radius: var(--border-radius-1);
+	padding: 8px;
+	position: absolute;
+	z-index: 1000;
+	bottom: 1em;
+	left: 8em;
+	margin-left: -80px;
+	white-space: pre-wrap;
+  }
+  
+  .popup .show {
+	visibility: visible;
+	-webkit-animation: fadeIn 1s;
+	animation: fadeIn 1s
+  }
+  
+  @-webkit-keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity:1 ;}
+  }
 
 .sidebar.shown {
 	position: fixed;

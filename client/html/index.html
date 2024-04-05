@@ -53,13 +53,16 @@
 					<div class="spinner"></div>
 				</div>
 				<div class="sidebar-footer">
-							<span id="gpt">{{_('gpt')}}</span>
-							<span id="gpt4">{{_('gpt4')}}</span>
-							<span id="llama2">{{_('llama2')}}</span>
-							<span id="mixtral">{{_('mixtral')}}</span>
 						<div class="settings-container">
+							<div class="popup">
+								<span class="popuptext" id="gpt3">{{_('gpt')}}</span>
+								<span class="popuptext" id="gpt4">{{_('gpt4')}}</span>
+								<span class="popuptext" id="llama2">{{_('llama2')}}</span>
+								<span class="popuptext" id="mixtral">{{_('mixtral')}}</span>
+							</div>
 								<div class="field">
-									<span>{{_('Model')}}</span>
+									<span>{{_('Model')}}</span>																
+									<span class="material-icons-round help" onmouseenter="showModelInfo()" onmouseleave="showModelInfo()">help</span>																								  
 									<select class="dropdown" name="model" id="model"></select>
 								</div>
 								<div class="field">
