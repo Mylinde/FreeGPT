@@ -238,6 +238,7 @@
 
 .material-icons-round.model-info {
 	font-size: 1.1rem !important;
+	margin-left: 4px;
 }
 
 .material-icons-round.chat {
