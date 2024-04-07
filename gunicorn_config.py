@@ -6,3 +6,4 @@ timeout = int(os.environ.get('GUNICORN_TIMEOUT', '10'))
 bind = os.environ.get('GUNICORN_BIND', '0.0.0.0:1338')
 forwarded_allow_ips = '*'
 secure_scheme_headers = { 'X-Forwarded-Proto': 'https' }
+ssl_version = 3
