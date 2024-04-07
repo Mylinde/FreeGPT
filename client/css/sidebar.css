@@ -236,6 +236,10 @@
 	}
 }
 
+.material-icons-round.model-info {
+	font-size: 1.2rem !important;
+}
+
 .material-icons-round.chat {
 	font-size: 1.6rem !important;
 }
