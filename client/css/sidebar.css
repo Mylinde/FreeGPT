@@ -63,7 +63,7 @@
 }
 
 .sidebar .info span {
-	color: var(--conversations);
+	color: var(--accent);
 	font-size: 0.75rem;
 }
 
