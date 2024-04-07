@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import json
+import orjson
 
 from ..requests import StreamSession
 from ..typing import AsyncGenerator, Messages
@@ -37,4 +37,4 @@ class You(AsyncGeneratorProvider):
                 start = b'data: {"youChatToken": '
                 async for line in response.iter_lines():
                     if line.startswith(start):
-                        yield json.loads(line[len(start):-1])
+                        yield orjson.loads(line[len(start):-1])
