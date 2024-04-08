@@ -194,16 +194,6 @@ const ask_gpt = async (message) => {
 
 		window.scrollTo(0, 0);
 	}
-
-		// Assuming 'message_box' is the DOM element where the content is to be added
-	for (item of conversation.items) {
-		if (is_assistant(item.role)) {
-			message_box.innerHTML += DOMPurify.sanitize(load_gpt_message_box(item.content));
-		} else {
-			message_box.innerHTML += DOMPurify.sanitize(load_user_message_box(item.content));
-		}
-	}
-	
 };
 
 const add_user_message_box = (message) => {
@@ -289,9 +279,9 @@ const load_conversation = async (conversation_id) => {
 
 	for (item of conversation.items) {
 		if (is_assistant(item.role)) {
-			message_box.innerHTML += load_gpt_message_box(item.content);
+			message_box.innerHTML += DOMPurify.sanitize(load_gpt_message_box(item.content));
 		} else {
-			message_box.innerHTML += load_user_message_box(item.content);
+			message_box.innerHTML += DOMPurify.sanitize(load_user_message_box(item.content));
 		}
 	}
 
@@ -370,7 +360,7 @@ const add_message = async (conversation_id, role, content) => {
 		content: content,
 	});
 
-	localStorage.setItem(`conversation:${conversation_id}`, JSON.stringify(before_adding)); // update conversation
+	localStorage.setItem(`conversation:${conversation_id}`, JSON.stringify(before_adding));
 };
 
 const load_conversations = async (_limit, _offset, _loader) => {
@@ -532,7 +522,7 @@ function createElement(tag, { classNames, id, innerHTML, textContent } = {}) {
         el.id = id;
     }
     if (innerHTML) {
-        el.innerHTML = DOMPurify.sanitize(innerHTML); // Sanitize the innerHTML using DOMPurify
+        el.innerHTML = DOMPurify.sanitize(innerHTML);
     }
     if (textContent) {
         const preElement = document.createElement("pre");
