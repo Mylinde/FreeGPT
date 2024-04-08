@@ -6969,16 +6969,11 @@
   var scaleFactor = 1;
 
   var pdfEscape = function(value) {
-    return value
-      .replace(/\\/g, "\\\\")
-      .replace(/\(/g, "\\(")
-      .replace(/\)/g, "\\)");
+    return value;
   };
+  
   var pdfUnescape = function(value) {
-    return value
-      .replace(/\\\\/g, "\\")
-      .replace(/\\\(/g, "(")
-      .replace(/\\\)/g, ")");
+    return value;
   };
 
   var f2 = function(number) {
