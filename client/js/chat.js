@@ -486,6 +486,7 @@ const register_settings_localstorage = async () => {
 	);
 };
 
+
 const load_settings_localstorage = async () => {
 	settings_ids = ["switch", "model"];
 	settings_elements = settings_ids.map((id) => document.getElementById(id));
@@ -514,20 +515,21 @@ function clearTextarea(textarea) {
 };
 
 function createElement(tag, { classNames, id, innerHTML, textContent } = {}) {
-	const el = document.createElement(tag);
-	if (classNames) {
-		el.classList.add(...classNames);
-	}
-	if (id) {
-		el.id = id;
-	}
-	if (innerHTML) {
-		el.innerHTML = innerHTML;
-	}
-	if (textContent) {
-		const preElement = document.createElement("pre");
-		preElement.textContent = textContent;
-		el.appendChild(preElement);
-	}
-	return el;
-};
+    const el = document.createElement(tag);
+    if (classNames) {
+        el.classList.add(...classNames);
+    }
+    if (id) {
+        el.id = id;
+    }
+    if (innerHTML) {
+        el.innerHTML = DOMPurify.sanitize(innerHTML); // Sanitize the innerHTML using DOMPurify
+    }
+    if (textContent) {
+        const preElement = document.createElement("pre");
+        preElement.textContent = textContent;
+        el.appendChild(preElement);
+    }
+    return el;
+}
+
