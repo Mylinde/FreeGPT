@@ -77,17 +77,17 @@ const ask_gpt = async (message) => {
 		window.scrollTo(0, 0);
 		await new Promise((r) => setTimeout(r, 500));
 		window.scrollTo(0, 0);
-
-		message_box.innerHTML += `
-            <div class="message">
-                <div class="avatar-container">
-                    ${gpt_image}
-                </div>
-                <div class="content" id="gpt_${window.token}">
-                    <div id="cursor"></div>
-                </div>
-            </div>
-        `;
+		
+		message_box.innerHTML += DOMPurify.sanitize(`
+			<div class="message">
+				<div class="avatar-container">
+					${gpt_image}
+				</div>
+				<div class="content" id="gpt_${window.token}">
+					<div id="cursor"></div>
+				</div>
+			</div>
+		`);
 
 		message_box.scrollTop = message_box.scrollHeight;
 		window.scrollTo(0, 0);
