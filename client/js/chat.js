@@ -194,6 +194,16 @@ const ask_gpt = async (message) => {
 
 		window.scrollTo(0, 0);
 	}
+
+		// Assuming 'message_box' is the DOM element where the content is to be added
+	for (item of conversation.items) {
+		if (is_assistant(item.role)) {
+			message_box.innerHTML += DOMPurify.sanitize(load_gpt_message_box(item.content));
+		} else {
+			message_box.innerHTML += DOMPurify.sanitize(load_user_message_box(item.content));
+		}
+	}
+	
 };
 
 const add_user_message_box = (message) => {
@@ -270,7 +280,6 @@ const new_conversation = async () => {
 const load_conversation = async (conversation_id) => {
 	let conversation = await JSON.parse(localStorage.getItem(`conversation:${conversation_id}`));
 	console.log(conversation, conversation_id);
-
 	model = document.getElementById("model");
 	provider = document.getElementById("provider");
 	let hasModel = Array.from(model.options).some((option) => option.value === conversation.model);
@@ -532,4 +541,3 @@ function createElement(tag, { classNames, id, innerHTML, textContent } = {}) {
     }
     return el;
 }
-
