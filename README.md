@@ -38,6 +38,7 @@ Reader mode in PWA
 - orjson
 - gunicorn
 - redis for caching (local running redis-server required)
+- DOMPurify
 
 ## Known bugs 🚧
 - Mixtral interrupts long answers. By typing "continue" it continues.
