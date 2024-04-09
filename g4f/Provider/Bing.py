@@ -244,11 +244,10 @@ def create_message(
         }]
 
     return format_message(struct)
-
+get_connector
 async def stream_generate(
     prompt: str,
     tone: str,
-    image: ImageType = None,
     context: str = None,
     cookies: dict = None,
     connector: BaseConnector = None,
