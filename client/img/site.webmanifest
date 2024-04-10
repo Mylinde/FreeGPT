@@ -1,7 +1,7 @@
 {
     "name": "FreeGPT",
     "short_name": "FreeGPT",
-    "description": "Experience the power of ChatGPT with a user-friendly interface, enhanced jailbreaks, and completely free.",        
+    "description": "Experience the power of Generative Pretrained Transformers with a user-friendly interface.",        
     "background_color": "#ffffff",
     "theme_color": "#f5f5f5",
     "display": "standalone",
