@@ -6,7 +6,6 @@ from .base_provider   import AsyncProvider, AsyncGeneratorProvider
 from .selenium        import *
 
 from .Aura            import Aura
-from .Bing            import Bing
 from .ChatgptAi       import ChatgptAi
 from .ChatgptNext     import ChatgptNext
 from .Chatxyz         import Chatxyz

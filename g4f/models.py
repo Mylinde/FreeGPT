@@ -11,8 +11,6 @@ from .Provider   import (
     Liaobots,
     Llama2,
     GptGo,
-    Bing,
-    Aura,
     You
 )
 
@@ -38,7 +36,7 @@ class Model:
 default = Model(
     name          = "",
     base_provider = "",
-    best_provider = RetryProvider([Bing, ChatgptAi, GptGo, You])
+    best_provider = RetryProvider([ChatgptAi, GptGo, You])
 )
 
 # GPT-3.5 too, but all providers supports long requests and responses
@@ -58,13 +56,7 @@ gpt_35_turbo = Model(
 gpt_4 = Model(
     name          = 'gpt-4',
     base_provider = 'openai',
-    best_provider = RetryProvider([Liaobots, Bing])
-)
-
-gpt_4_turbo = Model(
-    name          = 'gpt-4-turbo',
-    base_provider = 'openai',
-    best_provider = Bing
+    best_provider = RetryProvider([Liaobots])
 )
 
 llama2_7b = Model(
@@ -211,7 +203,6 @@ class ModelUtils:
         'gpt-4-0613'     : gpt_4_0613,
         'gpt-4-32k'      : gpt_4_32k,
         'gpt-4-32k-0613' : gpt_4_32k_0613,
-        'gpt-4-turbo'    : gpt_4_turbo,
 
         # Llama 2
         'llama2-7b' : llama2_7b,
