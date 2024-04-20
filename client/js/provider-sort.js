@@ -22,8 +22,6 @@ function updateModelOptions() {
 
 if (selectedProvider === 'g4f.Provider.Auto') {
     availableModels.push('gpt-3.5-turbo', 'gpt-4', 'mixtral-8x7b', 'llama2-70b');
-} else if (selectedProvider === 'g4f.Provider.Bing') {
-    availableModels.push('gpt-4');
 } else if (selectedProvider === 'g4f.Provider.Liaobots') {
     availableModels.push('gpt-3.5-turbo', 'gpt-4');
 } else if (selectedProvider === 'g4f.Provider.You') {
