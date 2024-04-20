@@ -18,7 +18,7 @@ from .GptGo           import GptGo
 from .GptTalkRu       import GptTalkRu
 from .Koala           import Koala
 from .Liaobots        import Liaobots
-from .Llama2          import Llama2
+from .Llama           import Llama
 from .PerplexityLabs  import PerplexityLabs
 from .You             import You
 

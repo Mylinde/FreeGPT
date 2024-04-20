@@ -9,7 +9,7 @@ from .Provider   import (
     ChatgptAi,
     DeepInfra,
     Liaobots,
-    Llama2,
+    Llama,
     GptGo,
     You
 )
@@ -62,19 +62,25 @@ gpt_4 = Model(
 llama2_7b = Model(
     name          = "meta-llama/Llama-2-7b-chat-hf",
     base_provider = 'huggingface',
-    best_provider = RetryProvider([Llama2, PerplexityLabs])
+    best_provider = RetryProvider([Llama, PerplexityLabs])
 )
 
 llama2_13b = Model(
     name          = "meta-llama/Llama-2-13b-chat-hf",
     base_provider = 'huggingface',
-    best_provider = RetryProvider([Llama2, DeepInfra])
+    best_provider = RetryProvider([Llama, DeepInfra])
 )
 
 llama2_70b = Model(
     name          = "meta-llama/Llama-2-70b-chat-hf",
     base_provider = "huggingface",
-    best_provider = RetryProvider([PerplexityLabs, DeepInfra, Llama2])
+    best_provider = RetryProvider([PerplexityLabs, DeepInfra, Llama])
+)
+
+llama3_70b_instruct = Model(
+    name          = "meta-llama/Meta-Llama-3-70b-instruct",
+    base_provider = "meta",
+    best_provider = RetryProvider([Llama, PerplexityLabs])
 )
 
 codellama_34b_instruct = Model(
@@ -208,6 +214,7 @@ class ModelUtils:
         'llama2-7b' : llama2_7b,
         'llama2-13b': llama2_13b,
         'llama2-70b': llama2_70b,
+        'llama3-70b-instruct': llama3_70b_instruct,
         'codellama-34b-instruct': codellama_34b_instruct,
         'codellama-70b-instruct': codellama_70b_instruct,
         

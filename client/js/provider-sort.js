@@ -4,6 +4,7 @@ const modelDisplayNameMapping = {
   'gpt-4': 'GPT-4',
   'gpt-3.5-turbo': 'GPT-3.5 Turbo',
   'llama2-70b': 'LLaMA2',
+  'llama3-70b-instruct': 'LLaMA3',
   'mixtral-8x7b': 'Mixtral'
 };
 
@@ -21,15 +22,15 @@ function updateModelOptions() {
   const selectedProvider = providerSelect.value;
 
 if (selectedProvider === 'g4f.Provider.Auto') {
-    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'mixtral-8x7b', 'llama2-70b');
+    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'mixtral-8x7b', 'llama2-70b', 'llama3-70b-instruct');
 } else if (selectedProvider === 'g4f.Provider.Liaobots') {
     availableModels.push('gpt-3.5-turbo', 'gpt-4');
 } else if (selectedProvider === 'g4f.Provider.You') {
     availableModels.push('gpt-3.5-turbo');
-} else if (selectedProvider === 'g4f.Provider.Llama2') {
-    availableModels.push('llama2-70b');
+} else if (selectedProvider === 'g4f.Provider.Llama') {
+    availableModels.push('llama2-70b', 'llama3-70b-instruct');
 } else if (selectedProvider === 'g4f.Provider.PerplexityLab') {
-    availableModels.push('mixtral-8x7b', 'llama2-70b', 'gpt-3.5-turbo');
+    availableModels.push('mixtral-8x7b', 'llama2-70b', 'llama3-70b-instruct', 'gpt-3.5-turbo');
 }
 
   let modelSelect = document.getElementById('model');
@@ -60,7 +61,7 @@ function showAllOptions() {
 function updateProviderOptions() {
 
 const selectedModel = modelSelect.value;
-const hiddenOptions = ['g4f.Provider.Llama2', 'g4f.Provider.PerplexityLab', 'g4f.Provider.Liaobots', 'g4f.Provider.You'];
+const hiddenOptions = ['g4f.Provider.Llama', 'g4f.Provider.PerplexityLab', 'g4f.Provider.Liaobots', 'g4f.Provider.You'];
 
   if (selectedModel === 'gpt-3.5-turbo') {
     showAllOptions();
@@ -70,7 +71,10 @@ const hiddenOptions = ['g4f.Provider.Llama2', 'g4f.Provider.PerplexityLab', 'g4f
     hideOptions(hiddenOptions.filter(option => ['g4f.Provider.Liaobots'].indexOf(option) === -1));
   } else if (selectedModel === 'llama2-70b') {
     showAllOptions();
-    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.Llama2', 'g4f.Provider.PerplexityLab'].indexOf(option) === -1));
+    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.Llama', 'g4f.Provider.PerplexityLab'].indexOf(option) === -1));
+  } else if (selectedModel === 'llama3-70b-instruct') {
+    showAllOptions();
+    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.Llama', 'g4f.Provider.PerplexityLab'].indexOf(option) === -1));
   } else if (selectedModel === 'mixtral-8x7b') {
     showAllOptions();
     hideOptions(hiddenOptions.filter(option => ['g4f.Provider.PerplexityLab'].indexOf(option) === -1));
