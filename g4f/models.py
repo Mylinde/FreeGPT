@@ -80,7 +80,7 @@ llama2_70b = Model(
 llama3_70b_instruct = Model(
     name          = "meta-llama/Meta-Llama-3-70b-instruct",
     base_provider = "meta",
-    best_provider = RetryProvider([Llama, PerplexityLabs])
+    best_provider = RetryProvider([PerplexityLabs, Llama])
 )
 
 codellama_34b_instruct = Model(
@@ -99,12 +99,12 @@ codellama_70b_instruct = Model(
 mixtral_8x7b = Model(
     name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
     base_provider = "PerplexityLabs",
-    best_provider = PerplexityLabs
+    best_provider = RetryProvider([PerplexityLabs, DeepInfra])
 )
 
 mistral_7b = Model(
     name          = "mistralai/Mistral-7B-Instruct-v0.1",
-    base_provider = "PerplexityLabs",
+    base_provider = "huggingface",
     best_provider = PerplexityLabs
 )
 

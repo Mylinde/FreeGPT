@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import random
 import orjson
+from aiohttp import ClientSession, BaseConnector
 
 from ..typing import AsyncResult, Messages
-from ..requests import StreamSession
-from ..raise_for_status import raise_for_status
 from .base_provider import AsyncGeneratorProvider, ProviderModelMixin
+from .helper import get_connector
 
-API_URL = "https://www.perplexity.ai/socket.io/"
-WS_URL = "wss://www.perplexity.ai/socket.io/"
+API_URL = "https://labs-api.perplexity.ai/socket.io/"
+WS_URL = "wss://labs-api.perplexity.ai/socket.io/"
 
 class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
     url = "https://labs.perplexity.ai"    
@@ -32,6 +32,7 @@ class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
         model: str,
         messages: Messages,
         proxy: str = None,
+        connector: BaseConnector = None,
         **kwargs
     ) -> AsyncResult:
         headers = {
@@ -47,22 +48,21 @@ class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
             "Sec-Fetch-Site": "same-site",
             "TE": "trailers",
         }
-        async with StreamSession(headers=headers, proxies={"all": proxy}) as session:
+        async with ClientSession(headers=headers, connector=get_connector(connector, proxy)) as session:
             t = format(random.getrandbits(32), "08x")
             async with session.get(
                 f"{API_URL}?EIO=4&transport=polling&t={t}"
             ) as response:
-                await raise_for_status(response)
                 text = await response.text()
-            assert text.startswith("0")
+
             sid = orjson.loads(text[1:])["sid"]
             post_data = '40{"jwt":"anonymous-ask-user"}'
             async with session.post(
                 f"{API_URL}?EIO=4&transport=polling&t={t}&sid={sid}",
                 data=post_data
             ) as response:
-                await raise_for_status(response)
-                assert await response.text() == "OK"                
+                assert await response.text() == "OK"
+                
             async with session.ws_connect(f"{WS_URL}?EIO=4&transport=websocket&sid={sid}", autoping=False) as ws:
                 await ws.send_str("2probe")
                 assert(await ws.receive_str() == "3probe")

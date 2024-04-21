@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
   updateProviderOptions();
 });
 
-providerSelect.addEventListener('change', updateModelOptions);
-modelSelect.addEventListener('change', updateProviderOptions);
+providerSelect.addEventListener('click', updateModelOptions);
+modelSelect.addEventListener('click', updateProviderOptions);
 
 function updateModelOptions() {
   
@@ -60,6 +60,7 @@ function showAllOptions() {
 
 function updateProviderOptions() {
 
+const selectedProvider = providerSelect.value;
 const selectedModel = modelSelect.value;
 const hiddenOptions = ['g4f.Provider.Llama', 'g4f.Provider.PerplexityLab', 'g4f.Provider.Liaobots', 'g4f.Provider.You'];
 
