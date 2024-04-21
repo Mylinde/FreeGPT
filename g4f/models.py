@@ -56,7 +56,7 @@ gpt_35_turbo = Model(
 gpt_4 = Model(
     name          = 'gpt-4',
     base_provider = 'openai',
-    best_provider = RetryProvider([Liaobots])
+    best_provider = Liaobots
 )
 
 llama2_7b = Model(
