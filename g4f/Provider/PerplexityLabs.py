@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import random
 import orjson
-from aiohttp import ClientSession, BaseConnector
 
+from aiohttp import ClientSession, BaseConnector
 from ..typing import AsyncResult, Messages
 from .base_provider import AsyncGeneratorProvider, ProviderModelMixin
 from .helper import get_connector
@@ -55,7 +55,12 @@ class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
             ) as response:
                 text = await response.text()
 
-            sid = orjson.loads(text[1:])["sid"]
+            try:
+                data = orjson.loads(text[1:])
+                sid = data["sid"]
+            except (KeyError, ValueError):
+                raise RuntimeError(f"Failed to parse response: {text}")
+
             post_data = '40{"jwt":"anonymous-ask-user"}'
             async with session.post(
                 f"{API_URL}?EIO=4&transport=polling&t={t}&sid={sid}",
