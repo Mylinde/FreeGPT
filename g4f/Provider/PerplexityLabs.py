@@ -5,7 +5,7 @@ import json
 
 from ..typing import AsyncResult, Messages
 from ..requests import StreamSession
-from ..raise_for_status import raise_for_status_async as raise_for_status
+from ..raise_for_status import raise_for_status
 from .base_provider import AsyncGeneratorProvider, ProviderModelMixin
 
 API_URL = "https://www.perplexity.ai/socket.io/"
