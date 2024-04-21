@@ -4,7 +4,7 @@ from typing import Union
 from aiohttp import ClientResponse
 from requests import Response as RequestsResponse
 
-from ..errors import ResponseStatusError, RateLimitError
+from .errors import ResponseStatusError, RateLimitError
 from . import Response, StreamResponse
 
 class CloudflareError(ResponseStatusError):
