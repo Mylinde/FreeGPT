@@ -99,7 +99,7 @@ codellama_70b_instruct = Model(
 mixtral_8x7b = Model(
     name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
     base_provider = "huggingface",
-    best_provider = RetryProvider([PerplexityLabs, DeepInfra])
+    best_provider = PerplexityLabs
 )
 
 mistral_7b = Model(
