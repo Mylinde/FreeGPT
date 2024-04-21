@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import random
-import orjson
+import json
 from aiohttp import ClientSession, BaseConnector
 
 from ..typing import AsyncResult, Messages
@@ -55,7 +55,7 @@ class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
             ) as response:
                 text = await response.text()
 
-            sid = orjson.loads(text[1:])["sid"]
+            sid = json.loads(text[1:])["sid"]
             post_data = '40{"jwt":"anonymous-ask-user"}'
             async with session.post(
                 f"{API_URL}?EIO=4&transport=polling&t={t}&sid={sid}",
@@ -75,7 +75,7 @@ class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
                     "model": cls.get_model(model),
                     "messages": messages
                 }
-                await ws.send_str("42" + orjson.dumps(["perplexity_labs", message_data]))
+                await ws.send_str("42" + json.dumps(["perplexity_labs", message_data]))
                 last_message = 0
                 while True:
                     message = await ws.receive_str()
@@ -85,7 +85,7 @@ class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
                         await ws.send_str("3")
                         continue
                     try:
-                        data = orjson.loads(message[2:])[1]
+                        data = json.loads(message[2:])[1]
                         yield data["output"][last_message:]
                         last_message = len(data["output"])
                         if data["final"]:
