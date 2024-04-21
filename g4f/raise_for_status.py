@@ -5,7 +5,7 @@ from aiohttp import ClientResponse
 from requests import Response as RequestsResponse
 
 from .errors import ResponseStatusError, RateLimitError
-from . import Response, StreamResponse
+from requests_curl_cffi import Response, StreamResponse
 
 class CloudflareError(ResponseStatusError):
     ...
