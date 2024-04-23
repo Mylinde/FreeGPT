@@ -5,7 +5,8 @@ const modelDisplayNameMapping = {
   'gpt-3.5-turbo': 'GPT-3.5 Turbo',
   'llama2-70b': 'LLaMA2',
   'llama3-70b-instruct': 'LLaMA3',
-  'mixtral-8x7b': 'Mixtral'
+  'mixtral-8x7b': 'Mixtral',
+  'openchat_3.5': 'openchat'
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -22,7 +23,7 @@ function updateModelOptions() {
   const selectedProvider = providerSelect.value;
 
 if (selectedProvider === 'g4f.Provider.Auto') {
-    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'mixtral-8x7b', 'llama2-70b', 'llama3-70b-instruct');
+    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'mixtral-8x7b', 'llama2-70b', 'llama3-70b-instruct', 'openchat_3.5');
 } else if (selectedProvider === 'g4f.Provider.Liaobots') {
     availableModels.push('gpt-3.5-turbo', 'gpt-4');
 } else if (selectedProvider === 'g4f.Provider.You') {
@@ -78,7 +79,10 @@ const hiddenOptions = ['g4f.Provider.Llama', 'g4f.Provider.PerplexityLab', 'g4f.
     hideOptions(hiddenOptions.filter(option => ['g4f.Provider.Llama', 'g4f.Provider.PerplexityLab'].indexOf(option) === -1));
   } else if (selectedModel === 'mixtral-8x7b') {
     showAllOptions();
-    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.PerplexityLab'].indexOf(option) === -1));
+    hideOptions(hiddenOptions.filter(option => ['Auto'].indexOf(option) === -1));
+  } else if (selectedModel === 'openchat_3.5') {
+    showAllOptions();
+    hideOptions(hiddenOptions.filter(option => ['Auto'].indexOf(option) === -1));
   }
 };
 
