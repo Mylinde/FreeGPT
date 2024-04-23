@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 providerSelect.addEventListener('change', updateModelOptions);
-modelSelect.addEventListener('click', updateProviderOptions);
+modelSelect.addEventListener('change', updateProviderOptions);
 
 function updateModelOptions() {
   
