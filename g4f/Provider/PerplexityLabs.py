@@ -23,7 +23,8 @@ class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
         "mistralai/Mixtral-8x7B-Instruct-v0.1": "mixtral-8x7b-instruct",
         "codellama/CodeLlama-70b-Instruct-hf": "codellama-70b-instruct",
         "llava-v1.5-7b": "llava-v1.5-7b-wrapper",
-        'databricks/dbrx-instruct': "dbrx-instruct"
+        'databricks/dbrx-instruct': "dbrx-instruct",
+        "meta-llama/Meta-Llama-3-70b-instruct": "llama-3-70b-instruct", 
     }
 
     @classmethod
