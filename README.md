@@ -2,7 +2,7 @@
 
 Experience the power of **G**enerative **P**retrained **T**ransformers with a user-friendly interface.
 
-## GPT 3.5/4, LLaMA, Mixtral, openchat
+## GPT 3.5/4, LLaMA 2/3, Mixtral, openchat
 
 <strong>NO API KEY REQUIERED</strong>
 
