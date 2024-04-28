@@ -10,7 +10,6 @@ const modelDisplayNameMapping = {
 };
 
 const providerDisplayNameMapping = {
-  'g4f.Provider.Auto': 'Auto',
   'g4f.Provider.Liaobots': 'Liaobots',
   'g4f.Provider.You': 'You',
   'g4f.Provider.DeepInfra': 'DeepInfra',
@@ -57,13 +56,13 @@ function updateProviderOptions() {
   const selectedModel = modelSelect.value;
 
   if (selectedModel === 'gpt-3.5-turbo') {
-    availableProviders.push('g4f.Provider.Auto', 'g4f.Provider.Liaobots', 'g4f.Provider.You', 'g4f.Provider.PerplexityLab', 'g4f.Provider.DeepInfra');
+    availableProviders.push('g4f.Provider.Liaobots', 'g4f.Provider.You', 'g4f.Provider.PerplexityLab', 'g4f.Provider.DeepInfra');
   } else if (selectedModel === 'gpt-4') {
-    availableProviders.push('g4f.Provider.Auto', 'g4f.Provider.Liaobots');
+    availableProviders.push('g4f.Provider.Liaobots');
   } else if (selectedModel === 'llama2-70b' || selectedModel === 'llama3-70b-instruct' || selectedModel === 'mixtral-8x7b') {
-    availableProviders.push('g4f.Provider.Auto', 'g4f.Provider.PerplexityLab');
+    availableProviders.push('g4f.Provider.PerplexityLab');
   } else if (selectedModel === 'openchat_3.5') {
-    availableProviders.push('g4f.Provider.Auto', 'g4f.Provider.DeepInfra');
+    availableProviders.push('g4f.Provider.DeepInfra');
   }
 
   let providerSelect = document.getElementById('provider');
