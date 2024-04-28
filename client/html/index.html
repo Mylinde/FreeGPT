@@ -60,23 +60,23 @@
 								<span class="popuptext" id="llama2">{{_('llama2')}}</span>
 								<span class="popuptext" id="mixtral">{{_('mixtral')}}</span>
 							</div>
-								<div class="field">
-									<span>{{_('Provider')}}</span>
-										<select class="dropdown" name="provider" id="provider">
-											<option value="g4f.Provider.Auto" selected>Auto</option>																			
+							<div class="field">
+								<span>{{_('Provider')}}</span>
+									<select class="dropdown" name="provider" id="provider">
+										<option value="g4f.Provider.Auto" selected>Auto</option>																			
 									</select>
-								</div>
-									<div class="field">
-									<span>{{_('Model')}}</span>																
-									<span class="material-icons-round model-info" onmouseenter="showModelInfo()" onmouseleave="showModelInfo()">info</span>																								  
-									<select class="dropdown" name="model" id="model"></select>								
-								</div>
-								<div class="field checkbox">
-									<span>{{_('Web Access')}}</span>									
-									<input type="checkbox" id="switch" />
-									<label for="switch"></label>
-								</div>	
 							</div>
+							<div class="field">
+								<span>{{_('Model')}}</span>																
+								<span class="material-icons-round model-info" onmouseenter="showModelInfo()" onmouseleave="showModelInfo()">info</span>																								  
+								<select class="dropdown" name="model" id="model"></select>								
+							</div>
+							<div class="field checkbox">
+								<span>{{_('Web Access')}}</span>									
+								<input type="checkbox" id="switch" />
+								<label for="switch"></label>
+							</div>	
+						</div>
 					<a class="info" href="https://github.com/Mylinde/freegpt" target="_blank">
 						<span id="version">FreeGPT {{_('Version')}} 1.0 </span>
 					</a>
@@ -101,10 +101,10 @@
 							style="white-space: pre-wrap"></textarea>
 						<div id="send-button">
 							<span class="material-icons-round">send</span>
-							</div>
+						</div>
 					</div>				
+				</div>
 			</div>
-		</div>
 		<div class="menu-button">
 			<span class="material-icons-round">menu</span>
 		</div>		

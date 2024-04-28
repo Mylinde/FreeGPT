@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 providerSelect.addEventListener('change', updateModelOptions);
-modelSelect.addEventListener('change', updateProviderOptions);
+//modelSelect.addEventListener('change', updateProviderOptions);
 
 function updateModelOptions() {
   let availableModels = [];
