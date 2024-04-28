@@ -9,13 +9,6 @@ const modelDisplayNameMapping = {
   'openchat_3.5': 'openchat'
 };
 
-const providerDisplayNameMapping = {
-  'g4f.Provider.Liaobots': 'Liaobots',
-  'g4f.Provider.You': 'You',
-  'g4f.Provider.DeepInfra': 'DeepInfra',
-  'g4f.Provider.PerplexityLab': 'Perplexity Labs'
-};
-
 document.addEventListener('DOMContentLoaded', (event) => {
   updateModelOptions();
   updateProviderOptions();
@@ -25,62 +18,80 @@ providerSelect.addEventListener('change', updateModelOptions);
 modelSelect.addEventListener('change', updateProviderOptions);
 
 function updateModelOptions() {
+  
   let availableModels = [];
   const selectedProvider = providerSelect.value;
 
-  if (selectedProvider === 'g4f.Provider.Auto') {
+if (selectedProvider === 'g4f.Provider.Auto') {
     availableModels.push('gpt-3.5-turbo', 'gpt-4', 'mixtral-8x7b', 'llama2-70b', 'llama3-70b-instruct', 'openchat_3.5');
-  } else if (selectedProvider === 'g4f.Provider.Liaobots') {
+} else if (selectedProvider === 'g4f.Provider.Liaobots') {
     availableModels.push('gpt-3.5-turbo', 'gpt-4');
-  } else if (selectedProvider === 'g4f.Provider.You') {
+} else if (selectedProvider === 'g4f.Provider.You') {
     availableModels.push('gpt-3.5-turbo');
-  } else if (selectedProvider === 'g4f.Provider.DeepInfra') {
+} else if (selectedProvider === 'g4f.Provider.DeepInfra') {
     availableModels.push('openchat_3.5');
-  } else if (selectedProvider === 'g4f.Provider.PerplexityLab') {
+} else if (selectedProvider === 'g4f.Provider.PerplexityLab') {
     availableModels.push('mixtral-8x7b', 'llama2-70b', 'llama3-70b-instruct', 'gpt-3.5-turbo');
-  }
+}
 
   let modelSelect = document.getElementById('model');
   removeAllChildNodes(modelSelect);
-
+ 
   availableModels.forEach(model => {
-    let option = document.createElement('option');
-    option.value = model;
-    option.textContent = modelDisplayNameMapping[model] || model;
-    modelSelect.appendChild(option);
-  });
-};
+      let option = document.createElement('option');
+      option.value = model;
+      option.textContent = modelDisplayNameMapping[model] || model;
+      modelSelect.appendChild(option);
+  }); 
 
-function updateProviderOptions() {
-  let availableProviders = [];
-  const selectedModel = modelSelect.value;
-
-  if (selectedModel === 'gpt-3.5-turbo') {
-    availableProviders.push('g4f.Provider.PerplexityLab', 'g4f.Provider.Liaobots', 'g4f.Provider.You', 'g4f.Provider.DeepInfra');
-  } else if (selectedModel === 'gpt-4') {
-    availableProviders.push('g4f.Provider.Liaobots');
-  } else if (selectedModel === 'llama2-70b' || selectedModel === 'llama3-70b-instruct' || selectedModel === 'mixtral-8x7b') {
-    availableProviders.push('g4f.Provider.PerplexityLab');
-  } else if (selectedModel === 'openchat_3.5') {
-    availableProviders.push('g4f.Provider.DeepInfra');
-  }
-
-  let providerSelect = document.getElementById('provider');
-  removeAllChildNodes(providerSelect);
-
-  availableProviders.forEach(provider => {
-    let option = document.createElement('option');
-    option.value = provider;
-    option.textContent = providerDisplayNameMapping[provider] || provider;
-    providerSelect.appendChild(option);
-  });
 };
 
 function removeAllChildNodes(parent) {
   while (parent.options.length > 0) {
-    parent.remove(0);
+      parent.remove(0);
+  }
+
+};
+
+function showAllOptions() {
+  Array.from(providerSelect.options).forEach(option => {
+    option.style.display = "block";
+  });
+};
+
+function updateProviderOptions() {
+
+const selectedProvider = providerSelect.value;
+const selectedModel = modelSelect.value;
+const hiddenOptions = ['g4f.Provider.Llama', 'g4f.Provider.DeepInfra', 'g4f.Provider.PerplexityLab', 'g4f.Provider.Liaobots', 'g4f.Provider.You'];
+
+  if (selectedModel === 'gpt-3.5-turbo') {
+    showAllOptions();
+    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.You', 'g4f.Provider.Liaobots', 'g4f.Provider.PerplexityLab'].indexOf(option) === -1));
+  } else if (selectedModel === 'gpt-4') {
+    showAllOptions();
+    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.Liaobots'].indexOf(option) === -1));
+  } else if (selectedModel === 'llama2-70b') {
+    showAllOptions();
+    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.PerplexityLab'].indexOf(option) === -1));
+  } else if (selectedModel === 'llama3-70b-instruct') {
+    showAllOptions();
+    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.PerplexityLab'].indexOf(option) === -1));
+  } else if (selectedModel === 'mixtral-8x7b') {
+    showAllOptions();
+    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.PerplexityLab'].indexOf(option) === -1));
+  } else if (selectedModel === 'openchat_3.5') {
+    showAllOptions();
+    hideOptions(hiddenOptions.filter(option => ['g4f.Provider.DeepInfra'].indexOf(option) === -1));
   }
 };
+
+function hideOptions(optionsToHide) {
+  optionsToHide.forEach(option => {
+    const optionElement = providerSelect.querySelector(`option[value="${option}"]`);
+    optionElement.style.display = "none";
+  }
+)};
 
 function showModelInfo() {
 
