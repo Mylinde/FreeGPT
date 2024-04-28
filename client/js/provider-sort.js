@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   updateProviderOptions();
 });
 
-providerSelect.addEventListener('click', updateModelOptions);
+providerSelect.addEventListener('change', updateModelOptions);
 modelSelect.addEventListener('change', updateProviderOptions);
 
 function updateModelOptions() {
