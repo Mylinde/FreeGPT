@@ -56,7 +56,7 @@ function updateProviderOptions() {
   const selectedModel = modelSelect.value;
 
   if (selectedModel === 'gpt-3.5-turbo') {
-    availableProviders.push('g4f.Provider.Liaobots', 'g4f.Provider.You', 'g4f.Provider.PerplexityLab', 'g4f.Provider.DeepInfra');
+    availableProviders.push('g4f.Provider.PerplexityLab', 'g4f.Provider.Liaobots', 'g4f.Provider.You', 'g4f.Provider.DeepInfra');
   } else if (selectedModel === 'gpt-4') {
     availableProviders.push('g4f.Provider.Liaobots');
   } else if (selectedModel === 'llama2-70b' || selectedModel === 'llama3-70b-instruct' || selectedModel === 'mixtral-8x7b') {
