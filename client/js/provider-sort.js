@@ -14,7 +14,7 @@ const providerDisplayNameMapping = {
   'g4f.Provider.Liaobots': 'Liaobots',
   'g4f.Provider.You': 'You',
   'g4f.Provider.DeepInfra': 'DeepInfra',
-  'g4f.Provider.PerplexityLab': 'Perplexity Lab'
+  'g4f.Provider.PerplexityLab': 'Perplexity Labs'
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   updateProviderOptions();
 });
 
-providerSelect.addEventListener('click', updateModelOptions);
+providerSelect.addEventListener('change', updateModelOptions);
 modelSelect.addEventListener('change', updateProviderOptions);
 
 function updateModelOptions() {
