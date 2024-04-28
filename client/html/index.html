@@ -61,20 +61,15 @@
 								<span class="popuptext" id="mixtral">{{_('mixtral')}}</span>
 							</div>
 								<div class="field">
+									<span>{{_('Provider')}}</span>
+										<select class="dropdown" name="provider" id="provider">
+											<option value="g4f.Provider.Auto" selected>Auto</option>																		
+									</select>
+								</div>
+								<div class="field">
 									<span>{{_('Model')}}</span>																
 									<span class="material-icons-round model-info" onmouseenter="showModelInfo()" onmouseleave="showModelInfo()">info</span>																								  
 									<select class="dropdown" name="model" id="model"></select>
-								</div>
-								<div class="field">
-									<span>{{_('Provider')}}</span>
-										<select class="dropdown" name="provider" id="provider">
-											<option value="g4f.Provider.Auto" selected>Auto</option>
-											<option value="g4f.Provider.You">You</option>
-											<option value="g4f.Provider.Llama">Llama</option>
-											<option value="g4f.Provider.DeepInfra">DeepInfra</option>
-											<option value="g4f.Provider.Liaobots">Liaobots</option>
-											<option value="g4f.Provider.PerplexityLab">Perplexity Labs</option>																				
-									</select>
 								</div>
 								<div class="field checkbox">
 									<span>{{_('Web Access')}}</span>									
