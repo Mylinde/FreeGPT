@@ -74,7 +74,7 @@ llama2_13b = Model(
 )
 
 llama2_70b = Model(
-    name          = "meta/llama-2-70b-chat",
+    name          = "meta/llama-2-70b",
     base_provider = "meta",
     best_provider = RetryProvider([Llama, DeepInfra])
 )
