@@ -80,13 +80,13 @@ llama2_70b = Model(
 )
 
 llama3_8b_instruct = Model(
-    name          = "meta-llama/Meta-Llama-3-8B-Instruct",
+    name          = "meta/meta-llama-3-8b-instruct",
     base_provider = "meta",
     best_provider = RetryProvider([Llama, DeepInfra])
 )
 
 llama3_70b_instruct = Model(
-    name          = "meta-llama/meta-llama-3-70B-Instruct",
+    name          = "meta/meta-llama-3-70b-instruct",
     base_provider = "meta",
     best_provider = RetryProvider([Llama, DeepInfra])
 )
