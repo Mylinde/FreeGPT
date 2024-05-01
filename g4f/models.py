@@ -86,7 +86,7 @@ llama3_8b_instruct = Model(
 )
 
 llama3_70b_instruct = Model(
-    name          = "meta-llama/Meta-Llama-3-70B-Instruct",
+    name          = "meta-llama/meta-llama-3-70B-Instruct",
     base_provider = "meta",
     best_provider = RetryProvider([Llama, DeepInfra])
 )
