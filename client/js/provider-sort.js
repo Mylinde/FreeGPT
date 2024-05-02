@@ -4,7 +4,7 @@ const modelDisplayNameMapping = {
   'gpt-4': 'GPT-4',
   'gpt-3.5-turbo': 'GPT-3.5 Turbo',
   'llama2-70b': 'LLaMA2',
-  'llama3-70b-instruct': 'LLaMA3',
+  'llama3-70b-instruct': 'LLaMA3'
 };
 
 const providerDisplayNameMapping = {
@@ -12,6 +12,7 @@ const providerDisplayNameMapping = {
   'g4f.Provider.Liaobots': 'Liaobots',
   'g4f.Provider.You': 'You',
   'g4f.Provider.Llama': 'Llama'
+
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -27,7 +28,7 @@ function updateModelOptions() {
   const selectedProvider = providerSelect.value;
 
   if (selectedProvider === 'g4f.Provider.Auto') {
-    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'llama2-70b', 'llama3-70b-instruct');
+    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'llama2-70b', 'llama3-70b-instruct', 'mixtral-8x7b');
   } else if (selectedProvider === 'g4f.Provider.Liaobots') {
     availableModels.push('gpt-3.5-turbo', 'gpt-4');
   } else if (selectedProvider === 'g4f.Provider.You') {

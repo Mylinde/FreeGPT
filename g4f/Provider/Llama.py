@@ -34,9 +34,9 @@ class Llama(AsyncGeneratorProvider, ProviderModelMixin):
         messages: Messages,
         proxy: str = None,
         system_message: str = "You are a helpful assistant.",
-        temperature: float = 0.75,
-        top_p: float = 0.9,
-        max_tokens: int = 8000,
+        temperature: float = 0.1,
+        top_p: float = 0.2,
+        max_tokens: int = 512,
         **kwargs
     ) -> AsyncResult:
         headers = {

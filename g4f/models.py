@@ -76,7 +76,7 @@ llama2_13b = Model(
 llama2_70b = Model(
     name          = "meta/llama-2-70b-chat",
     base_provider = "meta",
-    best_provider = RetryProvider([Llama, DeepInfra])
+    best_provider = Llama
 )
 
 llama3_8b_instruct = Model(
@@ -99,9 +99,9 @@ codellama_70b_instruct = Model(
 
 # Mistral
 mixtral_8x7b = Model(
-    name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    name          = "mistralai/mixtral-8x7B-instruct-v0.1",
     base_provider = "huggingface",
-    best_provider = RetryProvider([DeepInfra, PerplexityLabs])
+    best_provider = PerplexityLabs
 )
 
 mistral_7b = Model(
