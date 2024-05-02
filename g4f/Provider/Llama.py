@@ -3,6 +3,7 @@ from __future__ import annotations
 from aiohttp import ClientSession
 
 from ..typing import AsyncResult, Messages
+from ..raise_for_status import raise_for_status
 from .base_provider import AsyncGeneratorProvider, ProviderModelMixin
 
 
@@ -10,7 +11,7 @@ class Llama(AsyncGeneratorProvider, ProviderModelMixin):
     url = "https://www.llama2.ai"
     working = True
     supports_message_history = True
-    default_model = "meta/llama-2-70b-chat"
+    default_model = "meta/meta-llama-3-70b-instruct"
     models = [
         "meta/llama-2-7b-chat",
         "meta/llama-2-13b-chat",
@@ -19,8 +20,8 @@ class Llama(AsyncGeneratorProvider, ProviderModelMixin):
         "meta/meta-llama-3-70b-instruct",
     ]
     model_aliases = {
-        "meta-llama/Meta-Llama-3-8b-instruct": "meta/meta-llama-3-8b-instruct",
-        "meta-llama/Meta-Llama-3-70b-instruct": "meta/meta-llama-3-70b-instruct",
+        "meta-llama/Meta-Llama-3-8B-Instruct": "meta/meta-llama-3-8b-instruct",
+        "meta-llama/Meta-Llama-3-70B-Instruct": "meta/meta-llama-3-70b-instruct",
         "meta-llama/Llama-2-7b-chat-hf": "meta/llama-2-7b-chat",
         "meta-llama/Llama-2-13b-chat-hf": "meta/llama-2-13b-chat",
         "meta-llama/Llama-2-70b-chat-hf": "meta/llama-2-70b-chat",
@@ -71,8 +72,10 @@ class Llama(AsyncGeneratorProvider, ProviderModelMixin):
             }
             started = False
             async with session.post(f"{cls.url}/api", json=data, proxy=proxy) as response:
-                response.raise_for_status()
+                await raise_for_status(response)
                 async for chunk in response.content.iter_any():
+                    if not chunk:
+                        continue
                     if not started:
                         chunk = chunk.lstrip()
                         started = True
