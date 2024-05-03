@@ -8,7 +8,6 @@ from .Provider import (
     ChatgptNext,
     DeepInfra,
     GeminiProChat,
-    Koala,
     Liaobots,
     Llama,
     PerplexityLabs,
@@ -52,7 +51,7 @@ gpt_35_long = Model(
 gpt_35_turbo = Model(
     name          = 'gpt-3.5-turbo',
     base_provider = 'openai',
-    best_provider = RetryProvider([You, ChatgptNext, Koala])
+    best_provider = You
 )
 
 gpt_4 = Model(
