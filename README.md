@@ -41,8 +41,7 @@ Reader mode in PWA
 - DOMPurify
 
 ## Known bugs 🚧
-- Mixtral interrupts long answers. By typing "continue" it continues.
-https://github.com/xtekky/gpt4free/issues/1666
+- Very limited functionality, almost every provider is cloudflare protected.
 
 ## Table of Contents  
 - [Getting Started](#getting-started-white_check_mark)  
