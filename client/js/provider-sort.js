@@ -96,10 +96,5 @@ const mixtral = document.getElementById("mixtral");
     gpt4.classList.remove("show");
     mixtral.classList.remove("show");
     llama.classList.toggle("show");   
-  } if (selectedModel === 'llama3-70b-instruct') {  
-    gpt3.classList.remove("show");
-    gpt4.classList.remove("show");
-    llama.classList.remove("show");
-    mixtral.classList.toggle("show");  
   }
 };

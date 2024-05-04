@@ -5,6 +5,7 @@ from aiohttp import ClientSession
 from ..typing import AsyncResult, Messages
 from ..raise_for_status import raise_for_status
 from .base_provider import AsyncGeneratorProvider, ProviderModelMixin
+from ..cloudflare_scraper import CloudflareScraper
 
 
 class Llama(AsyncGeneratorProvider, ProviderModelMixin):
@@ -55,7 +56,7 @@ class Llama(AsyncGeneratorProvider, ProviderModelMixin):
             "Cache-Control": "no-cache",
             "TE": "trailers"
         }
-        async with ClientSession(headers=headers) as session:
+        async with CloudflareScraper(headers=headers) as session:
             system_messages = [message["content"] for message in messages if message["role"] == "system"]
             if system_messages:
                 system_message = "\n".join(system_messages)
