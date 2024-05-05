@@ -3,13 +3,14 @@ const modelSelect = document.getElementById('model');
 const modelDisplayNameMapping = {
   'gpt-4': 'GPT-4',
   'gpt-3.5-turbo': 'GPT-3.5 Turbo',
-  'llama3-70b-instruct': 'LLaMA3'
+  'llama3-8b': 'LLaMA3',
+  'mixtral-8x7b': 'Mixtral'
 };
 
 const providerDisplayNameMapping = {
   'g4f.Provider.Auto': 'Auto',
   'g4f.Provider.Liaobots': 'Liaobots',
-  'g4f.Provider.Llama': 'Llama'
+  'g4f.Provider.HuggingFace': 'HuggingFace'
 
 };
 
@@ -18,19 +19,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
   updateProviderOptions();
 });
 
-providerSelect.addEventListener('change', updateModelOptions);
-//modelSelect.addEventListener('change', updateProviderOptions);
+//providerSelect.addEventListener('change', updateModelOptions);
+modelSelect.addEventListener('change', updateProviderOptions);
 
 function updateModelOptions() {
   let availableModels = [];
   const selectedProvider = providerSelect.value;
 
   if (selectedProvider === 'g4f.Provider.Auto') {
-    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'llama3-70b-instruct');
+    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'llama3-8b', 'mixtral-8x7b');
   } else if (selectedProvider === 'g4f.Provider.Liaobots') {
     availableModels.push('gpt-3.5-turbo', 'gpt-4');
-  } else if (selectedProvider === 'g4f.Provider.Llama') {
-    availableModels.push('llama3-70b-instruct');
+  } else if (selectedProvider === 'g4f.Provider.HuggingFace') {
+    availableModels.push('mixtral-8x7b', 'llama3-8b');
   }
 
   let modelSelect = document.getElementById('model');
@@ -49,11 +50,13 @@ function updateProviderOptions() {
   const selectedModel = modelSelect.value;
 
   if (selectedModel === 'gpt-3.5-turbo') {
-    availableProviders.push('g4f.Provider.Auto', 'g4f.Provider.Llama', 'g4f.Provider.Liaobots');
+    availableProviders.push('g4f.Provider.Auto', 'g4f.Provider.Liaobots', 'g4f.Provider.HuggingFace');
   } else if (selectedModel === 'gpt-4') {
     availableProviders.push('g4f.Provider.Liaobots');
-  } else if (selectedModel === 'llama3-70b-instruct') {
-    availableProviders.push('g4f.Provider.Llama');
+  } else if (selectedModel === 'llama3-8b') {
+    availableProviders.push('g4f.Provider.HuggingFace');
+  } else if (selectedModel === 'mixtral-8x7b') {
+    availableProviders.push('g4f.Provider.HuggingFace');
   }
 
   let providerSelect = document.getElementById('provider');
@@ -91,10 +94,15 @@ const mixtral = document.getElementById("mixtral");
     llama.classList.remove("show"); 
     mixtral.classList.remove("show");
     gpt4.classList.toggle("show");
-  } if (selectedModel === 'llama3-70b-instruct') {  
+  } if (selectedModel === 'llama3-8b') {  
     gpt3.classList.remove("show");
     gpt4.classList.remove("show");
     mixtral.classList.remove("show");
     llama.classList.toggle("show");   
+  } if (selectedModel === 'mixtral-8x7b') {  
+    gpt3.classList.remove("show");
+    gpt4.classList.remove("show");
+    mixtral.classList.toogle("show");
+    llama.classList.remove("show");   
   }
 };

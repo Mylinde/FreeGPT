@@ -3,24 +3,8 @@ from __future__ import annotations
 from ..base_provider  import BaseProvider, ProviderType
 from .retry_provider  import RetryProvider
 from .base_provider   import AsyncProvider, AsyncGeneratorProvider
-from .selenium        import *
-
-from .Aura            import Aura
-from .ChatgptAi       import ChatgptAi
-from .ChatgptNext     import ChatgptNext
-from .Chatxyz         import Chatxyz
-from .DeepInfra       import DeepInfra
-from .FreeChatgpt     import FreeChatgpt
-from .GeminiPro       import GeminiPro
-from .GeminiProChat   import GeminiProChat
-from .GPTalk          import GPTalk
-from .GptGo           import GptGo
-from .GptTalkRu       import GptTalkRu
-from .Koala           import Koala
 from .Liaobots        import Liaobots
-from .Llama           import Llama
-from .PerplexityLabs  import PerplexityLabs
-from .You             import You
+from .HuggingFace     import HuggingFace
 
 import sys
 

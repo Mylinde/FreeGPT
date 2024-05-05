@@ -2,9 +2,9 @@
 
 Experience the power of **G**enerative **P**retrained **T**ransformers with a user-friendly interface.
 
-## GPT 3.5, GPT 4, LLaMA 3
+## GPT 3.5, GPT 4, LLaMA 3, Mixtral
 
-<strong>NO API KEY REQUIERED</strong>
+<strong>for using LLaMA 3 and Mixtral is a Hugging Face APIKEY required</strong>
 
   
 ## UI
