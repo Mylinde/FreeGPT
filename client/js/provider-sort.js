@@ -4,7 +4,8 @@ const modelDisplayNameMapping = {
   'gpt-4': 'GPT-4',
   'gpt-3.5-turbo': 'GPT-3.5 Turbo',
   'llama3-8b': 'LLaMA3',
-  'mixtral-8x7b': 'Mixtral'
+  'mixtral-8x7b': 'Mixtral',
+  'phi-3-mini': 'Phi-3-mini'
 };
 
 const providerDisplayNameMapping = {
@@ -27,11 +28,11 @@ function updateModelOptions() {
   const selectedProvider = providerSelect.value;
 
   if (selectedProvider === 'g4f.Provider.Auto') {
-    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'llama3-8b', 'mixtral-8x7b');
+    availableModels.push('gpt-3.5-turbo', 'gpt-4', 'llama3-8b', 'mixtral-8x7b', 'phi-3-mini');
   } else if (selectedProvider === 'g4f.Provider.Liaobots') {
     availableModels.push('gpt-3.5-turbo', 'gpt-4');
   } else if (selectedProvider === 'g4f.Provider.HuggingFace') {
-    availableModels.push('mixtral-8x7b', 'llama3-8b');
+    availableModels.push('mixtral-8x7b', 'llama3-8b', 'phi-3-mini');
   }
 
   let modelSelect = document.getElementById('model');
@@ -56,6 +57,8 @@ function updateProviderOptions() {
   } else if (selectedModel === 'llama3-8b') {
     availableProviders.push('g4f.Provider.HuggingFace');
   } else if (selectedModel === 'mixtral-8x7b') {
+    availableProviders.push('g4f.Provider.HuggingFace');
+  } else if (selectedModel === 'phi-3-mini') {
     availableProviders.push('g4f.Provider.HuggingFace');
   }
 

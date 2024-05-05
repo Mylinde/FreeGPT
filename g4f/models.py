@@ -140,6 +140,13 @@ openchat_35 = Model(
     best_provider = ""
 )
 
+phi_3_mini = Model(
+    name          = "microsoft/Phi-3-mini-4k-instruct",
+    base_provider = "huggingface",
+    best_provider = HuggingFace
+)
+
+
 # Bard
 claude_3_opus = Model(
     name          = 'claude-3-opus',
@@ -253,6 +260,7 @@ class ModelUtils:
         'lzlv-70b': lzlv_70b,
         'airoboros-70b': airoboros_70b,
         'openchat_3.5': openchat_35,
+        'phi-3-mini': phi_3_mini,
        
     }
 
