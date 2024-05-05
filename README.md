@@ -41,7 +41,7 @@ Reader mode in PWA
 - DOMPurify
 
 ## Known bugs 🚧
-- Very limited functionality, almost every provider is cloudflare protected.
+
 
 ## Table of Contents  
 - [Getting Started](#getting-started-white_check_mark)  
