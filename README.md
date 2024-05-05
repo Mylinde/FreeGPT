@@ -4,7 +4,7 @@ Experience the power of **G**enerative **P**retrained **T**ransformers with a us
 
 ## GPT 3.5, GPT 4, LLaMA 3, Mixtral, Phi-3-mini
 
-<strong>for using LLaMA 3, Mixtral an Phi-3-mini is a Hugging Face API key required</strong>
+<strong>for using LLaMA 3, Mixtral and Phi-3-mini is a Hugging Face API key required</strong>
 
   
 ## UI
