@@ -260,8 +260,7 @@ class ModelUtils:
         'lzlv-70b': lzlv_70b,
         'airoboros-70b': airoboros_70b,
         'openchat_3.5': openchat_35,
-        'phi-3-mini': phi_3_mini,
-       
+        'phi-3-mini': phi_3_mini,       
     }
 
 _all_models = list(ModelUtils.convert.keys())

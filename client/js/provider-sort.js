@@ -12,7 +12,6 @@ const providerDisplayNameMapping = {
   'g4f.Provider.Auto': 'Auto',
   'g4f.Provider.Liaobots': 'Liaobots',
   'g4f.Provider.HuggingFace': 'HuggingFace'
-
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
