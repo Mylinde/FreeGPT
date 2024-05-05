@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import json
+import orjson
 from aiohttp import ClientSession, BaseConnector
 
 from ..typing import AsyncResult, Messages
@@ -56,7 +56,7 @@ class HuggingFace(AsyncGeneratorProvider, ProviderModelMixin):
                     first = True
                     async for line in response.content:
                         if line.startswith(b"data:"):
-                            data = json.loads(line[5:])
+                            data = orjson.loads(line[5:])
                             if not data["token"]["special"]:
                                 chunk = data["token"]["text"]
                                 if first:
