@@ -76,3 +76,11 @@ msgstr "Speziell für mehrsprachige Verarbeitung und Generierung konzipiert, gee
 #:
 msgid "mixtral"
 msgstr "Optimiert für vielseitige textuelle Anwendungen, einschließlich kontextbezogener Sprachverarbeitung, generative Aufgaben, maschinelles Übersetzen und Textverständnis in verschiedensten Domänen und Sprachen."
+
+#:
+msgid "phi"
+msgstr "Das Modell ist für kommerzielle und wissenschaftliche Zwecke in englischer Sprache vorgesehen. Das Modell bietet Verwendungsmöglichkeiten für Anwendungen, die Folgendes erfordern: Umgebungen mit eingeschränktem Speicher/Rechenleistung, Latenzgebundene Szenarien, Starkes Denken (insbesondere Code, Mathematik und Logik). Das Modell soll die Forschung an Sprach- und multimodalen Modellen beschleunigen und als Baustein für generative KI-gestützte Funktionen dienen."
+
+#:
+msgid "gemma"
+msgstr "Gemma ist eine Familie leichter, hochmoderner offener Modelle von Google, die auf der gleichen Forschung und Technologie basieren wie die Gemini-Modelle. Es handelt sich um Text-zu-Text-Modelle für große Sprachen, die nur über einen Decoder verfügen und auf Englisch mit offenen Gewichten, vorab trainierten Varianten und auf Anweisungen abgestimmten Varianten verfügbar sind. Gemma-Modelle eignen sich gut für eine Vielzahl von Textgenerierungsaufgaben, einschließlich der Beantwortung von Fragen, der Zusammenfassung und der Begründung. Ihre relativ geringe Größe ermöglicht den Einsatz in Umgebungen mit begrenzten Ressourcen wie einem Laptop, Desktop oder Ihrer eigenen Cloud-Infrastruktur, was den Zugang zu modernsten KI-Modellen demokratisiert und dazu beiträgt, Innovationen für alle zu fördern."

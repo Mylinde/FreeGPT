@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import json
+import orjson
 from aiohttp import ClientSession, BaseConnector
 
 from ..typing import AsyncResult, Messages
@@ -15,8 +15,12 @@ class HuggingFace(AsyncGeneratorProvider, ProviderModelMixin):
     supports_message_history = True
     models = [
         "mistralai/Mixtral-8x7B-Instruct-v0.1",
-        "mistralai/Mistral-7B-Instruct-v0.2"
+        "mistralai/Mistral-7B-Instruct-v0.2",
+        'microsoft/Phi-3-mini-4k-instruct',
+        'meta-llama/Meta-Llama-3-70B-Instruct',
+        'google/gemma-1.1-7b-it'
     ]
+    
     default_model = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 
     @classmethod
@@ -56,7 +60,7 @@ class HuggingFace(AsyncGeneratorProvider, ProviderModelMixin):
                     first = True
                     async for line in response.content:
                         if line.startswith(b"data:"):
-                            data = json.loads(line[5:])
+                            data = orjson.loads(line[5:])
                             if not data["token"]["special"]:
                                 chunk = data["token"]["text"]
                                 if first:

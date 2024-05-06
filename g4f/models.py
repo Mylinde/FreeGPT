@@ -146,6 +146,12 @@ phi_3_mini = Model(
     best_provider = HuggingFace
 )
 
+gemma_1_1_7b_it = Model(
+    name          = "google/gemma-1.1-7b-it",
+    base_provider = "huggingface",
+    best_provider = HuggingFace
+)
+
 
 # Bard
 claude_3_opus = Model(
@@ -248,8 +254,9 @@ class ModelUtils:
         'mixtral-8x22b': mixtral_8x22b,
         'dolphin-mixtral-8x7b': dolphin_mixtral_8x7b,
         
-        # google gemini
+        # google
         'gemini-pro': gemini_pro,
+        'gemma-1.1-7b-it' : gemma_1_1_7b_it,
         
         # anthropic
         'claude-3-opus': claude_3_opus,
