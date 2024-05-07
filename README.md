@@ -2,9 +2,9 @@
 
 Experience the power of **G**enerative **P**retrained **T**ransformers with a user-friendly interface.
 
-## GPT 3.5, GPT 4, LLaMA 3, Mixtral, Phi-3-mini
+## GPT 3.5, GPT 4, LLaMA 3, Mixtral, Phi-3-mini, Gemma
 
-<strong>for using LLaMA 3, Mixtral and Phi-3-mini is a Hugging Face API key required</strong>
+<strong>for using LLaMA 3, Mixtral, Phi-3-mini and Gemma is a Hugging Face API key required</strong>
 
   
 ## UI
