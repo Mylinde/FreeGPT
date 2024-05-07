@@ -65,6 +65,10 @@ pre {
 	white-space: pre-wrap;
 }
 
+s {
+    text-decoration: none;
+}
+
 @media screen and (max-height: 720px) {
 	:root {
 		--section-gap: 16px;
