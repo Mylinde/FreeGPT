@@ -447,10 +447,15 @@ window.onload = async () => {
 		}
 	}
 
+	function isMobileDevice() {
+		const userAgent = navigator.userAgent;
+		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+	}
+		
 	message_input.addEventListener("keydown", async (evt) => {
 		if (prompt_lock) return;
 	
-		if (evt.key === "Enter" && !evt.shiftKey && !(device.platform === "Android" && device.keyboard?.isVirtual) && !(device.platform === "iOS" && evt.Code === 133) ) {
+		if ((evt.key === "Enter" && !evt.shiftKey) || isMobileDevice()) {
 			evt.preventDefault();
 			await handle_ask();
 		}
