@@ -450,10 +450,11 @@ window.onload = async () => {
 	message_input.addEventListener("keydown", async (evt) => {
 		if (prompt_lock) return;
 	
-		if (evt.key === "Enter" && !evt.shiftKey || !device.keyboard?.isVirtual) {
+		if (evt.key === "Enter" && !evt.shiftKey || evt.key === "Enter" && !device.keyboard?.isVirtual) {
 			evt.preventDefault();
 			await handle_ask();
 		}
+		
 	});
 
 	send_button.addEventListener("click", async (event) => {
