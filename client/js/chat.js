@@ -449,14 +449,18 @@ window.onload = async () => {
 
 	message_input.addEventListener("keydown", async (evt) => {
 		if (prompt_lock) return;
-			
+
 		if (evt.key === "Enter" && !evt.shiftKey) {
 			evt.preventDefault();
 			await handle_ask();
-		} else if (device.platform === "Android" && device.keyboard?.isVirtual) {
+		}
+		
+		if (device.platform === "Android" && device.keyboard?.isVirtual) {
 			evt.preventDefault();
 			await handle_ask();				
-		} else if (device.platform === "Android" && device.keyboard?.isVirtual) {
+		}
+
+		if (device.platform === "Android" && device.keyboard?.isVirtual) {
 			evt.preventDefault();
 			await handle_ask();
 		}
