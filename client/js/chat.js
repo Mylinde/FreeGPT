@@ -455,12 +455,12 @@ window.onload = async () => {
 			await handle_ask();
 		}
 			
-		if (evt.key === "Enter" && !device.platform === "Android") {
+		if (evt.key === "Enter" && !(device.platform === "Android" && device.keyboard?.isVirtual)) {
 			evt.preventDefault();
 			await handle_ask();
 		}
 			
-		if (evt.key === "Enter" && !device.platform === "iOS") {
+		if (evt.key === "Enter" && !(device.platform === "iOS" && evt.Code === 133)) {
 			evt.preventDefault();
 			await handle_ask();
 		}
