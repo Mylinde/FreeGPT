@@ -78,4 +78,4 @@ def format_prompt(messages: Messages) -> str:
         for idx, message in enumerate(messages)
         if message["role"] == "assistant"
     ])
-    return f"{history}<s>[INST] {question} [/INST]"
+    return f"{history}<s> {question} "
