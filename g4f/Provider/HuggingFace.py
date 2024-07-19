@@ -33,8 +33,8 @@ class HuggingFace(AsyncGeneratorProvider, ProviderModelMixin):
         connector: BaseConnector = None,
         api_base: str = "https://api-inference.huggingface.co",
         api_key: str = "",
-        temperature: float = 0.1,
-        max_new_tokens: int = 1024,
+        temperature: float = 0.2,
+        max_new_tokens: int = 2048,
         **kwargs
     ) -> AsyncResult:
         model = cls.get_model(model) if not model else model
@@ -78,4 +78,4 @@ def format_prompt(messages: Messages) -> str:
         for idx, message in enumerate(messages)
         if message["role"] == "assistant"
     ])
-    return f"{history}<s> {question} "
+    return f"{history}<s>[INST] {question} [/INST]"
