@@ -33,8 +33,6 @@ class HuggingFace(AsyncGeneratorProvider, ProviderModelMixin):
         connector: BaseConnector = None,
         api_base: str = "https://api-inference.huggingface.co",
         api_key: str = "",
-        temperature: float = 0.2,
-        max_new_tokens: int = 2048,
         **kwargs
     ) -> AsyncResult:
         model = cls.get_model(model) if not model else model
@@ -43,8 +41,6 @@ class HuggingFace(AsyncGeneratorProvider, ProviderModelMixin):
             headers["Authorization"] = f"Bearer {api_key}"
         params = {
             "return_full_text": False,
-            "max_new_tokens": max_new_tokens,
-            "temperature": temperature,
             **kwargs
         }
         payload = {"inputs": format_prompt(messages), "parameters": params, "stream": stream}
