@@ -102,7 +102,7 @@ const ask_gpt = async (message) => {
 				accept: `text/event-stream`,
 			},
 			body: JSON.stringify({
-				temperature: 0.1,
+				temperature: 0.2,
 				top_k: 10,
 				typical_p: 0.8,
 				no_repeat_n: 2,
