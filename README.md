@@ -102,7 +102,7 @@ Before you start, make sure you have installed [Docker](https://www.docker.com/g
 Dockerfile for creating a Docker image yourself  
 Then we can create an image using the following commands:
 ```
-git clone https://github.com/Mylinde/freegpt.git cd freegpt
+git clone https://github.com/Mylinde/freegpt.git && cd freegpt
 ```
 
 Build image:
