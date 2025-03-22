@@ -3,8 +3,8 @@ from __future__ import annotations
 import random
 import secrets
 import string
-from aiohttp import BaseConnector
 
+from aiohttp import BaseConnector
 from ..typing import Messages, Optional
 from ..errors import MissingRequirementsError
 from ..cookies import get_cookies

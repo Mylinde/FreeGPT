@@ -535,4 +535,4 @@ function createElement(tag, { classNames, id, innerHTML, textContent } = {}) {
         el.appendChild(preElement);
     }
     return el;
-}
+};

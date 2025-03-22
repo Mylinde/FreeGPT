@@ -2,9 +2,9 @@
 
 Experience the power of **G**enerative **P**retrained **T**ransformers with a user-friendly interface.
 
-## GPT 3.5, GPT 4, LLaMA 3, Mixtral, Phi-3-mini, Gemma
+## LLaMA 3, Mixtral, Phi-3-mini, Gemma
 
-<strong>for using LLaMA 3, Mixtral, Phi-3-mini and Gemma is a Hugging Face API key required</strong>
+<strong>a Hugging Face API key required</strong>
 
   
 ## UI
@@ -78,7 +78,7 @@ To run the application, run the following command:
 I suggest to use the python -B flag to not generate the bytecode cache. It ensures that any changes made to the code will be reflected in the next run, without having to manually delete the bytecode cache. 
 
 ```
-python -m gunicorn --config gunicorn_config.py run:app
+python -B -m gunicorn --config gunicorn_config.py run:app
 ```
 or for running with werkzeug:
 ```

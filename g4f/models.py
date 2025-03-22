@@ -1,13 +1,10 @@
 from __future__  import annotations
 
 from dataclasses import dataclass
-
 from .Provider import RetryProvider, ProviderType
 from .Provider import (
-    Liaobots,
     HuggingFace
 )
-
 
 @dataclass(unsafe_hash=True)
 class Model:
@@ -29,47 +26,15 @@ class Model:
         return _all_models
 
 default = Model(
-    name          = "",
-    base_provider = "",
-    best_provider = ""
-)
-
-# GPT-3.5 too, but all providers supports long requests and responses
-gpt_35_long = Model(
-    name          = 'gpt-3.5-turbo',
-    base_provider = 'openai',
-    best_provider = Liaobots
-)
-
-# GPT-3.5 / GPT-4
-gpt_35_turbo = Model(
-    name          = 'gpt-3.5-turbo',
-    base_provider = 'openai',
-    best_provider = Liaobots
-)
-
-gpt_4 = Model(
-    name          = 'gpt-4',
-    base_provider = 'openai',
-    best_provider = Liaobots
-)
-
-llama2_7b = Model(
-    name          = "meta-llama/Llama-2-7b-chat-hf",
-    base_provider = 'meta',
-    best_provider = ""
-)
-
-llama2_13b = Model(
-    name          = "meta-llama/Llama-2-13b-chat-hf",
-    base_provider = 'meta',
-    best_provider = ""
-)
-
-llama2_70b = Model(
-    name          = "meta/llama-2-70b-chat",
+    name          = "mistralai/Mixtral-8x7B-Instruct-v0.1",
     base_provider = "meta",
-    best_provider = ""
+    best_provider = HuggingFace
+)
+
+llama3_8b = Model(
+    name          = "meta-llama/Meta-Llama-3-8b",
+    base_provider = "meta",
+    best_provider = HuggingFace
 )
 
 llama3_8b_instruct = Model(
@@ -134,12 +99,6 @@ airoboros_70b = Model(
     best_provider = ""
 )
 
-openchat_35 = Model(
-    name          = "openchat/openchat_3.5",
-    base_provider = "huggingface",
-    best_provider = ""
-)
-
 phi_3_mini = Model(
     name          = "microsoft/Phi-3-mini-4k-instruct",
     base_provider = "huggingface",
@@ -152,7 +111,6 @@ gemma_1_1_7b_it = Model(
     best_provider = HuggingFace
 )
 
-
 # Bard
 claude_3_opus = Model(
     name          = 'claude-3-opus',
@@ -164,42 +122,6 @@ claude_3_sonnet = Model(
     name          = 'claude-3-sonnet',
     base_provider = 'anthropic',
     best_provider = ""
-)
-
-gpt_35_turbo_16k = Model(
-    name          = 'gpt-3.5-turbo-16k',
-    base_provider = 'openai',
-    best_provider = gpt_35_long.best_provider
-)
-
-gpt_35_turbo_16k_0613 = Model(
-    name          = 'gpt-3.5-turbo-16k-0613',
-    base_provider = 'openai',
-    best_provider = gpt_35_long.best_provider
-)
-
-gpt_35_turbo_0613 = Model(
-    name          = 'gpt-3.5-turbo-0613',
-    base_provider = 'openai',
-    best_provider = gpt_35_turbo.best_provider
-)
-
-gpt_4_0613 = Model(
-    name          = 'gpt-4-0613',
-    base_provider = 'openai',
-    best_provider = gpt_4.best_provider
-)
-
-gpt_4_32k = Model(
-    name          = 'gpt-4-32k',
-    base_provider = 'openai',
-    best_provider = gpt_4.best_provider
-)
-
-gpt_4_32k_0613 = Model(
-    name          = 'gpt-4-32k-0613',
-    base_provider = 'openai',
-    best_provider = gpt_4.best_provider
 )
 
 gemini_pro = Model(
@@ -222,25 +144,8 @@ class ModelUtils:
         convert (dict[str, Model]): Dictionary mapping model string identifiers to Model instances.
     """
     convert: dict[str, Model] = {
-        # gpt-3.5
-        'gpt-3.5-turbo'          : gpt_35_turbo,
-        'gpt-3.5-turbo-0613'     : gpt_35_turbo_0613,
-        'gpt-3.5-turbo-16k'      : gpt_35_turbo_16k,
-        'gpt-3.5-turbo-16k-0613' : gpt_35_turbo_16k_0613,
-        
-        'gpt-3.5-long': gpt_35_long,
-        
-        # gpt-4
-        'gpt-4'          : gpt_4,
-        'gpt-4-0613'     : gpt_4_0613,
-        'gpt-4-32k'      : gpt_4_32k,
-        'gpt-4-32k-0613' : gpt_4_32k_0613,
 
         # Llama
-        'llama2-7b' : llama2_7b,
-        'llama2-13b': llama2_13b,
-        'llama2-70b': llama2_70b,
-        
         'llama3-8b' : llama3_8b_instruct, # alias
         'llama3-70b': llama3_70b, # alias
         'llama3-8b-instruct' : llama3_8b_instruct,
@@ -266,7 +171,6 @@ class ModelUtils:
         'dbrx-instruct': dbrx_instruct,
         'lzlv-70b': lzlv_70b,
         'airoboros-70b': airoboros_70b,
-        'openchat_3.5': openchat_35,
         'phi-3-mini': phi_3_mini,       
     }
 

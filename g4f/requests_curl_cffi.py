@@ -1,8 +1,10 @@
 from __future__ import annotations
+
+import orjson
+
 from curl_cffi.requests import AsyncSession, Response
 from typing import AsyncGenerator, Any
 from functools import partialmethod
-import orjson
 
 class StreamResponse:
     """

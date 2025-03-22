@@ -1,7 +1,9 @@
 from __future__ import annotations
+
 from bs4 import BeautifulSoup
 from aiohttp import ClientSession, ClientTimeout
 from duckduckgo_search import DDGS
+
 import asyncio
 
 class SearchResults():

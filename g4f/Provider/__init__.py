@@ -1,12 +1,11 @@
 from __future__ import annotations
 
+import sys
+
 from ..base_provider  import BaseProvider, ProviderType
 from .retry_provider  import RetryProvider
 from .base_provider   import AsyncProvider, AsyncGeneratorProvider
-from .Liaobots        import Liaobots
 from .HuggingFace     import HuggingFace
-
-import sys
 
 __modules__: list = [
     getattr(sys.modules[__name__], provider) for provider in dir()

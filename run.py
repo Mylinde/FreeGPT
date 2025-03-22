@@ -17,7 +17,8 @@ url_prefix = config.pop('url_prefix')
 app = flask.Flask(__name__)
 compress = Compress(app)
 app.secret_key = secrets.token_hex(16)
-cache = Cache(app, config={'CACHE_TYPE': 'redis', 'CACHE_REDIS_HOST': 'localhost', 'CACHE_REDIS_PORT': 6379, 'CACHE_DEFAULT_TIMEOUT': 10})
+# uncomment for using redis as cache
+#cache = Cache(app, config={'CACHE_TYPE': 'redis', 'CACHE_REDIS_HOST': 'localhost', 'CACHE_REDIS_PORT': 6379, 'CACHE_DEFAULT_TIMEOUT': 10})
 
 create_babel(app)
 
