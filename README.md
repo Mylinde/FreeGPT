@@ -4,9 +4,9 @@ Experience the power of **G**enerative **P**retrained **T**ransformers with a us
 
 ## LLaMA 3, Mixtral, Phi-3-mini, Gemma
 
-<strong>a Hugging Face API key is required</strong>
+<strong>a Hugging Face API key required</strong>
 
-  
+
 ## UI
 
 Desktop
@@ -32,7 +32,6 @@ Reader mode in PWA
 - Share conversation as text from reader mode
 - Awesomefont replaced with material icons
 - light/dark theme follows the system
-- 3rd party sources stored local
 - code clean up
 - flask-compress
 - orjson
