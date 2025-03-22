@@ -36,7 +36,6 @@ const handle_ask = async () => {
 	message_input.style.height = `80px`;
 	window.scrollTo(0, 0);
 	let message = message_input.value;
-
 	if (message.length > 0) {
 		message_input.value = ``;
 		message_input.dispatchEvent(new Event("input"));
@@ -46,7 +45,6 @@ const handle_ask = async () => {
 
 const remove_cancel_button = async () => {
 	stop_generating.classList.add(`stop-generating-hiding`);
-
 	setTimeout(() => {
 		stop_generating.classList.remove(`stop-generating-hiding`);
 		stop_generating.classList.add(`stop-generating-hidden`);
@@ -58,26 +56,21 @@ const ask_gpt = async (message) => {
 		message_input.value = ``;
 		message_input.innerHTML = ``;
 		message_input.innerText = ``;
-
 		add_conversation(window.conversation_id, message.substr(0, 40));
 		window.scrollTo(0, 0);
 		window.controller = new AbortController();
-
 		model = document.getElementById("model");
 		provider = document.getElementById("provider");
 		prompt_lock = true;
 		window.text = ``;
 		window.token = message_id();
-
 		stop_generating.classList.remove(`stop-generating-hidden`);
-
 		add_user_message_box(message);
-
 		message_box.scrollTop = message_box.scrollHeight;
 		window.scrollTo(0, 0);
+
 		await new Promise((r) => setTimeout(r, 500));
-		window.scrollTo(0, 0);
-		
+		window.scrollTo(0, 0);		
 		message_box.innerHTML += DOMPurify.sanitize(`
 			<div class="message">
 				<div class="avatar-container">
@@ -88,9 +81,9 @@ const ask_gpt = async (message) => {
 				</div>
 			</div>
 		`);
-
 		message_box.scrollTop = message_box.scrollHeight;
 		window.scrollTo(0, 0);
+
 		await new Promise((r) => setTimeout(r, 1000));
 		window.scrollTo(0, 0);
 
@@ -117,7 +110,7 @@ const ask_gpt = async (message) => {
 					id: window.token,
 					content: {
 						conversation: await get_conversation(window.conversation_id),
-						internet_access: document.getElementById("switch").checked,
+						internet_access: true,
 						content_type: "text",
 						parts: [
 							{
@@ -135,34 +128,20 @@ const ask_gpt = async (message) => {
 		while (true) {
 			const { value, done } = await reader.read();
 			if (done) break;
-
 			chunk = decodeUnicode(new TextDecoder().decode(value));
-
-			if (chunk.includes(`<form id="challenge-form" action="${url_prefix}/backend-api/v2/conversation?`)) {
-				chunk = `cloudflare token expired, please refresh the page.`;
-			}
-
 			text += chunk;
-
 			document.getElementById(`gpt_${window.token}`).innerHTML = markdown.render(text);
 			document.querySelectorAll(`code`).forEach((el) => {
 				hljs.highlightElement(el);
 			});
-
 			window.scrollTo(0, 0);
 			message_box.scrollTo({ top: message_box.scrollHeight, behavior: "auto" });
-		}
-
-		// if text contains :
-		if (text.includes(`instead. Maintaining this website and API costs a lot of money`)) {
-			document.getElementById(`gpt_${window.token}`).innerHTML =
-				"An error occurred, please reload / refresh cache and try again.";
-		}
+		}		
 
 		add_message(window.conversation_id, "user", message);
 		add_message(window.conversation_id, "assistant", text);
-
 		message_box.scrollTop = message_box.scrollHeight;
+
 		await remove_cancel_button();
 		prompt_lock = false;
 
@@ -170,11 +149,9 @@ const ask_gpt = async (message) => {
 		window.scrollTo(0, 0);
 	} catch (e) {
 		add_message(window.conversation_id, "user", message);
-
 		message_box.scrollTop = message_box.scrollHeight;
 		await remove_cancel_button();
 		prompt_lock = false;
-
 		await load_conversations(20, 0);
 
 		console.log(e);
@@ -207,7 +184,6 @@ const add_user_message_box = (message) => {
 		id: `user_${token}`,
 		textContent: message,
 	});
-
 	messageDiv.append(avatarContainer, contentDiv);
 	message_box.appendChild(messageDiv);
 };
@@ -221,7 +197,6 @@ const decodeUnicode = (str) => {
 const clear_conversations = async () => {
 	const elements = box_conversations.childNodes;
 	let index = elements.length;
-
 	if (index > 0) {
 		while (index--) {
 			const element = elements[index];
@@ -472,7 +447,7 @@ window.onload = async () => {
 };
 
 const register_settings_localstorage = async () => {
-	settings_ids = ["switch", "model"];
+	settings_ids = ["model"];
 	settings_elements = settings_ids.map((id) => document.getElementById(id));
 	settings_elements.map((element) =>
 		element.addEventListener(`change`, async (event) => {
@@ -492,7 +467,7 @@ const register_settings_localstorage = async () => {
 
 
 const load_settings_localstorage = async () => {
-	settings_ids = ["switch", "model"];
+	settings_ids = ["model"];
 	settings_elements = settings_ids.map((id) => document.getElementById(id));
 	settings_elements.map((element) => {
 		if (localStorage.getItem(element.id)) {

@@ -73,11 +73,6 @@
 								<span class="material-icons-round model-info" onmouseenter="showModelInfo()" onmouseleave="showModelInfo()">info</span>																								  
 								<select class="dropdown" name="model" id="model"></select>								
 							</div>
-							<div class="field checkbox">
-								<span>{{_('Web Access')}}</span>									
-								<input type="checkbox" id="switch" />
-								<label for="switch"></label>
-							</div>
 						</div>
 					<a class="info" href="https://github.com/Mylinde/freegpt" target="_blank">
 						<span id="version">FreeGPT {{_('Version')}} 1.0 </span>
@@ -126,6 +121,11 @@
 		<script rel="preload" src="{{ url_for('bp.static', filename='js/chat.min.js') }}" defer></script>		
 		<script src="{{ url_for('bp.static', filename='js/sidebar-toggler.min.js') }}"></script>
 		<script src="{{ url_for('bp.static', filename='js/change-language.min.js') }}"></script>
-		<script src="{{ url_for('bp.static', filename='js/provider-sort.min.js') }}"></script>					
+		<script src="{{ url_for('bp.static', filename='js/provider-sort.min.js') }}"></script>			
 	</body>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+
