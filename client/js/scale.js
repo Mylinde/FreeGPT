@@ -21,23 +21,6 @@ if (window.navigator.standalone === true || window.matchMedia('(display-mode: st
 const shareButton = document.getElementById("share-button");
 const pdfButton = document.getElementById("pdf-button");
 
-if (navigator.share) {  
-  shareButton.addEventListener("click", async () => {
-    try {      
-      const contentElements = document.querySelectorAll(".content");      
-      let text = "";     
-      for (let element of contentElements) {
-        text += element.textContent + "\n";
-      }      
-      await navigator.clipboard.writeText(text);
-      await navigator.share({
-        title: "FreeGPT",
-        text: text,
-      });
-    } catch (error) {
-        console.error("Error sharing content", error);
-    }
-  });
 
 pdfButton.addEventListener("click", () => {
     try {
@@ -84,7 +67,26 @@ pdfButton.addEventListener("click", () => {
       console.error("Error creating PDF", error);
       }
   });
+
+if (navigator.share) {  
+    shareButton.addEventListener("click", async () => {
+      try {      
+        const contentElements = document.querySelectorAll(".content");      
+        let text = "";     
+        for (let element of contentElements) {
+          text += element.textContent + "\n";
+        }      
+        await navigator.clipboard.writeText(text);
+        await navigator.share({
+          title: "FreeGPT",
+          text: text,
+        });
+      } catch (error) {
+          console.error("Error sharing content", error);
+      }
+    });
+  
 } else {
   shareButton.style.display = "none";
-  pdfButton.style.display = "none";
+  pdfButton.style.display = "block";
 };
