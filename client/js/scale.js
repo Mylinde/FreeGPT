@@ -88,5 +88,4 @@ if (navigator.share) {
   
 } else {
   shareButton.style.display = "none";
-  pdfButton.style.display = "block";
 };
