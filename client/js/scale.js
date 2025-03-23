@@ -23,50 +23,50 @@ const pdfButton = document.getElementById("pdf-button");
 
 
 pdfButton.addEventListener("click", () => {
-    try {
-      let currentPage = 0;
-      const pdf = new jspdf.jsPDF();
-      const messageElements = document.querySelectorAll('.message.user, .message.assistant');
-      const sortedElements = Array.from(messageElements).sort((a, b) => {
-        return a.compareDocumentPosition(b) & 2 ? 1 : -1;
-      });
-  
-      sortedElements.forEach(element => {
-        let cleanText = "\n" + element.textContent.replace(/^[\t\s]+/, '').replace(/[\t\s]+$/, '').replace(/content_copycontent_copy/g, '').replace(/content_copy/g, '');
-        
-        if (element.classList.contains('user')) {
-          pdf.getFont();
-          pdf.setFont('assistant.kursiv', 'normal');
-          pdf.setFontSize(13);
-          pdf.setLineHeightFactor(1);
-        } else {
-          pdf.getFont();
-          pdf.setFont('assistant.regular', 'normal');
-          pdf.setFontSize(13);
-          pdf.setLineHeightFactor(1);
-        }
-        let lines = pdf.splitTextToSize(cleanText, pdf.internal.pageSize.width - 20);
-        lines.forEach(line => {
-          if (currentPage * 10 + 10 >= pdf.internal.pageSize.height - 10) {
-            pdf.addPage();
-            currentPage = 0;
-          }
-          pdf.text(line, 10, 10 + (currentPage * 10));
-          currentPage++;
-        });
-      });
-  
-      const firstMessageText = sortedElements[0].textContent.trim();
-        let endIndex = firstMessageText.lastIndexOf(' ', 40);
-            endIndex = endIndex === -1 || endIndex > 40 ? 40 : endIndex;
-        let pdfName = firstMessageText.substring(0, endIndex).trim();
-            pdfName = pdfName.replace(/\s+/g, '_') + ".pdf";
-      pdf.save(pdfName);
-      
-    } catch (error) {
-      console.error("Error creating PDF", error);
+  try {
+    let currentPage = 0;
+    const pdf = new jspdf.jsPDF();
+    const messageElements = document.querySelectorAll('.message.user, .message.assistant');
+    const sortedElements = Array.from(messageElements).sort((a, b) => {
+      return a.compareDocumentPosition(b) & 2 ? 1 : -1;
+    });
+
+    sortedElements.forEach(element => {
+      let cleanText = "\n" + element.textContent.replace(/^[\t\s]+/, '').replace(/[\t\s]+$/, '').replace(/content_copycontent_copy/g, '').replace(/content_copy/g, '');
+
+      if (element.classList.contains('user')) {
+        pdf.getFont();
+        pdf.setFont('assistant.regular', 'normal');
+        pdf.setFontSize(12);
+        pdf.setLineHeightFactor(1);
+      } else {
+        pdf.getFont();
+        pdf.setFont('assistant.regular', 'bold');
+        pdf.setFontSize(12);
+        pdf.setLineHeightFactor(1);
       }
-  });
+      let lines = pdf.splitTextToSize(cleanText, pdf.internal.pageSize.width - 20);
+      lines.forEach(line => {
+        if (currentPage * 5 + 5 >= pdf.internal.pageSize.height - 10) {
+          pdf.addPage();
+          currentPage = 0;
+        }
+        pdf.text(line, 10, 10 + (currentPage * 5));
+        currentPage++;
+      });
+    });
+
+    const firstMessageText = sortedElements[0].textContent.trim();
+    let endIndex = firstMessageText.lastIndexOf(' ', 40);
+    endIndex = endIndex === -1 || endIndex > 40 ? 40 : endIndex;
+    let pdfName = firstMessageText.substring(0, endIndex).trim();
+    pdfName = pdfName.replace(/\s+/g, '_') + ".pdf";
+    pdf.save(pdfName);
+
+  } catch (error) {
+    console.error("Error creating PDF", error);
+  }
+});
 
 if (navigator.share) {  
     shareButton.addEventListener("click", async () => {
