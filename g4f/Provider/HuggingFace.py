@@ -16,8 +16,7 @@ class HuggingFace(AsyncGeneratorProvider, ProviderModelMixin):
     models = [
         "mistralai/Mixtral-8x7B-Instruct-v0.1",
         'microsoft/Phi-3-mini-4k-instruct',
-        'meta-llama/Meta-Llama-3-8B-Instruct',
-        'google/gemma-1.1-7b-it'
+        'meta-llama/Meta-Llama-3.3-70B-Instruct',
     ]
     
     default_model = "mistralai/Mixtral-8x7B-Instruct-v0.1"
@@ -72,14 +71,12 @@ def format_prompt(messages: Messages, model: str, do_continue: bool = False) -> 
     if model in ({
     "mistralai/Mixtral-8x7B-Instruct-v0.1": format_prompt_mistral,
     "microsoft/Phi-3-mini-4k-instruct": format_prompt_custom,
-    "meta-llama/Meta-Llama-3-8B-Instruct": format_prompt_llama,
-    "google/gemma-1.1-7b-it": format_prompt_gemma
+    "meta-llama/Llama-3.3-70B-Instruct": format_prompt_llama
 }):
         return ({
     "mistralai/Mixtral-8x7B-Instruct-v0.1": format_prompt_mistral,
     "microsoft/Phi-3-mini-4k-instruct": format_prompt_custom,
-    "meta-llama/Meta-Llama-3-8B-Instruct": format_prompt_llama,
-    "google/gemma-1.1-7b-it": format_prompt_gemma
+    "meta-llama/Llama-3.3-70B-Instruct": format_prompt_llama
 })[model](messages, do_continue)
     else:
         raise ValueError(f"Modell {model} not supported")

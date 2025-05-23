@@ -44,7 +44,7 @@ llama3_8b_instruct = Model(
 )
 
 llama3_70b = Model(
-    name          = "meta-llama/Meta-Llama-3-70B",
+    name          = "meta-llama/Llama-3.3-70B-Instruct",
     base_provider = "meta",
     best_provider = HuggingFace
 )
@@ -106,7 +106,7 @@ phi_3_mini = Model(
 )
 
 gemma_1_1_7b_it = Model(
-    name          = "google/gemma-1.1-7b-it",
+    name          = "google/gemma-2-2b-it",
     base_provider = "huggingface",
     best_provider = HuggingFace
 )

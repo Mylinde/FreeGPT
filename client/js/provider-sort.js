@@ -1,10 +1,9 @@
 const providerSelect = document.getElementById('provider');
 const modelSelect = document.getElementById('model');
 const modelDisplayNameMapping = {
-  'llama3-8b': 'LLaMA3',
+  'llama3-70b': 'LLaMA3',
   'mixtral-8x7b': 'Mixtral',
-  'phi-3-mini': 'Phi-3-mini',
-  'gemma-1.1-7b-it': 'Gemma'
+  'phi-3-mini': 'Phi-3-mini'
 };
 
 const providerDisplayNameMapping = {
@@ -25,9 +24,9 @@ function updateModelOptions() {
   const selectedProvider = providerSelect.value;
 
   if (selectedProvider === 'g4f.Provider.Auto') {
-    availableModels.push('llama3-8b', 'mixtral-8x7b', 'phi-3-mini', 'gemma-1.1-7b-it');
+    availableModels.push('llama3-70b', 'mixtral-8x7b', 'phi-3-mini');
   } else if (selectedProvider === 'g4f.Provider.HuggingFace') {
-    availableModels.push('mixtral-8x7b', 'llama3-8b', 'phi-3-mini', 'gemma-1.1-7b-it');
+    availableModels.push('mixtral-8x7b', 'llama3-70b', 'phi-3-mini');
   }
 
   let modelSelect = document.getElementById('model');
@@ -45,13 +44,11 @@ function updateProviderOptions() {
   let availableProviders = [];
   const selectedModel = modelSelect.value;
 
-  if (selectedModel === 'llama3-8b') {
+  if (selectedModel === 'llama3-70b') {
     availableProviders.push('g4f.Provider.Auto','g4f.Provider.HuggingFace');
   } else if (selectedModel === 'mixtral-8x7b') {
     availableProviders.push('g4f.Provider.HuggingFace');
   } else if (selectedModel === 'phi-3-mini') {
-    availableProviders.push('g4f.Provider.HuggingFace');
-  } else if (selectedModel === 'gemma-1.1-7b-it') {
     availableProviders.push('g4f.Provider.HuggingFace');
   }
 
@@ -78,9 +75,8 @@ const selectedModel = modelSelect.value;
 const llama = document.getElementById("llama");
 const mixtral = document.getElementById("mixtral");
 const phi = document.getElementById("phi");
-const gemma = document.getElementById("gemma");
 
-if (selectedModel === 'llama3-8b') {  
+if (selectedModel === 'llama3-70b') {  
     mixtral.classList.remove("show");
     phi.classList.remove("show");
     gemma.classList.remove("show");
@@ -95,10 +91,5 @@ if (selectedModel === 'llama3-8b') {
     llama.classList.remove("show");
     mixtral.classList.remove("show");    
     phi.classList.toggle("show");   
-  } if (selectedModel === 'gemma-1.1-7b-it') {  
-    llama.classList.remove("show");
-    mixtral.classList.remove("show");    
-    phi.classList.remove("show");    
-    gemma.classList.toggle("show");   
   }
 };

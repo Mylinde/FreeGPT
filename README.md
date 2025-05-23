@@ -2,7 +2,7 @@
 
 Experience the power of **G**enerative **P**retrained **T**ransformers with a user-friendly interface.
 
-## LLaMA 3, Mixtral, Phi-3-mini, Gemma
+## LLaMA 3, Mixtral, Phi-3-mini
 
 
 <strong>Hugging Face API key is required</strong>
